@@ -178,7 +178,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-24 21:30:09" itemprop="dateModified" datetime="2021-01-24T21:30:09+08:00">2021-01-24</time>
+                <time title="修改时间：2021-01-24 22:46:25" itemprop="dateModified" datetime="2021-01-24T22:46:25+08:00">2021-01-24</time>
               </span>
 
           
@@ -366,7 +366,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-24 21:30:09" itemprop="dateModified" datetime="2021-01-24T21:30:09+08:00">2021-01-24</time>
+                <time title="修改时间：2021-01-24 22:46:25" itemprop="dateModified" datetime="2021-01-24T22:46:25+08:00">2021-01-24</time>
               </span>
 
           
@@ -380,7 +380,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Golang单元测试"><a href="#Golang单元测试" class="headerlink" title="Golang单元测试"></a>Golang单元测试</h1><h3 id="程序测试"><a href="#程序测试" class="headerlink" title="程序测试"></a>程序测试</h3><p>对于程序或软件的测试也分很多种：</p>
+          <h2 id="Golang单元测试"><a href="#Golang单元测试" class="headerlink" title="Golang单元测试"></a>Golang单元测试</h2><h3 id="程序测试"><a href="#程序测试" class="headerlink" title="程序测试"></a>程序测试</h3><p>对于程序或软件的测试也分很多种：</p>
 <ul>
 <li><p>单元测试（又称程序员测试）</p>
 <ul>
@@ -403,11 +403,29 @@
 <h3 id="Go-语言对测试文件的规定"><a href="#Go-语言对测试文件的规定" class="headerlink" title="Go 语言对测试文件的规定"></a>Go 语言对测试文件的规定</h3><h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><p>一般情况下，一个测试源码文件只会针对于某个命令源码文件，或库源码文件（以下简称被测源码文件）做测试，所以我们总会（并且应该）把它们放在同一个代码包内。</p>
 <h4 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h4><p>测试源码文件的主名称应该以被测源码文件的主名称为前导，并且必须以“_test”为后缀。例如，如果被测源码文件的名称为 demo52.go，那么针对它的测试源码文件的名称就应该是 demo52_test.go。</p>
 <h4 id="函数的分组、数量、顺序"><a href="#函数的分组、数量、顺序" class="headerlink" title="函数的分组、数量、顺序"></a>函数的分组、数量、顺序</h4><p>每个测试源码文件都必须至少包含一个测试函数。并且，从语法上讲，每个测试源码文件中，都可以包含用来做任何一类测试的测试函数，即使把这三类测试函数都塞进去也没有问题。我通常就是这么做的，只要把控好测试函数的分组和数量就可以了。我们可以依据这些测试函数针对的不同程序实体，把它们分成不同的逻辑组，并且，利用注释以及帮助类的变量或函数来做分割。同时，我们还可以依据被测源码文件中程序实体的先后顺序，来安排测试源码文件中测试函数的顺序。</p>
-<h4 id="Go-语言对测试函数的名称和签名的规定"><a href="#Go-语言对测试函数的名称和签名的规定" class="headerlink" title="Go 语言对测试函数的名称和签名的规定"></a>Go 语言对测试函数的名称和签名的规定</h4><p>对于功能测试函数来说，其名称必须以Test为前缀，并且参数列表中只应有一个*testing.T类型的参数声明。</p>
-<p>对于性能测试函数来说，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是*testing.B类型的。</p>
-<p>对于示例测试函数来说，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
-<hr>
-<h3 id="使用-gomock-来-mock-外部依赖"><a href="#使用-gomock-来-mock-外部依赖" class="headerlink" title="使用 gomock 来 mock 外部依赖"></a>使用 gomock 来 mock 外部依赖</h3>
+<h4 id="Go-语言对测试函数的名称和签名的规定"><a href="#Go-语言对测试函数的名称和签名的规定" class="headerlink" title="Go 语言对测试函数的名称和签名的规定"></a>Go 语言对测试函数的名称和签名的规定</h4><ul>
+<li>对于功能测试函数来说，其名称必须以Test为前缀，并且参数列表中只应有一个*testing.T类型的参数声明。</li>
+</ul>
+<ul>
+<li><p>对于性能测试函数来说，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是*testing.B类型的。</p>
+</li>
+<li><p>对于示例测试函数来说，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
+</li>
+</ul>
+<h2 id="基于-Ginkgo-框架编写单元测试"><a href="#基于-Ginkgo-框架编写单元测试" class="headerlink" title="基于 Ginkgo 框架编写单元测试"></a>基于 Ginkgo 框架编写单元测试</h2><h3 id="基本用法简介"><a href="#基本用法简介" class="headerlink" title="基本用法简介"></a>基本用法简介</h3><p>Describe：描述一个行为</p>
+<p>Context：某个行为的不同情况</p>
+<p>It：通常It的描述以“should”开头</p>
+<ul>
+<li>使用<code>Describe</code>和<code>Context</code>容器来组织你的<code>It</code>和<code>spec</code><ul>
+<li>您可以使用<code>Describe</code>块来描述代码的各个行为，<code>Context</code>块在不同情况下执行这些行为</li>
+</ul>
+</li>
+<li>使用 BeforeEach 和 AfterEach 来搭建和拆除测试中的常见设置<ul>
+<li>每个<code>It</code>块都运行<code>BeforeEach</code>和<code>AfterEach</code>块。这确保了每个 spec的原始状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="异步测试"><a href="#异步测试" class="headerlink" title="异步测试"></a>异步测试</h3><h3 id="共享示例模式"><a href="#共享示例模式" class="headerlink" title="共享示例模式"></a>共享示例模式</h3><h3 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h3><h3 id="表格驱动测试"><a href="#表格驱动测试" class="headerlink" title="表格驱动测试"></a>表格驱动测试</h3><h3 id="一些提升效率的小技巧"><a href="#一些提升效率的小技巧" class="headerlink" title="一些提升效率的小技巧"></a>一些提升效率的小技巧</h3><h4 id="待定-Specs，加P，加X"><a href="#待定-Specs，加P，加X" class="headerlink" title="待定 Specs，加P，加X"></a>待定 Specs，加P，加X</h4><h4 id="聚焦-Specs，加F"><a href="#聚焦-Specs，加F" class="headerlink" title="聚焦 Specs，加F"></a>聚焦 Specs，加F</h4><h2 id="使用-Gomock-来-mock-外部依赖"><a href="#使用-Gomock-来-mock-外部依赖" class="headerlink" title="使用 Gomock 来 mock 外部依赖"></a>使用 Gomock 来 mock 外部依赖</h2>
       
     </div>
 
@@ -457,7 +475,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-24 21:30:09" itemprop="dateModified" datetime="2021-01-24T21:30:09+08:00">2021-01-24</time>
+                <time title="修改时间：2021-01-24 22:46:25" itemprop="dateModified" datetime="2021-01-24T22:46:25+08:00">2021-01-24</time>
               </span>
 
           
@@ -640,7 +658,7 @@ G 遇到网络 I/O 调度
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-24 21:30:09" itemprop="dateModified" datetime="2021-01-24T21:30:09+08:00">2021-01-24</time>
+                <time title="修改时间：2021-01-24 22:46:25" itemprop="dateModified" datetime="2021-01-24T22:46:25+08:00">2021-01-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -774,7 +792,7 @@ G 遇到网络 I/O 调度
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-24 21:30:09" itemprop="dateModified" datetime="2021-01-24T21:30:09+08:00">2021-01-24</time>
+                <time title="修改时间：2021-01-24 22:46:25" itemprop="dateModified" datetime="2021-01-24T22:46:25+08:00">2021-01-24</time>
               </span>
 
           
