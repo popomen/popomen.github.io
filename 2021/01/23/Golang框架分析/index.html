@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"popomen.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Golang单元测试程序测试对于程序或软件的测试也分很多种：  单元测试（又称程序员测试）  功能测试类（test） 基准测试类（benchmark） 示例测试类（example）   API测试  集成测试  灰度测试   单元测试单元测试也叫做”程序员测试“，顾名思义就是程序员自己要做的测试。 为什么人们不愿意写单元测试？从人的本性来讲，我们都或多或少会否定“对自我的否定”。我们不愿意看到我们">
+  <meta name="description" content="Go语言框架调研Web框架   框架 特点 依赖 作者 star数量（2021.1.23）    Gin 高性能，最受欢迎  manucorporat（西班牙） 45k   Beego 优：中文文档完善，自带orm缺：据说代码风格更像java、php  astaxie（中国） 25.8k   Iris 高性能  kataras（希腊） 19.9k   Echo 高性能（略优于Gin）  vishr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang单元测试">
-<meta property="og:url" content="http://popomen.top/2020/01/22/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="Golang框架分析">
+<meta property="og:url" content="http://popomen.top/2021/01/23/Golang%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="popomen个人博客">
-<meta property="og:description" content="Golang单元测试程序测试对于程序或软件的测试也分很多种：  单元测试（又称程序员测试）  功能测试类（test） 基准测试类（benchmark） 示例测试类（example）   API测试  集成测试  灰度测试   单元测试单元测试也叫做”程序员测试“，顾名思义就是程序员自己要做的测试。 为什么人们不愿意写单元测试？从人的本性来讲，我们都或多或少会否定“对自我的否定”。我们不愿意看到我们">
+<meta property="og:description" content="Go语言框架调研Web框架   框架 特点 依赖 作者 star数量（2021.1.23）    Gin 高性能，最受欢迎  manucorporat（西班牙） 45k   Beego 优：中文文档完善，自带orm缺：据说代码风格更像java、php  astaxie（中国） 25.8k   Iris 高性能  kataras（希腊） 19.9k   Echo 高性能（略优于Gin）  vishr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-22T08:10:32.000Z">
-<meta property="article:modified_time" content="2021-01-23T10:46:41.530Z">
+<meta property="article:published_time" content="2021-01-23T08:10:32.000Z">
+<meta property="article:modified_time" content="2021-01-24T04:41:23.698Z">
 <meta property="article:author" content="popomen">
 <meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://popomen.top/2020/01/22/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+<link rel="canonical" href="http://popomen.top/2021/01/23/Golang%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Golang单元测试 | popomen个人博客</title>
+  <title>Golang框架分析 | popomen个人博客</title>
   
 
 
@@ -151,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://popomen.top/2020/01/22/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="http://popomen.top/2021/01/23/Golang%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Golang单元测试
+          Golang框架分析
         </h1>
 
         <div class="post-meta">
@@ -174,14 +174,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-22 16:10:32" itemprop="dateCreated datePublished" datetime="2020-01-22T16:10:32+08:00">2020-01-22</time>
+              <time title="创建时间：2021-01-23 16:10:32" itemprop="dateCreated datePublished" datetime="2021-01-23T16:10:32+08:00">2021-01-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-23 18:46:41" itemprop="dateModified" datetime="2021-01-23T18:46:41+08:00">2021-01-23</time>
+                <time title="修改时间：2021-01-24 12:41:23" itemprop="dateModified" datetime="2021-01-24T12:41:23+08:00">2021-01-24</time>
               </span>
 
           
@@ -195,35 +195,100 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Golang单元测试"><a href="#Golang单元测试" class="headerlink" title="Golang单元测试"></a>Golang单元测试</h1><h3 id="程序测试"><a href="#程序测试" class="headerlink" title="程序测试"></a>程序测试</h3><p>对于程序或软件的测试也分很多种：</p>
-<ul>
-<li><p>单元测试（又称程序员测试）</p>
-<ul>
-<li>功能测试类（test）</li>
-<li>基准测试类（benchmark）</li>
-<li>示例测试类（example）</li>
-</ul>
-</li>
-<li><p>API测试</p>
-</li>
-<li><p>集成测试</p>
-</li>
-<li><p>灰度测试</p>
-</li>
-</ul>
-<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p>单元测试也叫做”程序员测试“，顾名思义就是程序员自己要做的测试。</p>
-<p>为什么人们不愿意写单元测试？从人的本性来讲，我们都或多或少会否定“对自我的否定”。我们不愿意看到我们编写的程序有 Bug（即程序错误或缺陷），尤其是刚刚倾注心血编写的，并且信心满满交付的程序。还以一个原因就是需求太多，没时间。</p>
-<p>Go 语言的缔造者们从一开始就非常重视程序测试，并且为 Go 程序的开发者们提供了丰富的 API 和工具。利用这些 API 和工具，我们可以创建测试源码文件，并为命令源码文件和库源码文件中的程序实体，编写测试用例。</p>
-<p>在 Go 语言中，一个测试用例往往会由一个或多个测试函数来代表，不过在大多数情况下，每个测试用例仅用一个测试函数就足够了。测试函数往往用于描述和保障某个程序实体的某方面功能，比如，该功能在正常情况下会因什么样的输入，产生什么样的输出，又比如，该功能会在什么情况下报错或表现异常，等等。</p>
-<h3 id="Go-语言对测试文件的规定"><a href="#Go-语言对测试文件的规定" class="headerlink" title="Go 语言对测试文件的规定"></a>Go 语言对测试文件的规定</h3><h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><p>一般情况下，一个测试源码文件只会针对于某个命令源码文件，或库源码文件（以下简称被测源码文件）做测试，所以我们总会（并且应该）把它们放在同一个代码包内。</p>
-<h4 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h4><p>测试源码文件的主名称应该以被测源码文件的主名称为前导，并且必须以“_test”为后缀。例如，如果被测源码文件的名称为 demo52.go，那么针对它的测试源码文件的名称就应该是 demo52_test.go。</p>
-<h4 id="函数的分组、数量、顺序"><a href="#函数的分组、数量、顺序" class="headerlink" title="函数的分组、数量、顺序"></a>函数的分组、数量、顺序</h4><p>每个测试源码文件都必须至少包含一个测试函数。并且，从语法上讲，每个测试源码文件中，都可以包含用来做任何一类测试的测试函数，即使把这三类测试函数都塞进去也没有问题。我通常就是这么做的，只要把控好测试函数的分组和数量就可以了。我们可以依据这些测试函数针对的不同程序实体，把它们分成不同的逻辑组，并且，利用注释以及帮助类的变量或函数来做分割。同时，我们还可以依据被测源码文件中程序实体的先后顺序，来安排测试源码文件中测试函数的顺序。</p>
-<h4 id="Go-语言对测试函数的名称和签名的规定"><a href="#Go-语言对测试函数的名称和签名的规定" class="headerlink" title="Go 语言对测试函数的名称和签名的规定"></a>Go 语言对测试函数的名称和签名的规定</h4><p>对于功能测试函数来说，其名称必须以Test为前缀，并且参数列表中只应有一个*testing.T类型的参数声明。</p>
-<p>对于性能测试函数来说，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是*testing.B类型的。</p>
-<p>对于示例测试函数来说，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
-<hr>
-<p>开源</p>
-<p>echo, 19k stars<br>gorm, 22.5k stars</p>
+        <h2 id="Go语言框架调研"><a href="#Go语言框架调研" class="headerlink" title="Go语言框架调研"></a>Go语言框架调研</h2><h3 id="Web框架"><a href="#Web框架" class="headerlink" title="Web框架"></a>Web框架</h3><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>特点</th>
+<th>依赖</th>
+<th>作者</th>
+<th>star数量（2021.1.23）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin">Gin</a></td>
+<td>高性能，最受欢迎</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/manucorporat">manucorporat</a>（西班牙）</td>
+<td>45k</td>
+</tr>
+<tr>
+<td>Beego</td>
+<td>优：中文文档完善，自带orm<br>缺：据说代码风格更像java、php</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/astaxie">astaxie</a>（中国）</td>
+<td>25.8k</td>
+</tr>
+<tr>
+<td>Iris</td>
+<td>高性能</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/kataras">kataras</a>（希腊）</td>
+<td>19.9k</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/labstack/echo">Echo</a></td>
+<td>高性能（略优于Gin）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/vishr">vishr</a>（美国）</td>
+<td>19k</td>
+</tr>
+<tr>
+<td>Revel</td>
+<td>最早的Go Web框架（生于2011年）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/robfig">robfig</a></td>
+<td>12.1k</td>
+</tr>
+<tr>
+<td>Fiber</td>
+<td>优：超高性能（基于fasthttp）<br>缺：不支持http2</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Fenny">Fenny</a>（荷兰）<br></td>
+<td>11.3k</td>
+</tr>
+<tr>
+<td>Buffalo</td>
+<td>\</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/markbates">markbates</a>（美国）<br></td>
+<td>6k</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/speedwheel/awesome-go-web-frameworks">https://github.com/speedwheel/awesome-go-web-frameworks</a></p>
+<p>翻译：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bluehawksky/article/details/90447467">https://blog.csdn.net/bluehawksky/article/details/90447467</a></p>
+</blockquote>
+<h3 id="数据库框架"><a href="#数据库框架" class="headerlink" title="数据库框架"></a>数据库框架</h3><table>
+<thead>
+<tr>
+<th>框架</th>
+<th></th>
+<th></th>
+<th>star数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/go-gorm/gorm">Gorm</a></td>
+<td></td>
+<td></td>
+<td>22.5k</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/beego/beedoc/blob/master/en-US/mvc/model/overview.md">Beego orm</a>（Beego内部组件）</td>
+<td></td>
+<td></td>
+<td>25.8k</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="测试框架"><a href="#测试框架" class="headerlink" title="测试框架"></a>测试框架</h3><p>ginkgo    4.5k</p>
+<p>gomega  </p>
 
     </div>
 
@@ -241,9 +306,12 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/11/14/hello-world/" rel="next" title="Hello World">
+    <a href="/2021/01/22/Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="prev" title="Golang单元测试">
+      <i class="fa fa-chevron-left"></i> Golang单元测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/24/hello-world/" rel="next" title="Hello World">
       Hello World <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -304,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">Golang单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95"><span class="nav-number">1.0.1.</span> <span class="nav-text">程序测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Go-%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%84%E5%AE%9A"><span class="nav-number">1.0.3.</span> <span class="nav-text">Go 语言对测试文件的规定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">文件名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E7%BB%84%E3%80%81%E6%95%B0%E9%87%8F%E3%80%81%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">函数的分组、数量、顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go-%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E7%AD%BE%E5%90%8D%E7%9A%84%E8%A7%84%E5%AE%9A"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">Go 语言对测试函数的名称和签名的规定</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go%E8%AF%AD%E8%A8%80%E6%A1%86%E6%9E%B6%E8%B0%83%E7%A0%94"><span class="nav-number">1.</span> <span class="nav-text">Go语言框架调研</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web%E6%A1%86%E6%9E%B6"><span class="nav-number">1.1.</span> <span class="nav-text">Web框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6"><span class="nav-number">1.2.</span> <span class="nav-text">数据库框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="nav-number">1.3.</span> <span class="nav-text">测试框架</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -318,7 +386,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
