@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>云计算中地域和可用区的概念 | popomen个人博客</title>
+  <meta name="keywords" content=" Cloud ">
+  <meta name="description" content="云计算中地域和可用区的概念 | popomen个人博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="记性不好">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://popomen.top/tags/index.html">
+<meta property="og:site_name" content="popomen个人博客">
+<meta property="og:description" content="记性不好">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-21T04:51:06.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:28:41.266Z">
+<meta property="article:author" content="popomen">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/daxia.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/daxia.jpg"/>
+</a>
+<div class="author">
+    <span>popomen</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(38)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="Linux">
+                        
+                        Linux
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Network">
+                        
+                        Network
+                        <small>(7)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Kubernetes">
+                        
+                        Kubernetes
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="AI">
+                        
+                        AI
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="DDIA">
+                        
+                        DDIA
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Docker">
+                        
+                        Docker
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Golang">
+                        
+                        Golang
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Shell">
+                        
+                        Shell
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Cloud">
+                        
+                        Cloud
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Coding">
+                        
+                        Coding
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Distributing">
+                        
+                        Distributing
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Hexo">
+                        
+                        Hexo
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="RPC">
+                        
+                        RPC
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/popomen">github</a>
+        
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="38">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>《Kubernetes in action》</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Cloud</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>coding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Coding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDIA读书笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Distributing</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kubernetes</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MindSpore</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Network</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Pytorch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2022/08/24/%5BK8s%5D%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E4%B9%8Bkubeapiserver/"
+           data-tag="Kubernetes"
+           data-author="" >
+            <span class="post-title" title="源码阅读之kubeapiserver">源码阅读之kubeapiserver</span>
+            <span class="post-date" title="2022-08-24 20:29:40">2022/08/24</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2022/08/24/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2022-08-24 20:27:06">2022/08/24</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2022/07/06/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_1%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_1_深度学习基础">DIDL_1_深度学习基础</span>
+            <span class="post-date" title="2022-07-06 20:29:00">2022/07/06</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/07/01/%5BNetwork%5DCSMA_CD/"
+           data-tag="Network"
+           data-author="" >
+            <span class="post-title" title="CSMA/CD">CSMA/CD</span>
+            <span class="post-date" title="2022-07-01 22:48:13">2022/07/01</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/06/26/%5BNetwork%5D%E5%B1%80%E5%9F%9F%E7%BD%91%E3%80%81%E5%9F%8E%E5%9F%9F%E7%BD%91%E3%80%81%E5%B9%BF%E5%9F%9F%E7%BD%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="局域网、城域网、广域网">局域网、城域网、广域网</span>
+            <span class="post-date" title="2022-06-26 19:43:56">2022/06/26</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/06/26/%5BNetwork%5D%E4%BA%A4%E6%8D%A2%E6%9C%BA%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8%E3%80%81%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="交换机、路由器、调制解调器">交换机、路由器、调制解调器</span>
+            <span class="post-date" title="2022-06-26 19:17:28">2022/06/26</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/06/26/%5BNetwork%5Dvlan-vxlan/"
+           data-tag="Network"
+           data-author="" >
+            <span class="post-title" title="vlan_vxlan">vlan_vxlan</span>
+            <span class="post-date" title="2022-06-26 17:48:13">2022/06/26</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/06/25/%5BNetwork%5D%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%BD%91%E7%BB%9C/"
+           data-tag="Network"
+           data-author="" >
+            <span class="post-title" title="华为云网络">华为云网络</span>
+            <span class="post-date" title="2022-06-25 23:48:53">2022/06/25</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络的分层">网络的分层</span>
+            <span class="post-date" title="2022-06-25 22:29:59">2022/06/25</span>
+        </a>
+        
+        <a  class="全部文章 Linux "
+           href="/2022/06/17/%5BLinux%5Dcgroups/"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="cgroups 简介">cgroups 简介</span>
+            <span class="post-date" title="2022-06-17 22:29:00">2022/06/17</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2022/05/17/%5BAI%5DMindSpore%E5%88%86%E5%B8%83%E5%BC%8F%E5%90%AF%E5%8A%A8/"
+           data-tag="AI,MindSpore"
+           data-author="" >
+            <span class="post-title" title="MindSpore的分布式启动">MindSpore的分布式启动</span>
+            <span class="post-date" title="2022-05-17 22:29:00">2022/05/17</span>
+        </a>
+        
+        <a  class="全部文章 DDIA "
+           href="/2022/05/15/%5BDDIA%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%5D%E5%8F%AF%E9%9D%A0%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E4%B8%8E%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F/"
+           data-tag="DDIA读书笔记"
+           data-author="" >
+            <span class="post-title" title="《DDIA》读书笔记1——可靠、可扩展与可维护的应用系统">《DDIA》读书笔记1——可靠、可扩展与可维护的应用系统</span>
+            <span class="post-date" title="2022-05-15 00:00:00">2022/05/15</span>
+        </a>
+        
+        <a  class="全部文章 Distributing "
+           href="/2022/05/14/%5BDistributing%5D%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/"
+           data-tag="Distributing,coding"
+           data-author="" >
+            <span class="post-title" title="分布式事务概述">分布式事务概述</span>
+            <span class="post-date" title="2022-05-14 00:00:00">2022/05/14</span>
+        </a>
+        
+        <a  class="全部文章 RPC "
+           href="/2022/04/23/%5BRPC%5DRPC%E4%B8%8EHTTP/"
+           data-tag="RPC"
+           data-author="" >
+            <span class="post-title" title="RPC与HTTP的关系">RPC与HTTP的关系</span>
+            <span class="post-date" title="2022-04-23 15:08:00">2022/04/23</span>
+        </a>
+        
+        <a  class="全部文章 Shell "
+           href="/2022/04/23/%5BShell%5D%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+           data-tag="Shell"
+           data-author="" >
+            <span class="post-title" title="《Shell学习笔记》基础知识">《Shell学习笔记》基础知识</span>
+            <span class="post-date" title="2022-04-23 15:08:00">2022/04/23</span>
+        </a>
+        
+        <a  class="全部文章 Shell "
+           href="/2022/04/23/%5BShell%5D%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"
+           data-tag="Shell"
+           data-author="" >
+            <span class="post-title" title="《Shell学习笔记》环境变量">《Shell学习笔记》环境变量</span>
+            <span class="post-date" title="2022-04-23 15:08:00">2022/04/23</span>
+        </a>
+        
+        <a  class="全部文章 Coding "
+           href="/2022/04/23/%5BCoding%5D%E4%BA%92%E6%96%A5%E9%94%81_%E8%87%AA%E6%97%8B%E9%94%81_%E8%AF%BB%E5%86%99%E9%94%81_%E6%9D%A1%E4%BB%B6%E9%94%81/"
+           data-tag="Coding"
+           data-author="" >
+            <span class="post-title" title="编程中常见的各种&#34;锁&#34;">编程中常见的各种&#34;锁&#34;</span>
+            <span class="post-date" title="2022-04-23 04:23:00">2022/04/23</span>
+        </a>
+        
+        <a  class="全部文章 Docker "
+           href="/2022/04/23/%5BDocker%5D%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"
+           data-tag="Linux,Docker"
+           data-author="" >
+            <span class="post-title" title="Docker的代理配置">Docker的代理配置</span>
+            <span class="post-date" title="2022-04-23 04:23:00">2022/04/23</span>
+        </a>
+        
+        <a  class="全部文章 Network "
+           href="/2021/12/08/%5BNetwork%5DRDMA/"
+           data-tag="Linux,Network"
+           data-author="" >
+            <span class="post-title" title="RDMA 和 TCP/IP">RDMA 和 TCP/IP</span>
+            <span class="post-date" title="2021-12-08 23:15:00">2021/12/08</span>
+        </a>
+        
+        <a  class="全部文章 Shell "
+           href="/2021/12/08/%5BShell%5Dset%E5%91%BD%E4%BB%A4/"
+           data-tag="Shell"
+           data-author="" >
+            <span class="post-title" title="《Shell学习笔记》set命令">《Shell学习笔记》set命令</span>
+            <span class="post-date" title="2021-12-08 23:15:00">2021/12/08</span>
+        </a>
+        
+        <a  class="全部文章 Linux "
+           href="/2021/11/24/%5BLinux%5Dzombie_process/"
+           data-tag="Linux,Docker,Golang,Kubernetes"
+           data-author="" >
+            <span class="post-title" title="僵尸进程与孤儿进程">僵尸进程与孤儿进程</span>
+            <span class="post-date" title="2021-11-24 18:00:00">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 Golang "
+           href="/2021/11/14/%5BGolang%5D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+           data-tag="Golang"
+           data-author="" >
+            <span class="post-title" title="Golang笔记——数据结构篇">Golang笔记——数据结构篇</span>
+            <span class="post-date" title="2021-11-14 18:00:00">2021/11/14</span>
+        </a>
+        
+        <a  class="全部文章 Golang "
+           href="/2021/11/10/%5BGolang%5D%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/"
+           data-tag="Golang"
+           data-author="" >
+            <span class="post-title" title="Golang依赖管理">Golang依赖管理</span>
+            <span class="post-date" title="2021-11-10 18:00:00">2021/11/10</span>
+        </a>
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2021/10/14/%5BK8s%5DKubernetes-in-action_14/"
+           data-tag="Kubernetes,《Kubernetes in action》"
+           data-author="" >
+            <span class="post-title" title="计算资源管理——《K8s in action》读书笔记14">计算资源管理——《K8s in action》读书笔记14</span>
+            <span class="post-date" title="2021-10-14 00:15:15">2021/10/14</span>
+        </a>
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2021/10/13/%5BK8s%5DKubernetes-in-action_13/"
+           data-tag="Kubernetes,《Kubernetes in action》"
+           data-author="" >
+            <span class="post-title" title="保障集群内节点和网络安全——《K8s in action》读书笔记13">保障集群内节点和网络安全——《K8s in action》读书笔记13</span>
+            <span class="post-date" title="2021-10-13 00:15:13">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 Docker "
+           href="/2021/10/08/%5BDocker%5Dcoredump-docker/"
+           data-tag="Linux,Docker"
+           data-author="" >
+            <span class="post-title" title="coredump_docker">coredump_docker</span>
+            <span class="post-date" title="2021-10-08 22:47:04">2021/10/08</span>
+        </a>
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2021/10/07/%5BK8s%5DKubernetes-in-action_7/"
+           data-tag="Kubernetes,《Kubernetes in action》"
+           data-author="" >
+            <span class="post-title" title="ConfigMap 和 Secret：配置应用程序——《K8s in action》读书笔记7">ConfigMap 和 Secret：配置应用程序——《K8s in action》读书笔记7</span>
+            <span class="post-date" title="2021-10-07 00:15:07">2021/10/07</span>
+        </a>
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2021/10/05/%5BK8s%5DKubernetes-in-action_5/"
+           data-tag="Kubernetes,《Kubernetes in action》"
+           data-author="" >
+            <span class="post-title" title="让客户端发现 pod 并与之通信——《K8s in action》读书笔记5">让客户端发现 pod 并与之通信——《K8s in action》读书笔记5</span>
+            <span class="post-date" title="2021-10-05 00:15:05">2021/10/05</span>
+        </a>
+        
+        <a  class="全部文章 Kubernetes "
+           href="/2021/10/01/%5BK8s%5DKubernetes-in-action_1/"
+           data-tag="Kubernetes,《Kubernetes in action》"
+           data-author="" >
+            <span class="post-title" title="Kubernetes介绍——《K8s in action》读书笔记1">Kubernetes介绍——《K8s in action》读书笔记1</span>
+            <span class="post-date" title="2021-10-01 00:15:01">2021/10/01</span>
+        </a>
+        
+        <a  class="全部文章 Golang "
+           href="/2021/01/23/%5BGolang%5D%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90/"
+           data-tag="Golang"
+           data-author="" >
+            <span class="post-title" title="Golang框架分析">Golang框架分析</span>
+            <span class="post-date" title="2021-01-23 16:10:32">2021/01/23</span>
+        </a>
+        
+        <a  class="全部文章 Golang "
+           href="/2021/01/22/%5BGolang%5D%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"
+           data-tag="Golang"
+           data-author="" >
+            <span class="post-title" title="Golang单元测试">Golang单元测试</span>
+            <span class="post-date" title="2021-01-22 16:10:32">2021/01/22</span>
+        </a>
+        
+        <a  class="全部文章 Golang "
+           href="/2020/11/21/%5BGolang%5DG-P-M%E6%A8%A1%E5%9E%8B/"
+           data-tag="Golang"
+           data-author="" >
+            <span class="post-title" title="G-P-M模型">G-P-M模型</span>
+            <span class="post-date" title="2020-11-21 13:07:01">2020/11/21</span>
+        </a>
+        
+        <a  class="全部文章 Hexo "
+           href="/2020/11/17/%5BHexo%5Dblog-by-hexo/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="使用Hexo搭建我的个人博客">使用Hexo搭建我的个人博客</span>
+            <span class="post-date" title="2020-11-17 20:42:14">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 Cloud "
+           href="/2020/11/15/%5BCloud%5Dregion_and_az/"
+           data-tag="Cloud"
+           data-author="" >
+            <span class="post-title" title="云计算中地域和可用区的概念">云计算中地域和可用区的概念</span>
+            <span class="post-date" title="2020-11-15 21:42:14">2020/11/15</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_2%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_2_卷积神经网络">DIDL_2_卷积神经网络</span>
+            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_3%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_3_计算机视觉">DIDL_3_计算机视觉</span>
+            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_4%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_4_循环神经网络">DIDL_4_循环神经网络</span>
+            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_5%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_5_注意力机制">DIDL_5_注意力机制</span>
+            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-[Cloud]region_and_az" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">云计算中地域和可用区的概念</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Cloud">Cloud</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Cloud</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2020-11-15 21:42</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9F%9F%EF%BC%88Region%EF%BC%89"><span class="toc-text">地域（Region）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%94%A8%E5%8C%BA%EF%BC%88AZ%EF%BC%9A-Available-Zone%EF%BC%89"><span class="toc-text">可用区（AZ： Available Zone）</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="地域（Region）"><a href="#地域（Region）" class="headerlink" title="地域（Region）"></a>地域（Region）</h4><p>概念：地域就是物理意义上的不同地方的机房，这个不同地方，一般来说距离较远，机房之间用光纤直连的成本较高。</p>
+<ul>
+<li>通常在用户<strong>需求量较大</strong>的地方部署地域机房，比如阿里云的云服务器的地域在境内有杭州，上海，北京，深圳，青岛，海外已经上线的包括香港、硅谷和新加坡。</li>
+<li>跨地域的机房之间的带宽无法满足内网需求，所以不同地域的机器之间<strong>内网是不通的</strong>。</li>
+<li>在<strong>数据和存储</strong>领域内的产品会先行支持跨地域的功能，毕竟数据容灾是更强烈的需求。</li>
+</ul>
+<blockquote>
+<p>实际上阿里云一开始是没有上海地域的，因为上海杭州距离较近，部署直连光纤的成本也相对可控，阿里内部之前很多应用都是分别部署在杭州和上海，基本上是当作一个地域来使用的，后来可能因为需求大而分开了。</p>
+</blockquote>
+<h4 id="可用区（AZ：-Available-Zone）"><a href="#可用区（AZ：-Available-Zone）" class="headerlink" title="可用区（AZ： Available Zone）"></a>可用区（AZ： Available Zone）</h4><p>概念：简单点理解，可用区可以认为就是同城不同机房（事实上一个机房也可能有多个AZ），云计算服务商会从底层的机房电力&#x2F;网络等层面仔细设计来保障一个可用区出现故障的时候不会影响到另外一个可用区。</p>
+<ul>
+<li>同城容灾：不同AZ的容灾方案</li>
+<li>异地容灾：不同Region的容灾方案。</li>
+</ul>
+<blockquote>
+<p>同一个地域内的不同可用区之间，内网是连通的，但是<code>网络的响应时间</code>会有差异。</p>
+</blockquote>
+<p>参考链接:<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sddai/p/10131608.html">https://www.cnblogs.com/sddai/p/10131608.html</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/popomen">github</a>
+    
+</div>
+
+
+</html>
