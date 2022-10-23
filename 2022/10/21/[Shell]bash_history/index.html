@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>《Shell学习笔记》set命令 | popomen个人博客</title>
+  <title>关于 history 命令 | popomen个人博客</title>
   <meta name="keywords" content=" Shell ">
-  <meta name="description" content="《Shell学习笔记》set命令 | popomen个人博客">
+  <meta name="description" content="关于 history 命令 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -762,9 +762,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-[Shell]set命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-[Shell]bash_history" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">《Shell学习笔记》set命令</h1>
+        <h1 class="article-title">关于 history 命令</h1>
     
     <div class="article-meta">
         
@@ -789,7 +789,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:37:14'>2021-12-08 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-23 19:57:16'>2022-10-21 20:29</time>
         
     </div>
     <div class="article-meta">
@@ -811,7 +811,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#set-%E2%80%93help"><span class="toc-text">set –help</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set-%E7%AE%80%E4%BB%8B"><span class="toc-text">set 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">常用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#echo-%E2%80%9C-%E2%80%9C"><span class="toc-text">echo “$-“</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-u"><span class="toc-text">set -u</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-x"><span class="toc-text">set -x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-o-pipefail"><span class="toc-text">set -o pipefail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-lt-%E5%8F%82%E6%95%B0-gt"><span class="toc-text">set +&lt;参数&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-o"><span class="toc-text">set -o </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-history-%E5%91%BD%E4%BB%A4"><span class="toc-text">关于 history 命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-history-%E5%91%BD%E4%BB%A4%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">关于 history 命令的持久化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0-bash-history-%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">实时更新 ~&#x2F;.bash_history 文件的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -827,169 +827,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="set-–help"><a href="#set-–help" class="headerlink" title="set –help"></a>set –help</h1><pre><code class="shell">root@DESKTOP-6MVDBD1:~/go/src# set --help
-set: set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]
-    Set or unset values of shell options and positional parameters.
-
-    Change the value of shell attributes and positional parameters, or
-    display the names and values of shell variables.
-
-    Options:
-      -a  Mark variables which are modified or created for export.
-      -b  Notify of job termination immediately.
-      -e  Exit immediately if a command exits with a non-zero status.
-      -f  Disable file name generation (globbing).
-      -h  Remember the location of commands as they are looked up.
-      -k  All assignment arguments are placed in the environment for a
-          command, not just those that precede the command name.
-      -m  Job control is enabled.
-      -n  Read commands but do not execute them.
-      -o option-name
-          Set the variable corresponding to option-name:
-              allexport    same as -a
-              braceexpand  same as -B
-              emacs        use an emacs-style line editing interface
-              errexit      same as -e
-              errtrace     same as -E
-              functrace    same as -T
-              hashall      same as -h
-              histexpand   same as -H
-              history      enable command history
-              ignoreeof    the shell will not exit upon reading EOF
-              interactive-comments
-                           allow comments to appear in interactive commands
-              keyword      same as -k
-              monitor      same as -m
-              noclobber    same as -C
-              noexec       same as -n
-              noglob       same as -f
-              nolog        currently accepted but ignored
-              notify       same as -b
-              nounset      same as -u
-              onecmd       same as -t
-              physical     same as -P
-              pipefail     the return value of a pipeline is the status of
-                           the last command to exit with a non-zero status,
-                           or zero if no command exited with a non-zero status
-              posix        change the behavior of bash where the default
-                           operation differs from the Posix standard to
-                           match the standard
-              privileged   same as -p
-              verbose      same as -v
-              vi           use a vi-style line editing interface
-              xtrace       same as -x
-      -p  Turned on whenever the real and effective user ids do not match.
-          Disables processing of the $ENV file and importing of shell
-          functions.  Turning this option off causes the effective uid and
-          gid to be set to the real uid and gid.
-      -t  Exit after reading and executing one command.
-      -u  Treat unset variables as an error when substituting.
-      -v  Print shell input lines as they are read.
-      -x  Print commands and their arguments as they are executed.
-      -B  the shell will perform brace expansion
-      -C  If set, disallow existing regular files to be overwritten
-          by redirection of output.
-      -E  If set, the ERR trap is inherited by shell functions.
-      -H  Enable ! style history substitution.  This flag is on
-          by default when the shell is interactive.
-      -P  If set, do not resolve symbolic links when executing commands
-          such as cd which change the current directory.
-      -T  If set, the DEBUG and RETURN traps are inherited by shell functions.
-      --  Assign any remaining arguments to the positional parameters.
-          If there are no remaining arguments, the positional parameters
-          are unset.
-      -   Assign any remaining arguments to the positional parameters.
-          The -x and -v options are turned off.
-
-    Using + rather than - causes these flags to be turned off.  The
-    flags can also be used upon invocation of the shell.  The current
-    set of flags may be found in $-.  The remaining n ARGs are positional
-    parameters and are assigned, in order, to $1, $2, .. $n.  If no
-    ARGs are given, all shell variables are printed.
-
-    Exit Status:
-    Returns success unless an invalid option is given.
-</code></pre>
-<h1 id="set-简介"><a href="#set-简介" class="headerlink" title="set 简介"></a>set 简介</h1><p>set指令能设置所使用shell的执行方式，可依照不同的需求来做设置。</p>
-<h1 id="常用方式"><a href="#常用方式" class="headerlink" title="常用方式"></a>常用方式</h1><h2 id="echo-“-“"><a href="#echo-“-“" class="headerlink" title="echo “$-“"></a>echo “$-“</h2><pre><code class="shell">root@DESKTOP-6MVDBD1:~/go/src# echo &quot;$-&quot;
-himBHs                # 显示当前shell开启的所有模式开关
-root@DESKTOP-6MVDBD1:~/go/src# set -e
-root@DESKTOP-6MVDBD1:~/go/src# echo &quot;$-&quot;
-ehimBHs               # 显示当前shell开启的所有模式开关
-</code></pre>
-<h2 id="set-u"><a href="#set-u" class="headerlink" title="set -u"></a>set -u</h2><p>对于一些变量（如：APP）若忘记设置值，可能会导致 <code>rm -rf /$&#123;APP&#125;</code> 变为 <code>rm -rf /.</code>。这是非常危险的操作。<br>开启 <code>set -u</code> 后执行脚本时，遇到不存在变量，bash报错并停止</p>
-<pre><code class="shell">root@DESKTOP-6MVDBD1:~/go/src# rm -rf $&#123;APP&#125;
-root@DESKTOP-6MVDBD1:~/go/src# set -u
-root@DESKTOP-6MVDBD1:~/go/src# rm -rf $&#123;APP&#125;
--bash: APP: unbound variable
-</code></pre>
-<h2 id="set-x"><a href="#set-x" class="headerlink" title="set -x"></a>set -x</h2><p>在执行时打印命令及其参数。在调试 shell 脚本的时候很常用。</p>
-<pre><code class="shell">root@DESKTOP-6MVDBD1:~/go/src# set -x
-root@DESKTOP-6MVDBD1:~/go/src# ls
-+ ls --color=auto
-github.com  k8s.io  mosn.io  volcano.sh
-</code></pre>
-<h2 id="set-o-pipefail"><a href="#set-o-pipefail" class="headerlink" title="set -o pipefail"></a>set -o pipefail</h2><p>set -e有一个例外情况，就是不适用于管道命令。</p>
-<p>所谓管道命令，就是多个子命令通过管道运算符(|)组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。</p>
-<p>请看下面这个例子</p>
-<pre><code class="shell">#!/bin/bash
-
-set -e
-
-foo | echo a
-
-echo bar
-
-执行结果如下。
-
-$ bash script.sh
-
-a
-
-script.sh:行4: foo: 未找到命令
-
-bar
-</code></pre>
-<p>上面代码中，foo是一个不存在的命令，但是foo | echo a这个管道命令会执行成功，导致后面的echo bar会继续执行。</p>
-<p>set -o pipefail用来解决这种情况，只要一个子命令失败，整个管道命令就失败，脚本就会终止执行。</p>
-<pre><code class="shell">set -eo pipefail
-
-foo | echo a
-
-echo bar
-</code></pre>
-<p>运行后，结果如下</p>
-<pre><code class="shell">$ bash script.sh
-
-a
-
-script.sh:行4: foo: 未找到命令
-
-可以看到，echo bar没有执行。
-</code></pre>
-<h2 id="set-lt-参数-gt"><a href="#set-lt-参数-gt" class="headerlink" title="set +&lt;参数&gt;"></a>set +&lt;参数&gt;</h2><p>使用 + 来替代 - 则代表关闭某个已经开启的选项</p>
-<pre><code class="shell">root@DESKTOP-6MVDBD1:~/go/src# set -x
-root@DESKTOP-6MVDBD1:~/go/src# ls
-+ ls --color=auto
-github.com  k8s.io  mosn.io  volcano.sh
-root@DESKTOP-6MVDBD1:~/go/src# set +x
-+ set +x
-root@DESKTOP-6MVDBD1:~/go/src# ls
-github.com  k8s.io  mosn.io  volcano.sh
-root@DESKTOP-6MVDBD1:~/go/src#
-</code></pre>
-<h2 id="set-o"><a href="#set-o" class="headerlink" title="set -o "></a>set -o <option-name></h2><ul>
-<li>如果命令以非零状态退出，则立即退出。</li>
-<li>替换时将未设置的变量视为错误。</li>
-<li>管道的返回值是状态，最后一个以非零状态退出的命令，如果没有命令以非零状态退出，则为零。</li>
+        <h1 id="关于-history-命令"><a href="#关于-history-命令" class="headerlink" title="关于 history 命令"></a>关于 <code>history</code> 命令</h1><p>首先，我们在 Linux 中执行 history 命令以及敲击 <code>↑ ↓</code>和 <code>Ctrl+R</code> 看到的命令历史记录都是记录在内存里面的，其背后都是 <code>history</code> 工具。</p>
+<ul>
+<li>另外，环境变量 <code>HISTSIZE</code> 还能限制 <code>history</code> 命令能够查看的行数。如果你设置了较小的值，再重新设置为一个较大的值，那么 <code>history</code> 命令只会记住较小值范围内的命令，但整个过程中 <code>~/.bash_history</code> 文件中的内容不会被清除。</li>
+<li>命令 <code>!!</code> 可以重复上一个命令。</li>
 </ul>
-<pre><code class="shell">set -o errexit
-set -o nounset
-set -o pipefail
+<h1 id="关于-history-命令的持久化"><a href="#关于-history-命令的持久化" class="headerlink" title="关于 history 命令的持久化"></a>关于 <code>history</code> 命令的持久化</h1><p>当我们建立一个bash会话（包括ssh、docker exec、kubectl exec等）时候，当前会话先从历史记录文件（默认值：~&#x2F;.bash_history）中读取历史值到内存中，因此我们也能看到之前一些别的会话记录下来的历史命令。  </p>
+<p>内存中的历史记录持久化到历史记录文件（~&#x2F;.bash_history）的三种方式：  </p>
+<ul>
+<li>BASH 将关闭会话时所运行的所有命令并写入你的历史记录文件 ~&#x2F;.bash_history。  </li>
+<li>BASH 实时地将命令追加到历史记录文件 ~&#x2F;.bash_history。  </li>
+<li>手动执行 <code>history -w</code> 记录“内存”中的历史命令记录到历史记录文件 ~&#x2F;.bash_history。</li>
+</ul>
+<p>无论是实时写入还是仅在退出时写入 ~&#x2F;.bash_history，读取仅在会话创建时候执行，因此两个会话之间不会相互影响history命令的结果。</p>
+<h1 id="实时更新-bash-history-文件的方法"><a href="#实时更新-bash-history-文件的方法" class="headerlink" title="实时更新 ~/.bash_history 文件的方法"></a>实时更新 <code>~/.bash_history</code> 文件的方法</h1><pre><code class="Bash">shopt -s histappend  
+PROMPT_COMMAND=&quot;history -a;$PROMPT_COMMAND&quot;  
 </code></pre>
+<ul>
+<li>第一个命令将 .history 文件模式更改为追加模式。</li>
+<li>第二个命令将 history -a 命令设置为每次执行命令后执行。此处 <code>-a</code> 立即将当前&#x2F;新行写入历史文件。</li>
+</ul>
+<p>这样无论 Bash 是否被异常中断，我们执行的命令都会被正常记录到 <code>~/.bash_history</code>，下一次执行 Bash 的时候也能够通过 history 命令看到所有的历史命令执行记录了。</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes/blob/master/test/cmd/apply.sh#L17">https://github.com/kubernetes/kubernetes/blob/master/test/cmd/apply.sh#L17</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/linuy/170903">https://blog.51cto.com/linuy/170903</a></li>
+<li>Is it possible to make writing to .bash_history immediate?： <a target="_blank" rel="noopener" href="https://askubuntu.com/questions/67283/is-it-possible-to-make-writing-to-bash-history-immediate">https://askubuntu.com/questions/67283/is-it-possible-to-make-writing-to-bash-history-immediate</a></li>
+<li>如何在 Linux 中有效地使用 history 命令： <a target="_blank" rel="noopener" href="https://linuxstory.org/how-to-use-history-command-effectively-in-linux/">https://linuxstory.org/how-to-use-history-command-effectively-in-linux/</a></li>
 </ul>
 
       
