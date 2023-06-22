@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-22 17:44:33'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-22 17:52:45'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -933,15 +933,33 @@
 </blockquote>
 <p><img src="/Pasted%20image%2020230622173332.png"></p>
 <p><img src="/Pasted%20image%2020230622173342.png"></p>
-<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>芯片需要提供不同的 bit 位数</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>网络模型结构支持 Architecture</p>
 <ul>
+<li>支持高维的张量存储与计算</li>
+<li>神经网络模型的计算逻辑</li>
+</ul>
+<p>模型压缩(剪枝&amp;量化) Model Compress</p>
+<ul>
+<li>提供不同的 bit 位数 <ul>
 <li>对于低比特量化相关的研究落地提供 int8&#x2F;int4 甚至更低的精度</li>
 <li>在 M-bits and E-bits 之间权衡 Tradeoff （如 <a target="_blank" rel="noopener" href="https://chenyaofo.github.io/tf32-bf16-in-deep-learning/">TF32&#x2F;BF16</a>）</li>
 </ul>
-<p>利用硬件提供稀疏计算</p>
-<ul>
+</li>
+<li>利用硬件提供稀疏计算<ul>
 <li>硬件上减少 0 值的重复计算</li>
 <li>减少网络模型对内存的需求，稀疏化网络模型结构</li>
+</ul>
+</li>
+</ul>
+<p>轻量化网络模型 Model Slim</p>
+<ul>
+<li>复杂卷积计算（小型卷积核，e.g. 1x1 Conv）</li>
+<li>复用卷积核内存信息（Reuse Convolution）</li>
+</ul>
+<p>大模型分布式并行 Foundation Model</p>
+<ul>
+<li>大内存容量、高速互联带宽</li>
+<li>专用大模型DSA IP模块，提供低比特快速计算</li>
 </ul>
 <h1 id="AI-芯片基础"><a href="#AI-芯片基础" class="headerlink" title="AI 芯片基础"></a>AI 芯片基础</h1><h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><p><a target="_blank" rel="noopener" href="https://github.com/chenzomi12/DeepLearningSystem">https://github.com/chenzomi12/DeepLearningSystem</a></p>
 <h2 id="第一篇章"><a href="#第一篇章" class="headerlink" title="第一篇章"></a>第一篇章</h2><p>合集·【AI框架】基础概念：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=760692">链接</a><br>合集·【AI框架】分布式并行策略：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=936465">链接</a><br>合集·【AI编译器】传统编译器：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=857162">链接</a><br>合集·【推理系统】整体概述：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=997962">链接</a></p>
