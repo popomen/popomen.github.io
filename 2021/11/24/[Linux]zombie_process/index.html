@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>僵尸进程与孤儿进程 | popomen个人博客</title>
+  <meta name="keywords" content=" Linux , Docker , Golang , Kubernetes ">
+  <meta name="description" content="僵尸进程与孤儿进程 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,64 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Linux]zombie_process" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">僵尸进程与孤儿进程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+            <a class="color2">Docker</a>
+            
+            <a class="color2">Golang</a>
+            
+            <a class="color1">Kubernetes</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2021-11-24 18:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">僵尸进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">处理僵尸进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">处理孤儿进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker"><span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#K8s"><span class="toc-text">K8s</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Golang%E7%9A%84%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9B%9E%E6%94%B6"><span class="toc-text">使用Golang的协程实现子进程的回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +862,85 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
-</ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
-</ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
-</ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
-<thead>
-<tr>
-<th>PAI</th>
-<th>ModelArts</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
-</tr>
-<tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
-</tr>
-<tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
-</tr>
-</tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h2><p>当一个进程退出的时候，Linux操作系统会将该进程的重型资源释放（释放CPU、释放内存，关闭打开的文件等），但是会保留该进程的一部分信息（PID、终止状态、使用的CPU时间等），因此父进程在调用 <code>wait()</code> 时可以得到这些信息。然而如果父进程没有调用 <code>wait()</code> 方法获取这个子进程的结束状态的话，那么这个子进程的状态将变为Z（zombie），一般称之僵尸进程。另外，任意子进程在退出的时候还会向父进程发送一个 <code>SIGCHLD</code> 信号，父进程调用 <code>wait()</code> 方法的时候实际就是在监听此信号，来判断是否有子进程退出。</p>
+<h3 id="处理僵尸进程"><a href="#处理僵尸进程" class="headerlink" title="处理僵尸进程"></a>处理僵尸进程</h3><ol>
+<li>通过signal(SIGCHLD, SIG_IGN)通知内核对子进程的结束不关心，由内核回收。如果不想让父进程挂起，可以在父进程中加入一条语句：signal(SIGCHLD,SIG_IGN);表示父进程忽略SIGCHLD信号，该信号是子进程退出的时候向父进程发送的。</li>
+<li>父进程调用wait&#x2F;waitpid等函数等待子进程结束，如果尚无子进程退出wait会导致父进程阻塞。另外，waitpid可以通过传递 <code>WNOHANG</code> 使父进程不阻塞立即返回。</li>
+<li>如果父进程很忙可以用signal注册信号处理函数，在信号处理函数调用wait&#x2F;waitpid等待子进程退出。</li>
+<li>通过两次调用fork。父进程首先调用fork创建一个子进程然后waitpid等待子进程退出，子进程再fork一个孙进程后退出。这样子进程退出后会被父进程等待回收，而对于孙子进程其父进程已经退出所以<strong>孙进程成为一个孤儿进程</strong>，孤儿进程由init进程接管，孙进程结束后，init会等待回收。</li>
+</ol>
+<h2 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h2><p>如果当前进程的父进程先于当前进程退出，那么当前进程的PPID会被重新设置为1（这也是1号进程被称为孤儿院的原因），此时当前进程成为孤儿进程。</p>
+<h3 id="处理孤儿进程"><a href="#处理孤儿进程" class="headerlink" title="处理孤儿进程"></a>处理孤儿进程</h3><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>在Linux系统中1号进程为init进程。init进程有自动清理僵尸进程的功能，换句话说init进程会自动wait所有的僵尸进程，因此我们通常看不到孤儿进程的存在。</p>
+<h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><p>在Docker run命令中中如果开启 <code>--init</code>  开关的话1号进程也是init进程（此特性的后端实现是tini），然后再fork出来用户指定的进程，那么这个容器中所有的僵尸进程都可以放心的交给init进程来回收。否则1号进程为用户指定的进程，需要由用户指定的进程实现僵尸进程回收。</p>
+<h4 id="K8s"><a href="#K8s" class="headerlink" title="K8s"></a>K8s</h4><p>K8s上没有给出像docker一样简便的方式自动回收孤儿进程，一种方式是通过显示的方式启动tini，另一种方式就是在一号进程中实现孤儿进程的回收逻辑。</p>
+<h2 id="使用Golang的协程实现子进程的回收"><a href="#使用Golang的协程实现子进程的回收" class="headerlink" title="使用Golang的协程实现子进程的回收"></a>使用Golang的协程实现子进程的回收</h2><pre><code class="golang">func ReapChildren(ctx context.Context) &#123;
+    c := make(chan os.Signal, 1)
+    signal.Notify(c, unix.SIGCHLD)
 
-        </article>
-        
-        
+    for &#123;
+        select &#123;
+        case &lt;-c:
+        case &lt;-ctx.Done():
+            fmt.Println(&quot;reaper exit&quot;)
+            return
+        &#125;
+
+        fmt.Println(&quot;Received signal SIGCHLD&quot;)
+
+        func() &#123;
+        POLL:
+            var status unix.WaitStatus
+            pid, err := unix.Wait4(-1, &amp;status, unix.WNOHANG, nil)
+            switch err &#123;
+            case nil:
+                if pid &gt; 0 &#123;
+                    fmt.Println(&quot;cleanup child pid=%v, status=%v, exit_status=%v&quot;, pid, status, status.ExitStatus())
+                    goto POLL
+                &#125;
+                return
+
+            case unix.ECHILD:
+                return
+
+            case unix.EINTR:
+                goto POLL
+
+            default:
+                fmt.Println(&quot;unknown error: %v&quot;, err)
+                return
+            &#125;
+        &#125;()
+    &#125;
+&#125;
+</code></pre>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
+<li>僵尸进程和孤儿进程概念了解：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuchanming/p/4020463.html">https://www.cnblogs.com/wuchanming/p/4020463.html</a></li>
+<li>Docker支持docker-init：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/run/#specify-an-init-process">https://docs.docker.com/engine/reference/run/#specify-an-init-process</a></li>
+<li>关于K8s不支持docker-init的原因的讨论：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/50803268/kubernetes-equivalent-of-docker-run-init">https://stackoverflow.com/questions/50803268/kubernetes-equivalent-of-docker-run-init</a></li>
+<li>docker-init的实现：<a target="_blank" rel="noopener" href="https://github.com/krallin/tini">https://github.com/krallin/tini</a></li>
+<li>Golang实现tini的项目go-reap：<a target="_blank" rel="noopener" href="https://github.com/hashicorp/go-reap">https://github.com/hashicorp/go-reap</a></li>
+<li>Golang实现tini的项目go-reaper：<a target="_blank" rel="noopener" href="https://github.com/ramr/go-reaper">https://github.com/ramr/go-reaper</a></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +949,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

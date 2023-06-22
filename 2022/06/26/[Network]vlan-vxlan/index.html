@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>vlan_vxlan | popomen个人博客</title>
+  <meta name="keywords" content=" Network ">
+  <meta name="description" content="vlan_vxlan | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,58 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Network]vlan-vxlan" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">vlan_vxlan</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Network">Network</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Network</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2022-06-26 17:48</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VLAN"><span class="toc-text">VLAN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">VLAN 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-VLAN"><span class="toc-text">为什么需要 VLAN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN-vs-%E5%AD%90%E7%BD%91"><span class="toc-text">VLAN vs 子网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN-Tag-%E5%92%8C-VLAN-ID"><span class="toc-text">VLAN Tag 和 VLAN ID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9E%8B"><span class="toc-text">交换机接口类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN-%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">VLAN 常见使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN%E7%9A%84%E7%9B%B8%E5%85%B3%E5%8D%8F%E8%AE%AE"><span class="toc-text">VLAN的相关协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IEEE-802-1Q"><span class="toc-text">IEEE 802.1Q</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LNP"><span class="toc-text">LNP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QinQ"><span class="toc-text">QinQ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN-%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7%E5%92%8C-VXLAN"><span class="toc-text">VLAN 的局限性和 VXLAN</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VXLAN"><span class="toc-text">VXLAN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFVXLAN%EF%BC%9F"><span class="toc-text">什么是VXLAN？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-VXLAN%EF%BC%9F"><span class="toc-text">为什么要使用 VXLAN？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%91-CCE-%E6%9C%8D%E5%8A%A1%E9%80%9A%E8%BF%87-VXLAN-%E5%8D%8F%E8%AE%AE%E5%B0%81%E8%A3%85%E5%AE%9E%E7%8E%B0%E5%AE%B9%E5%99%A8%E9%9A%A7%E9%81%93%E7%BD%91%E7%BB%9C"><span class="toc-text">华为云 CCE 服务通过 VXLAN 协议封装实现容器隧道网络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +856,98 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h1><h2 id="VLAN-是什么"><a href="#VLAN-是什么" class="headerlink" title="VLAN 是什么"></a>VLAN 是什么</h2><p>VLAN（Virtual Local Area Network）即虚拟局域网，是将一个物理的 LAN 在逻辑上划分成多个广播域的通信技术。<br>每个 VLAN 是一个广播域，VLAN 内的主机间可以直接通信，而 VLAN 间则不能直接互通。这样，广播报文就被限制在一个 VLAN 内。</p>
+<h2 id="为什么需要-VLAN"><a href="#为什么需要-VLAN" class="headerlink" title="为什么需要 VLAN"></a>为什么需要 VLAN</h2><p>早期以太网是一种基于 <code>CSMA/CD</code>（Carrier Sense Multiple Access&#x2F;Collision Detection）的共享通讯介质的数据网络通讯技术。当主机数目较多时会导致冲突严重、广播泛滥、性能显著下降甚至造成网络不可用等问题。通过二层设备实现LAN互连虽然可以解决冲突严重的问题，但仍然不能隔离广播报文和提升网络质量。</p>
+<p>在这种情况下出现了 VLAN 技术。这种技术可以把一个 LAN 划分成多个逻辑的 VLAN，每个 VLAN 是一个广播域，VLAN内的主机间通信就和在一个 LAN 内一样，而 VLAN 间则不能直接互通，广播报文就被限制在一个 VLAN 内。如下图所示。</p>
+<img src="vlan.png" alt="VLAN 的作用" style="zoom: 100%;" />
+
+<p>因此，VLAN 具备以下优点：</p>
+<ul>
+<li>限制广播域：广播域被限制在一个 VLAN 内，节省了 <code>带宽</code>，提高了网络处理能力。</li>
+<li>增强局域网的安全性：不同 VLAN 内的报文在传输时 <code>相互隔离</code>，即一个 VLAN 内的用户不能和其它 VLAN 内的用户直接通信。</li>
+<li>提高了网络的健壮性：故障被限制在一个 VLAN 内，本 VLAN 内的故障不会影响其他 VLAN 的正常工作。</li>
+<li>灵活构建虚拟工作组：用 VLAN 可以划分不同的用户到不同的工作组，同一工作组的用户也不必局限于某一固定的物理范围，网络构建和维护更方便灵活。</li>
 </ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
-</ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
-</ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
+<h2 id="VLAN-vs-子网"><a href="#VLAN-vs-子网" class="headerlink" title="VLAN vs 子网"></a>VLAN vs 子网</h2><table>
 <thead>
 <tr>
-<th>PAI</th>
-<th>ModelArts</th>
+<th></th>
+<th>VLAN</th>
+<th>子网</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
+<td>区别</td>
+<td>1. 划分二层网络。<br />2. 配置 <code>VLANIF接口</code>才能互通。<br />3. 一个 LAN 内可划分 4094 个 VLAN，VLAN 内设备数量不受限制。</td>
+<td>1. 划分三层网络。<br />2. 只要通过路由实现互通，不同子网就能互访。<br />3. 划分网段数量会影响各个子网内的设备最大数。</td>
 </tr>
 <tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
-</tr>
-<tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
+<td>联系（无）</td>
+<td>同一 VLAN 内，可以划分一或多个网段。</td>
+<td>同一子网内，可以划分一或多个VLAN。</td>
 </tr>
 </tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+<ul>
+<li>VLAN：将一个物理的 LAN 在逻辑上划分成多个广播域。</li>
+<li>子网：通过将 IP 地址的网络部分进一步划分为若干个子网，可以 <strong>解决 IP 地址空间利用率低</strong> 和 <strong>两级 IP 地址不够灵活</strong> 的问题。</li>
+</ul>
+<p>与 VLAN 相类似的是，子网也可以隔离主机间的通信。属于不同 VLAN 的主机之间不能直接通信，属于不同的子网的主机之间也不能直接通信。但二者没有必然的对应关系。</p>
+<h2 id="VLAN-Tag-和-VLAN-ID"><a href="#VLAN-Tag-和-VLAN-ID" class="headerlink" title="VLAN Tag 和 VLAN ID"></a>VLAN Tag 和 VLAN ID</h2><p>要使交换机能够分辨不同 VLAN 的报文，需要在报文中添加标识 VLAN 信息的字段。IEEE 802.1Q协议规定，在以太网数据帧中加入 4 个字节的 VLAN 标签（又称 <code>VLAN Tag</code>，简称Tag），用以标识 VLAN 信息。</p>
+<img src="vlan_frame_format.png" alt="IEEE 802.1Q 封装的VLAN数据帧格式" style="zoom: 100%;" />
 
-        </article>
-        
-        
+<p>数据帧中的 <code>VID</code> 字段标识了该数据帧所属的 VLAN，数据帧只能在其所属 VLAN 内进行传输。VID 字段代表 VLAN ID，VLAN ID 取值范围是 <code>0～4095</code>。由于 0 和 4095 为协议保留取值，所以VLAN ID 的有效取值范围是 1～4094。</p>
+<p>交换机内部处理的数据帧都带有 VLAN 标签。而交换机连接的部分设备（如用户主机、服务器）只会收发不带 VLAN tag 的传统以太网数据帧。因此，要与这些设备交互，就需要交换机的接口能够识别传统以太网数据帧，并在收发时给帧添加、剥除 VLAN 标签。添加什么 VLAN 标签，由接口上的缺省 VLAN（Port Default VLAN ID，PVID）决定。</p>
+<h2 id="交换机接口类型"><a href="#交换机接口类型" class="headerlink" title="交换机接口类型"></a>交换机接口类型</h2><ul>
+<li>Access 接口：一般用于和不能识别 Tag 的用户终端（如用户主机、服务器）相连，或者不需要区分不同 VLAN 成员时使用。</li>
+<li>Trunk 接口：一般用于连接交换机、路由器、AP 以及可同时收发 Tagged 帧和 Untagged 帧的语音终端。它可以允许多个 VLAN 的帧带 Tag 通过，但只允许属于缺省 VLAN 的帧从该类接口上发出时不带Tag（即剥除Tag）。</li>
+<li>Hybrid 接口：Hybrid接口既可以用于连接不能识别Tag的用户终端（如用户主机、服务器）和网络设备（如Hub），也可以用于连接交换机、路由器以及可同时收发Tagged帧和Untagged帧的语音终端、AP。它可以允许多个VLAN的帧带Tag通过，且允许从该类接口发出的帧根据需要配置某些VLAN的帧带Tag（即不剥除Tag）、某些VLAN的帧不带Tag（即剥除Tag）。</li>
+</ul>
+<h2 id="VLAN-常见使用场景"><a href="#VLAN-常见使用场景" class="headerlink" title="VLAN 常见使用场景"></a>VLAN 常见使用场景</h2><ol>
+<li>VLAN 间用户的二层隔离。同楼层不同公司 or 同公司不同部门之间实现网络的强隔离。</li>
+<li>VLAN 间用户的三层互访。两个 VLAN 之间想要临时互相访问，可以同时接入第三台交换机，并为第三胎交换机配置 <code>VLANIF</code>。</li>
+</ol>
+<h2 id="VLAN的相关协议"><a href="#VLAN的相关协议" class="headerlink" title="VLAN的相关协议"></a>VLAN的相关协议</h2><h3 id="IEEE-802-1Q"><a href="#IEEE-802-1Q" class="headerlink" title="IEEE 802.1Q"></a>IEEE 802.1Q</h3><p>IEEE 802.1Q（也被称为Dot1q）即Virtual Bridged Local Area Networks协议，规定了 VLAN 的实现标准。与标准的以太网数据帧相比，VLAN 数据帧增加了 1 个 4 字节的 VLAN 标签。</p>
+<h3 id="LNP"><a href="#LNP" class="headerlink" title="LNP"></a>LNP</h3><p>链路类型协商协议（Link-type Negotiation Protocol，LNP）用来动态协商以太网接口的链路类型为 Access 或者 Trunk。<br>以太网接口的链路类型协商为 Access，缺省情况下加入 VLAN1。<br>以太网接口的链路类型协商为 Trunk，缺省情况下加入 VLAN1～4094。</p>
+<h3 id="QinQ"><a href="#QinQ" class="headerlink" title="QinQ"></a>QinQ</h3><p>QinQ（802.1Q-in-802.1Q）协议出自 IEEE 802.1ad 标准协议，通过在 802.1Q 标签报文的基础上再增加一层 802.1Q 的Tag来达到扩展 VLAN 空间的功能，可以使私网 VLAN 透传公网。<br>由于在骨干网中传递的报文有两层 802.1Q Tag（一层公网Tag，一层私网Tag），即 802.1Q-in-802.1Q，所以称之为 QinQ 协议。</p>
+<h2 id="VLAN-的局限性和-VXLAN"><a href="#VLAN-的局限性和-VXLAN" class="headerlink" title="VLAN 的局限性和 VXLAN"></a>VLAN 的局限性和 VXLAN</h2><p>随着网络技术的发展，云计算凭借其在系统利用率高、人力和管理成本低、灵活性和可扩展性强等方面表现出的优势，已经成为目前企业IT建设的新趋势。而服务器虚拟化作为云计算的核心技术之一，得到了越来越多的应用。</p>
+<p>VLAN 作为传统的网络隔离技术，在标准定义中 VLAN 的数量只有 4096 个，无法满足大型数据中心的租户间隔离需求。另外，VLAN 的二层范围一般较小且固定，无法支持虚拟机大范围的动态迁移。</p>
+<p>因此，RFC 定义了 VLAN 扩展方案 VXLAN（Virtual eXtensible Local Area Network，虚拟扩展局域网）。VXLAN 采用 MAC in UDP（User Datagram Protocol）封装方式，是NVO3（Network Virtualization over Layer 3）中的一种网络虚拟化技术。VXLAN 完美地弥补了 VLAN 的上述不足，一方面通过 VXLAN 中的 24 比特 VNI（VXLAN Network Identifier）字段，提供多达 16M 租户的标识能力，远大于 VLAN 的数量；另一方面，VXLAN 本质上在两台交换机之间构建了一条穿越数据中心基础IP网络的虚拟隧道，将数据中心网络虚拟成一个巨型“二层交换机”，满足虚拟机大范围动态迁移的需求。</p>
+<h1 id="VXLAN"><a href="#VXLAN" class="headerlink" title="VXLAN"></a>VXLAN</h1><h2 id="什么是VXLAN？"><a href="#什么是VXLAN？" class="headerlink" title="什么是VXLAN？"></a>什么是VXLAN？</h2><p>VXLAN（Virtual eXtensible Local Area Network）即虚拟扩展局域网，是大二层网络中广泛使用的网络虚拟化技术。在源网络设备与目的网络设备之间建立一条逻辑 VXLAN 隧道，采用 MAC in UDP（User Datagram Protocol）封装方式，即，将虚拟机发出的原始以太报文完整的封装在UDP报文中，然后在外层使用物理网络的IP报文头和以太报文头封装，这样，封装后的报文就像普通IP报文一样，可以通过路由网络转发，这就像给二层网络的虚拟机插上了路由的翅膀，使虚拟机彻底摆脱了二、三层网络的结构限制。</p>
+<h2 id="为什么要使用-VXLAN？"><a href="#为什么要使用-VXLAN？" class="headerlink" title="为什么要使用 VXLAN？"></a>为什么要使用 VXLAN？</h2><ul>
+<li>VLAN ID数量限制</li>
+<li>TOR交换机MAC地址表限制</li>
+<li>灵活的虚机部署和部署</li>
+<li>更好的利用多条网络链路</li>
+</ul>
+<h2 id="华为云-CCE-服务通过-VXLAN-协议封装实现容器隧道网络"><a href="#华为云-CCE-服务通过-VXLAN-协议封装实现容器隧道网络" class="headerlink" title="华为云 CCE 服务通过 VXLAN 协议封装实现容器隧道网络"></a>华为云 CCE 服务通过 VXLAN 协议封装实现容器隧道网络</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://support.huaweicloud.com/usermanual-cce/cce_10_0282.html">https://support.huaweicloud.com/usermanual-cce/cce_10_0282.html</a></p>
+<p>容器隧道网络在节点网络基础上通过隧道封装另构建的独立于节点网络平面的容器网络平面，CCE集群容器隧道网络使用的封装协议为VXLAN，后端虚拟交换机采用的是openvswitch，VXLAN是将以太网报文封装成UDP报文进行隧道传输。容器隧道网络具有付出少量隧道封装性能损耗，即可获得通用性强、互通性强、高级特性支持全面（例如NetworkPolicy网络隔离）的优势，可以满足大多数性能要求不高的场景。</p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>VXLAN vs VLAN：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36165475">https://zhuanlan.zhihu.com/p/36165475</a></li>
+<li>什么是 VLAN？：<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/VLAN.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/VLAN.html</a></li>
+<li>什么是 VXLAN？：<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/VXLAN.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/VXLAN.html</a></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +956,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

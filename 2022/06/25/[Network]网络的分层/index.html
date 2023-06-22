@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
+  <title>网络的分层 | popomen个人博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <meta name="description" content="网络的分层 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,51 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Network]网络的分层" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">网络的分层</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Network">Network</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2022-06-25 22:29</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-x2F-IP-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B-vs-OSI-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">TCP&#x2F;IP 分层模型 vs OSI 参考模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-x2F-IP-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-text">TCP&#x2F;IP 分层模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 参考模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">两者的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E7%89%A9%E7%90%86%E5%B1%82%EF%BC%88Bit-Symbol%EF%BC%89%EF%BC%88%E7%BD%91%E5%8D%A1%EF%BC%89"><span class="toc-text">1、物理层（Bit, Symbol）（网卡）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%88Frame%EF%BC%89%EF%BC%88%E4%BA%A4%E6%8D%A2%E6%9C%BA%E3%80%81Modems%E3%80%81%E7%BD%91%E6%A1%A5%EF%BC%89"><span class="toc-text">2、数据链路层（Frame）（交换机、Modems、网桥）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%88Package%EF%BC%89%EF%BC%88IP%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%89"><span class="toc-text">3、网络层（Package）（IP、路由器）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%88Segment-Datagram%EF%BC%89%EF%BC%88UDP%E3%80%81TCP%E3%80%81%E7%AB%AF%E5%8F%A3%EF%BC%89"><span class="toc-text">4、传输层（Segment, Datagram）（UDP、TCP、端口）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="toc-text">5、会话层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81%E8%A1%A8%E7%8E%B0%E5%B1%82"><span class="toc-text">6、表现层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E3%80%81%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-text">7、应用层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +849,241 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TCP-x2F-IP-分层模型-vs-OSI-参考模型"><a href="#TCP-x2F-IP-分层模型-vs-OSI-参考模型" class="headerlink" title="TCP&#x2F;IP 分层模型 vs OSI 参考模型"></a>TCP&#x2F;IP 分层模型 vs OSI 参考模型</h1><h2 id="TCP-x2F-IP-分层模型"><a href="#TCP-x2F-IP-分层模型" class="headerlink" title="TCP&#x2F;IP 分层模型"></a>TCP&#x2F;IP 分层模型</h2><p>1983年，Transfer Control Protocol&#x2F;Internet Protocol (TCP&#x2F;IP) 比 OSI 参考模型更早被提出，是由<strong>美国国防部（DoD）</strong>创建的。</p>
+<ul>
+<li>Layer 4 (Application): Also called the Process layer, this layer combines the OSI model’s L5, L6, and L7.</li>
+<li>Layer 3 (Transport): Also called the Host-to-Host layer. This layer is similar to the OSI model’s L4.</li>
+<li>Layer 2 (Internet): This layer is similar to the OSI model’s L3.</li>
+<li>Layer 1 (Network Access): Also called the Link or Network Interface layer. This layer combines the OSI model’s L1 and L2.</li>
 </ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
+<h2 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h2><p>1984年，OSI（Open System Interconnection）参考模型是<strong>国际标准化组织（ISO）</strong>制定的一个用于计算机或通信系统间互联的标准体系，一般称为OSI参考模型或七层模型。它是一个七层的、抽象的模型，不仅包括一系列抽象的术语或概念，也包括具体的协议。</p>
+<p>在OSI 模型中 1、2、3 层为硬件层，4 层为核心层，5、6、7 层为软件层。</p>
+<ul>
+<li>Layer 7 (Application): Most of what the user actually interacts with is at this layer. Web browsers and other internet-connected applications (like Skype or Outlook) use Layer 7 application protocols.</li>
+<li>Layer 6 (Presentation): This layer converts data to and from the Application layer. In other words, it translates application formatting to network formatting and vice versa. This allows the different layers to understand each other.</li>
+<li>Layer 5 (Session): This layer establishes and terminates connections between devices. It also determines which packets belong to which text and image files.</li>
+<li>Layer 4 (Transport): This layer coordinates data transfer between system and hosts, including error-checking and data recovery.</li>
+<li>Layer 3 (Network): This layer determines how data is sent to the receiving device. It’s responsible for packet forwarding, routing, and addressing.</li>
+<li>Layer 2 (Data Link): Translates binary (or BITs) into signals and allows upper layers to access media.</li>
+<li>Layer 1 (Physical): Actual hardware sits at this layer. It transmits signals over media.</li>
 </ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
+<p>判断我们在讨论的内容在 OSI 的哪一层最简单的方式就是通过 Protocol data unit (PDU)：<br><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/OSI_model.png"></p>
+<p>一张 OCI 模型中协议全景图：<br><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/4a71729c1f4024aeb2487e60f6047b48.png"></p>
+<p>（PS：OSI 模型作为参考模型，由于其发明较晚，并未在 Internet 上实现。 当前使用的模型是 TCP&#x2F;IP 模型。）</p>
+<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/7.webp"></p>
+<ul>
+<li>TCP&#x2F;IP 是一种基于特定的标准协议，用于解决特定通信问题的功能模型。OSI 是一种通用的、与协议无关的模型，用于描述所有形式的网络通信。</li>
+<li>在 TCP&#x2F;IP 中，大多数应用程序使用所有层，而在 OSI 中，简单的应用程序不使用所有七个层。只有第1、2和3层是强制性的，才能启用任何数据通信。</li>
 </ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
+<h1 id="1、物理层（Bit-Symbol）（网卡）"><a href="#1、物理层（Bit-Symbol）（网卡）" class="headerlink" title="1、物理层（Bit, Symbol）（网卡）"></a>1、物理层（Bit, Symbol）（网卡）</h1><p>OSI 参考模型的最低层是物理层。它负责设备之间的实际物理连接。物理层包含比特形式的信息。它负责将单个位从一个节点传输到下一个节点。当接收数据时，该层将接收到的信号转换为0和1发送到数据链路层，数据链路层将帧重新组合在一起。</p>
+<p>物理层规范包含在普遍存在的蓝牙（Bluetooth）、以太网（Ethernet）和 USB 标准的规范中。一个鲜为人知的物理层规范的例子是 CAN 标准。</p>
+<p>在物理层实现的功能：</p>
+<table>
 <thead>
 <tr>
-<th>PAI</th>
-<th>ModelArts</th>
+<th>功能</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
+<td>位同步</td>
+<td>物理层通过提供时钟来提供<strong>位同步</strong>。该时钟控制发送方和接收方，从而提供位级同步。</td>
 </tr>
 <tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
+<td>比特率控制</td>
+<td>物理层还定义了传输速率，即每秒发送的<strong>比特数</strong>。</td>
 </tr>
 <tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
+<td>物理拓扑</td>
+<td>物理层指定不同的设备&#x2F;节点在网络中的排列方式，即<strong>总线</strong>、<strong>星形</strong>或<strong>网状拓扑</strong>。</td>
+</tr>
+<tr>
+<td>传输模式</td>
+<td>物理层还定义了数据在两个连接的设备之间流动的方式。可能的各种传输模式是<strong>单工</strong>、<strong>半双工</strong>和<strong>全双工</strong>。</td>
 </tr>
 </tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+<h1 id="2、数据链路层（Frame）（交换机、Modems、网桥）"><a href="#2、数据链路层（Frame）（交换机、Modems、网桥）" class="headerlink" title="2、数据链路层（Frame）（交换机、Modems、网桥）"></a>2、数据链路层（Frame）（交换机、Modems、网桥）</h1><p>数据链路层处理节点到节点的数据传输，可以分为子层；媒体访问控制 (MAC) 层和逻辑链路控制 (LLC) 层。</p>
+<p><strong>IEEE 802</strong> 将数据链路层分为两个子层数据链路层分为两个子：</p>
+<ul>
+<li>逻辑链路控制 (LLC)，负责识别和封装网络层协议，控制错误检查和帧同步。控制流控制、帧同步和错误扫描等元素</li>
+<li>媒体访问控制 (MAC)，负责控制网络中的设备如何获得对媒体的访问权限以及传输数据的权限。根据权限确定连接的计算机如何访问数据</li>
+</ul>
+<p>在数据链路层实现的功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成帧</td>
+<td><strong>成帧是数据链路层的一个功能。它为发送者提供了一种方式来传输对接收者有意义的一组比特。这可以通过在帧的开头和结尾附加特殊的位模式来实现。</strong></td>
+</tr>
+<tr>
+<td>物理寻址</td>
+<td>创建帧后，数据链路层在每个帧的报头中添加发送方和&#x2F;或接收方的物理地址（MAC 地址）。</td>
+</tr>
+<tr>
+<td>错误控制（纠错）</td>
+<td><strong>数据链路层提供错误控制机制，在该机制中它检测并重新传输损坏或丢失的帧。</strong></td>
+</tr>
+<tr>
+<td>流量控制</td>
+<td>双方的数据速率必须保持不变，否则数据可能会损坏，因此流量控制会协调在接收确认之前可以发送的数据量。</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>当多个设备共享单个通信通道时，数据链路层的 MAC 子层有助于确定在给定时间哪个设备对通道具有控制权。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>以太网：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ethernet">https://en.wikipedia.org/wiki/Ethernet</a></li>
+</ul>
+<p>例子：<br><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/network-layers-3.webp"></p>
+<h1 id="3、网络层（Package）（IP、路由器）"><a href="#3、网络层（Package）（IP、路由器）" class="headerlink" title="3、网络层（Package）（IP、路由器）"></a>3、网络层（Package）（IP、路由器）</h1><p>OSI 模型的网络层负责处理网络中的大部分路由。该层处理数据包转发并设置数据包通过网络的路径。简单来说，网络层决定了数据包如何到达目的地。</p>
+<p>网络层用于将数据从一台主机传输到位于不同网络中的另一台主机。它还负责数据包路由，即从可用路由的数量中选择传输数据包的最短路径。发送方和接收方的 IP 地址由网络层放置在标头中。</p>
+<p>在网络层实现的功能是：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>路由</td>
+<td>网络层协议确定哪条路由适合从源到目的地。网络层的这一功能称为路由。</td>
+</tr>
+<tr>
+<td>逻辑寻址</td>
+<td>为了唯一标识互联网络上的每个设备，网络层定义了一个寻址方案。发送方和接收方的 IP 地址由网络层放置在标头中。这样的地址可以唯一且普遍地区分每个设备。</td>
+</tr>
+</tbody></table>
+<h1 id="4、传输层（Segment-Datagram）（UDP、TCP、端口）"><a href="#4、传输层（Segment-Datagram）（UDP、TCP、端口）" class="headerlink" title="4、传输层（Segment, Datagram）（UDP、TCP、端口）"></a>4、传输层（Segment, Datagram）（UDP、TCP、端口）</h1><p>传输层是 OSI 模型中最著名的 OSI 层之一，因为它是负责在终端系统和主机之间传输数据的层。它规定了将什么发送到哪里，以及发送了多少。在此级别，您会看到 TCP、UDP 和 SPX 等协议。如果出现问题，传输层还负责端到端的错误恢复。</p>
+<p>传输层向应用层提供服务，并从网络层获取服务。传输层中的数据称为分段。它负责完整消息的端到端传递。传输层还提供数据传输成功的确认，并在发现错误时重新传输数据。</p>
+<p><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/Transport_Layer1.jpg"></p>
+<ul>
+<li>在发送方：传输层从上层接收格式化数据，执行<strong>分段</strong>，还执行流量和<strong>错误控制</strong>以确保正确的数据传输。它还在其标头中<strong>添加源和目标端口号</strong>，并将分段数据转发到网络层。</li>
+<li>在接收方：传输层从其标头中<strong>读取端口号</strong>，并将接收到的数据转发给相应的应用程序。它还执行分段数据的<strong>排序</strong>和<strong>重组</strong>。</li>
+</ul>
+<p>在传输层实现的功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分割和重组</td>
+<td>这一层接受来自（会话）层的消息，将消息分解成更小的单元。产生的每个段都有一个与之关联的标题。目的站的传输层重新组装消息。</td>
+</tr>
+<tr>
+<td>服务点寻址</td>
+<td>为了将消息传递给正确的进程，传输层报头包含一种称为服务点地址或端口地址的地址。因此，通过指定此地址，传输层确保将消息传递到正确的进程。</td>
+</tr>
+</tbody></table>
+<p>传输层提供的服务：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向连接的服务</td>
+<td>这是一个三阶段的过程，包括：连接建立、数据传输、终止&#x2F;断开。<br />在这种类型的传输中，接收设备在接收到一个数据包或一组数据包后将确认发送回源。这种类型的传输是可靠和安全的。</td>
+</tr>
+<tr>
+<td>无连接服务</td>
+<td>这是一个单阶段过程，包括数据传输。在这种类型的传输中，接收方不确认收到数据包。这种方法允许设备之间更快的通信。面向连接的服务比无连接的服务更可靠。</td>
+</tr>
+</tbody></table>
+<p>例子：<br><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/network-layers-2.webp"></p>
+<h1 id="5、会话层"><a href="#5、会话层" class="headerlink" title="5、会话层"></a>5、会话层</h1><p>OSI 模型的第 5 层称为会话层。会话层是负责在不同应用程序之间建立、维护和结束连接的层。该层控制应用程序相互交互的术语。其中一个关键部分是简单的协调，因为会话层将决定系统等待另一个应用程序响应的时间。通常，您会看到 NetBios、NFS、RPC 和 SQL 等协议在这一层上运行。</p>
+<p>该层负责连接的建立、会话的维护、身份验证，同时也保证了安全性。</p>
+<p>在会话层实现的功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>会话建立、维护和终止</td>
+<td>该层允许两个进程建立、使用和终止连接。</td>
+</tr>
+<tr>
+<td>同步</td>
+<td>该层允许进程将被视为同步点的检查点添加到数据中。这些同步点有助于识别错误，从而正确地重新同步数据，并且不会过早切断消息的结尾，避免数据丢失。</td>
+</tr>
+<tr>
+<td>对话控制器</td>
+<td>会话层允许两个系统以半双工或全双工方式开始相互通信。</td>
+</tr>
+</tbody></table>
+<h1 id="6、表现层"><a href="#6、表现层" class="headerlink" title="6、表现层"></a>6、表现层</h1><p>OSI 模型的表示层或第 6 层旨在准备数据并将其从网络格式转换为应用程序格式，反之亦然。这一层决定了如何根据语法和结构为这些实体中的每一个呈现数据。在很多情况下，可以通过数据的加密和解密看到表示层。其他示例包括 ASCII、TIFF、JPEG、GIF、ESBCDIC、PICT、JPEG、MPEG 和 MIDI。</p>
+<p>表示层也称为翻译层。来自应用层的数据在这里被提取并按照所需的格式进行操作以通过网络传输。</p>
+<p>在表示层实现的功能：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>翻译</td>
+<td>例如，ASCII 到 EBCDIC。</td>
+</tr>
+<tr>
+<td>加密&#x2F;解密</td>
+<td>数据加密将数据转换为另一种形式或代码。加密后的数据称为密文，解密后的数据称为纯文本。密钥值用于加密和解密数据。</td>
+</tr>
+<tr>
+<td>压缩</td>
+<td>减少需要在网络上传输的比特数。</td>
+</tr>
+</tbody></table>
+<h1 id="7、应用层"><a href="#7、应用层" class="headerlink" title="7、应用层"></a>7、应用层</h1><p>如上所述，应用程序层是用户实际与之交互的层。 每当您与计算机上的应用程序交互时，您都会在应用程序层上处于活动状态。 例如，如果您使用 Google Chrome 或 Skype，那么您正在与第 7 层的应用程序交互。该层使用 HTTP、Telnet 和 FTP 等协议。 简而言之，这一层专注于最终用户流程并交付用户想要访问的任何应用程序。</p>
+<p>在应用层的功能：</p>
+<ul>
+<li>网络虚拟终端</li>
+<li>FTAM-文件传输访问和管理</li>
+<li>邮件服务</li>
+<li>目录服务</li>
+</ul>
+<p>例子：</p>
+<p><img src="/2022/06/25/%5BNetwork%5D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E5%B1%82/network-layers-1.webp"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>The OSI Model Explained：<a target="_blank" rel="noopener" href="https://itszeroday.com/cybersecurity/the-osi-model-explained/">https://itszeroday.com/cybersecurity/the-osi-model-explained/</a></li>
+<li>The Network Layers Explained [with examples]：<a target="_blank" rel="noopener" href="https://www.plixer.com/blog/network-layers-explained/">https://www.plixer.com/blog/network-layers-explained/</a></li>
+<li>Open System Interconnection (OSI) Model：<a target="_blank" rel="noopener" href="https://kullabs.com/class-12/computer-science-2/communication-and-networking/open-system-interconnection-osi-model">https://kullabs.com/class-12/computer-science-2/communication-and-networking/open-system-interconnection-osi-model</a></li>
+<li>OSI 七层模型与 TCP&#x2F;IP 四层模型：<a target="_blank" rel="noopener" href="https://wsgzao.github.io/post/osi/">https://wsgzao.github.io/post/osi/</a></li>
+</ul>
 
-        </article>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +1092,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

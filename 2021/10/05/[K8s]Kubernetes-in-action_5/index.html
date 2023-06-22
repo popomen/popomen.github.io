@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>让客户端发现 pod 并与之通信——《K8s in action》读书笔记5 | popomen个人博客</title>
+  <meta name="keywords" content=" Kubernetes , 《Kubernetes in action》 ">
+  <meta name="description" content="让客户端发现 pod 并与之通信——《K8s in action》读书笔记5 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,60 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[K8s]Kubernetes-in-action_5" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">让客户端发现 pod 并与之通信——《K8s in action》读书笔记5</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Kubernetes">Kubernetes</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Kubernetes</a>
+            
+            <a class="color3">《Kubernetes in action》</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2021-10-05 00:15</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A9%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E7%8E%B0-pod-%E5%B9%B6%E4%B8%8E%E4%B9%8B%E9%80%9A%E4%BF%A1"><span class="toc-text">让客户端发现 pod 并与之通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81Service-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1、Service 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81Service%EF%BC%9F"><span class="toc-text">1.1、为什么需要Service？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E3%80%81%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-text">1.2、服务发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%BF%E9%97%AE%E9%9B%86%E7%BE%A4%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">2、访问集群外部服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E3%80%81EndPoints-%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1、EndPoints 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E3%80%81ExternalName-%E7%B1%BB%E5%9E%8B%E7%9A%84-Service"><span class="toc-text">2.2、ExternalName 类型的 Service</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%9A%B4%E9%9C%B2%E6%9C%8D%E5%8A%A1%E7%BB%99%E9%9B%86%E7%BE%A4%E5%A4%96%E9%83%A8"><span class="toc-text">3、暴露服务给集群外部</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E3%80%81%E4%BD%BF%E7%94%A8-NodePort-%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="toc-text">3.1、使用 NodePort 类型的服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E3%80%81%E9%80%9A%E8%BF%87-LoadBalancer-%E5%B0%86%E6%9C%8D%E5%8A%A1%E6%9A%B4%E9%9C%B2%E5%87%BA%E6%9D%A5"><span class="toc-text">3.2、通过 LoadBalancer 将服务暴露出来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E3%80%81%E9%80%9A%E8%BF%87-Ingress-%E6%9A%B4%E9%9C%B2%E6%9C%8D%E5%8A%A1"><span class="toc-text">3.3、通过 Ingress 暴露服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ingress%E8%B5%84%E6%BA%90"><span class="toc-text">Ingress资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BAIngress%E5%88%9B%E5%BB%BATLS%E8%AE%A4%E8%AF%81%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">为Ingress创建TLS认证的步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81pod-%E5%B0%B1%E7%BB%AA%E5%90%8E%E5%8F%91%E5%87%BA%E4%BF%A1%E5%8F%B7"><span class="toc-text">4、pod 就绪后发出信号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8-headless-%E6%9C%8D%E5%8A%A1%E6%9D%A5%E5%8F%91%E7%8E%B0%E7%8B%AC%E7%AB%8B%E7%9A%84-pod"><span class="toc-text">5、使用 headless 服务来发现独立的 pod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%8E%92%E9%99%A4%E6%9C%8D%E5%8A%A1%E6%95%85%E9%9A%9C%E7%BB%8F%E9%AA%8C"><span class="toc-text">6、排除服务故障经验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81Tips"><span class="toc-text">7、Tips</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +858,189 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="让客户端发现-pod-并与之通信"><a href="#让客户端发现-pod-并与之通信" class="headerlink" title="让客户端发现 pod 并与之通信"></a>让客户端发现 pod 并与之通信</h1><h2 id="1、Service-介绍"><a href="#1、Service-介绍" class="headerlink" title="1、Service 介绍"></a>1、Service 介绍</h2><p>Service 是一种为一组功能相同的 pod 提供单一不变的接入点的资源。当服务存在时，它的 IP 地址和端口不会改变。客户端通过 IP 地址和端口号建立连接，这些连接会被路由到该服务的任意一个 pod 上。通过这种方式，客户端不需要直到每个单独的提供服务的 pod 的地址，这样这些pod就可以在集群中随时被创建或移除了。</p>
+<pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  ports:
+  - port: 80          # 该 Service 的端口。
+    targetPort: 8080  # 该 Service 对应后端容器的端口。
+  - name: https
+    poret: 443
+    targetPort: https # 如果 pod 内部使用了端口命名，可以直接指定端口名称。
+  selector:
+    app: kubia        # 设置选择器选择 metadata.app=kubia 的 pod 作为后端。
+</code></pre>
+<h3 id="1-1、为什么需要Service？"><a href="#1-1、为什么需要Service？" class="headerlink" title="1.1、为什么需要Service？"></a>1.1、为什么需要Service？</h3><ul>
+<li>客户端无法提前知道提供服务的 pod 的 IP 地址。K8s 会在 pod 启动前才分配 IP 地址。</li>
+<li>每个 pod 的生命周期时短暂的，其 IP 地址也是不稳定。</li>
+<li>水平伸缩意味着一个服务背后有多个 pod 提供相同的服务。</li>
 </ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
+<h3 id="1-2、服务发现"><a href="#1-2、服务发现" class="headerlink" title="1.2、服务发现"></a>1.2、服务发现</h3><ul>
+<li><strong>环境变量。</strong> K8s 可以自动注入当前svc对应的环境变量（XXX_SERVICE_HOST、XXX_SERVICE_PORT）给新创建的 pod。</li>
+<li><strong>DNS发现服务。</strong> K8s 自带的域名解析服务器 core-dns 可以通过全限定域名（<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fully_qualified_domain_name">FQDN</a>）解析服务的 IP 地址。K8s 通过修改每个容器的 &#x2F;etc&#x2F;resolve.conf 使 core-dns生效。</li>
 </ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
+<h2 id="2、访问集群外部服务"><a href="#2、访问集群外部服务" class="headerlink" title="2、访问集群外部服务"></a>2、访问集群外部服务</h2><ul>
+<li>方式一：通过手动配置 EndPoints 的方式，可以让 k8s 集群内的客户端像访问集群内的服务一样地访问集群外部服务。</li>
+<li>方式二：通过配置 ExternalName 类型的 Service，完全绕过 Service 直接访问外部域名。</li>
 </ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
-<thead>
-<tr>
-<th>PAI</th>
-<th>ModelArts</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
-</tr>
-<tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
-</tr>
-<tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
-</tr>
-</tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+<h3 id="2-1、EndPoints-介绍"><a href="#2-1、EndPoints-介绍" class="headerlink" title="2.1、EndPoints 介绍"></a>2.1、EndPoints 介绍</h3><p>EndPoints 是一种介于 Service 和 Pod 之间的一种资源，它暴露一个服务的 IP 地址和端口的列表。当我们在 Service 的 spec 中定义 pod 选择器时，选择器会动态调整 Service 背后的 Endpoints，从而实现 Service 发现后端 pod 的逻辑。相反，如果我们不为 Service 定义 pod 选择器，那么 K8s 不会创建其对应的 Endpoints，需要手动创建 Endpoints 资源。</p>
+<pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata: 
+  name: external-service  # Endpoints 的名称必须与 Service 的名称匹配。
+spec:
+  ports: 
+  - port: 80
+---
+apiVersion: v1
+kind: Endpoints
+metadata: 
+  name: external-service  # Endpoints 的名称必须与 Service 的名称匹配。
+subsets:
+  - addresses:
+    - ip: 11.11.11.11     # Service 将连接重定向到这里的 IP 地址。
+    - ip: 22.22.22.22
+    ports:
+    - port: 80            # 目标端口
+</code></pre>
+<h3 id="2-2、ExternalName-类型的-Service"><a href="#2-2、ExternalName-类型的-Service" class="headerlink" title="2.2、ExternalName 类型的 Service"></a>2.2、ExternalName 类型的 Service</h3><p>ExternalName 服务仅在 DNS 级别实施——为服务创建了简单的 CNAME DNS记录，因此连接到此 Service 的客户端将直接连接到外部服务，完全绕过 Service 资源的代理。出于这个原因，这些类型的 Service 不会被配置 ClusterIP。</p>
+<p>（PS：CNAME 记录指向完全限定域名而不是数字 IP 地址。）</p>
+<pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata: 
+  name: external-service
+spec:
+  type: ExternalName    # 上文中未指定类型，则默认为 ClusterIP 类型。
+  externalName: someapi.somecompany.com
+  ports:
+  - port: 80
+</code></pre>
+<h2 id="3、暴露服务给集群外部"><a href="#3、暴露服务给集群外部" class="headerlink" title="3、暴露服务给集群外部"></a>3、暴露服务给集群外部</h2><p>将集群内的服务暴露给集群外部的客户端，大致有三种方式：</p>
+<ul>
+<li>NodePort。简单粗暴，每台节点都绑一个固定端口。</li>
+<li>LoadBalance。使用外部的负载均衡器。</li>
+<li>Ingress。七层网络代理。</li>
+</ul>
+<h3 id="3-1、使用-NodePort-类型的服务"><a href="#3-1、使用-NodePort-类型的服务" class="headerlink" title="3.1、使用 NodePort 类型的服务"></a>3.1、使用 NodePort 类型的服务</h3><p>NodePort 类型的 Service 会在每一个节点开放同一个端口，用户可以通过任意 Node 节点的 IP 地址配合 nodePort 来访问该服务。此方式需要为客户端打开每一台节点上对应端口的防火墙策略，否则用户无法访问。此方法还有一个缺点，就是端口占用数量太多了，一个集群能开放的端口数量就是一台机器的端口数量了。</p>
+<p><img src="/2021/10/05/%5BK8s%5DKubernetes-in-action_5/NodePort.png"></p>
+<pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata: 
+  name: kubia-nodeport
+spec:
+  type: NodePort
+  ports:
+  - port: 80            # ClusterIP 的端口。
+    targetPort: 8080    # 背后 pod 的实际端口。
+    nodePort: 30123     # 创建 NodePort 此端口可以不指定，K8s 将随机选择一个端口。
+  selector:
+    app: kubia
+</code></pre>
+<h3 id="3-2、通过-LoadBalancer-将服务暴露出来"><a href="#3-2、通过-LoadBalancer-将服务暴露出来" class="headerlink" title="3.2、通过 LoadBalancer 将服务暴露出来"></a>3.2、通过 LoadBalancer 将服务暴露出来</h3><p>LoadBalancer 类型的 Service 是一个具有额外的基础设施提供的负载均衡器 NodePort 服务。它也会自动创建一个 nodePort 的端口，但是用户不感知此端口，因此我们不需要配置防火墙规则开放这个端口。当然，如果配置防火墙规则开放了这个 nodePort 端口，那么效果就像前面的 NodePort 类型的 Service 一样。</p>
+<p><img src="/2021/10/05/%5BK8s%5DKubernetes-in-action_5/LoadBalancer.png"></p>
+<pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata: 
+  name: kubia-loadbalancer
+spec:
+  type: LoadBalancer    # 自动从当前 K8s 集群的基础架构获取负载均衡器。（华为云CCE服务对应华为云ELB服务。）
+  ports:
+  - port: 80            # ClusterIP 的端口。
+    targetPort: 8080    # 背后 pod 的实际端口。
+  selector:
+    app: kubia
+</code></pre>
+<h3 id="3-3、通过-Ingress-暴露服务"><a href="#3-3、通过-Ingress-暴露服务" class="headerlink" title="3.3、通过 Ingress 暴露服务"></a>3.3、通过 Ingress 暴露服务</h3><p><img src="/2021/10/05/%5BK8s%5DKubernetes-in-action_5/Ingress.png"></p>
+<p>通过 Ingress 暴露服务的优势：</p>
+<ul>
+<li>可以通过一个公网IP为多个服务提供访问入口。</li>
+<li>由于是 7 层网络代理，因此可以提供一些 Service 无法提供的功能（如cookie的会话亲和性等功能）。</li>
+</ul>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>暂略。<br>（nginx-ingress-controller主页：<a target="_blank" rel="noopener" href="https://kubernetes.github.io/ingress-nginx/%EF%BC%89">https://kubernetes.github.io/ingress-nginx/）</a></p>
+<h4 id="Ingress资源"><a href="#Ingress资源" class="headerlink" title="Ingress资源"></a>Ingress资源</h4><pre><code class="yaml">apiVersion: v1
+kind: Ingress
+metadata: 
+  name: kubia
+spec:
+  tls:                          # 集群外部的客户端发起HTTPS请求时，客户端与ingress-controller之间的连接是TLS加密传输的，而ingress-controller到后端的pod之间则是HTTP明文传输的。
+  - hosts:
+    - kubia.example.com
+    secretName: tls-secret
+  rules:
+  - host: kubia.example.com     # ingress 将域名 kubia.example.com 映射到后端的 Service
+    http:
+      paths:
+      - path: /kubia            # 对 kubia.example.com/kubia 的请求转发至 kubia 的 Service
+        backend:
+          serviceName: kubia
+          servicePort: 80
+      - path: /bar              # 对 kubia.example.com/bar 的请求转发至 bar 的 Service
+        backend:
+          serviceName: bar
+          servicePort: 80
+  - host: bar.example.com
+    http:
+      paths:
+      - path: /                 # 对 bar.example.com 的请求转发至 bar 的 Service
+        backend:
+          serviceName: bar
+          servicePort: 80
+</code></pre>
+<h4 id="为Ingress创建TLS认证的步骤"><a href="#为Ingress创建TLS认证的步骤" class="headerlink" title="为Ingress创建TLS认证的步骤"></a>为Ingress创建TLS认证的步骤</h4><pre><code class="shell"># 生成私钥
+openssl genrsa -out tls.key 2048
+# 生成证书（自签名）
+openssl req -new -x509 -key tls.key -out tls.cert -days 360 -subj /CN=kubia.example.com
 
-        </article>
-        
-        
+# 通过私钥文件和证书文件生成一个Secret
+kubectl create secret tls tls-secret --cert-tls.cert --key=tls.key
+
+# 配置 ingress-controller 以及 Ingress 资源
+# ...
+
+curl -k -v https://kubia.example.com/kubia
+</code></pre>
+<h2 id="4、pod-就绪后发出信号"><a href="#4、pod-就绪后发出信号" class="headerlink" title="4、pod 就绪后发出信号"></a>4、pod 就绪后发出信号</h2><p>TODO</p>
+<h2 id="5、使用-headless-服务来发现独立的-pod"><a href="#5、使用-headless-服务来发现独立的-pod" class="headerlink" title="5、使用 headless 服务来发现独立的 pod"></a>5、使用 headless 服务来发现独立的 pod</h2><p>TODO</p>
+<h2 id="6、排除服务故障经验"><a href="#6、排除服务故障经验" class="headerlink" title="6、排除服务故障经验"></a>6、排除服务故障经验</h2><p>TODO</p>
+<h2 id="7、Tips"><a href="#7、Tips" class="headerlink" title="7、Tips"></a>7、Tips</h2><pre><code class="shell"># 双横杠（--）意味着 kubectl 命令项的结束。
+# 后面的内容是指在 pod 内部需要执行的命令（否则-s会被解析成kubectl exec的参数）。
+# 如果执行的命令没有以横杠开始的参数，则不需要使用双横杠。
+kubectl exec kubia-7nog1 -- curl -s http://10.111.249.153
+</code></pre>
+<ul>
+<li>pod 是否使用内部的 DNS 服务器是根据 pod 中 spec 的 dnsPolicy 属性来决定的。</li>
+<li>ping 一个 svc 的 FQDN 或 clusterIP 是不通的，因为 clusterIP 是一个虚拟 IP，只有在与服务端口结合是才有意义。（PS：11章会解释其工作的原理。）</li>
+<li>JSONPath使用指导：<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/kubectl/jsonpath/">https://kubernetes.io/docs/reference/kubectl/jsonpath/</a></li>
+<li>使用 <code>kubectl explain</code> 检查服务的会话亲和性是否设置为None。</li>
+<li>通过配置 Service 的 spec.externalTrafficPolicy&#x3D;Local 将外部通信重定向到接受连接的节点上运行的 pod 来阻止额外跳数。此配置引发的两个缺点：<ul>
+<li>必须确保负载平衡器将连接转发给至少具有一个 pod 的节点。</li>
+<li>使用 local 外部流量策略的服务可能会导致跨 pod 的负载分布不均衡（A节点一个pod，B节点两个pod，则三个pod的流量比为2:1:1）。</li>
+</ul>
+</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +1049,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

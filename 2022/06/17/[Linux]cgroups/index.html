@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>cgroups 简介 | popomen个人博客</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="cgroups 简介 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,58 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Linux]cgroups" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">cgroups 简介</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2022-06-17 22:29</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%9C%8B%E6%87%82%E4%BB%80%E4%B9%88%E6%98%AF-cgroups"><span class="toc-text">一张图看懂什么是 cgroups</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E6%9C%AF%E8%AF%AD"><span class="toc-text">1、术语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81cgroups-Linux-control-groups"><span class="toc-text">1.1、cgroups(Linux control groups)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E3%80%81subsystem-resource-controllers"><span class="toc-text">1.2、subsystem(resource controllers)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E3%80%81hierarchy"><span class="toc-text">1.3、hierarchy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4%E3%80%81css-set-cgroups-subsystem-set"><span class="toc-text">1.4、css_set(cgroups subsystem set)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5%E3%80%81%E5%85%B3%E4%BA%8E-v1-%E5%92%8C-v2"><span class="toc-text">1.5、关于 v1 和 v2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">2、实现机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E3%80%81VFS-Virtual-File-System"><span class="toc-text">2.1、VFS(Virtual File System)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5"><span class="toc-text">3、一些实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E3%80%81Docker"><span class="toc-text">3.1、Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E3%80%81%E5%88%9B%E5%BB%BA-hierarchy"><span class="toc-text">3.2、创建 hierarchy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6"><span class="toc-text">GPU 资源限制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +856,125 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
-</ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
-</ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
-</ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
-<thead>
-<tr>
-<th>PAI</th>
-<th>ModelArts</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
-</tr>
-<tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
-</tr>
-<tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
-</tr>
-</tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一张图看懂什么是-cgroups"><a href="#一张图看懂什么是-cgroups" class="headerlink" title="一张图看懂什么是 cgroups"></a>一张图看懂什么是 cgroups</h1><p><img src="/2022/06/17/%5BLinux%5Dcgroups/twitter.jpg"></p>
+<center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
+（图来自：https://twitter.com/b0rk/status/1214341831049252870）
+</b></div><br></center>
 
-        </article>
-        
-        
+<h1 id="1、术语"><a href="#1、术语" class="headerlink" title="1、术语"></a>1、术语</h1><h2 id="1-1、cgroups-Linux-control-groups"><a href="#1-1、cgroups-Linux-control-groups" class="headerlink" title="1.1、cgroups(Linux control groups)"></a>1.1、cgroups(Linux control groups)</h2><blockquote>
+<p>Control groups, usually referred to as cgroups, are a Linux kernel feature which allow processes to be organized into hierarchical groups whose usage of various types of resources can then be limited and monitored.  The kernel’s cgroup interface is provided through a pseudo-filesystem called cgroupfs.  Grouping is implemented in the core cgroup kernel code, while resource tracking and limits are implemented in a set of  er-resource-type subsystems (memory, CPU, and so on).</p>
+</blockquote>
+<p><code>cgroups</code> 是一种 Linux 内核功能，它允许将进程组织成分层组，然后可以限制和监视对各种类型资源的使用。</p>
+<p>在文件 <code>/proc/[pid]/cgroup</code> 中可以看到具有相应 PID 的进程所属的控制组（结构如：hierarchy-ID:controller-list:cgroup-path）。</p>
+<pre><code>5:cpuacct,cpu,cpuset:/daemons
+</code></pre>
+<h2 id="1-2、subsystem-resource-controllers"><a href="#1-2、subsystem-resource-controllers" class="headerlink" title="1.2、subsystem(resource controllers)"></a>1.2、subsystem(resource controllers)</h2><blockquote>
+<p>A subsystem is a kernel component that modifies the behavior of the processes in a cgroup.  Various subsystems have been implemented, making it possible to do things such as limiting the amount of CPU time and  emory available to a cgroup, accounting for the CPU time used by a cgroup, and freezing and resuming execution of the processes in a cgroup.  Subsystems are sometimes also known as resource controllers (or simply, controllers).</p>
+</blockquote>
+<p><code>subsystem</code> 是修改 <code>cgroup</code> 中进程行为的内核组件，有时也称为 <code>resource controllers</code>。内核中已经实现的 <code>subsystem</code> 如下：</p>
+<ul>
+<li>cpu 子系统，主要限制进程的 cpu 使用率。</li>
+<li>cpuacct 子系统，可以统计 cgroups 中的进程的 cpu 使用报告。</li>
+<li>cpuset 子系统，可以为 cgroups 中的进程分配单独的 cpu 节点或者内存节点。</li>
+<li>memory 子系统，可以限制进程的 memory 使用量。</li>
+<li>blkio 子系统，可以限制进程的块设备 io。</li>
+<li>devices 子系统，可以控制进程能够访问某些设备。</li>
+<li>net_cls 子系统，可以标记 cgroups 中进程的网络数据包，然后可以使用 tc 模块（traffic control）对数据包进行控制。</li>
+<li>freezer 子系统，可以挂起或者恢复 cgroups 中的进程。</li>
+<li>ns 子系统，可以使不同 cgroups 下面的进程使用不同的 namespace。</li>
+</ul>
+<p>通过文件 <code>/proc/cgroups</code> 可以查看当前操作系统中支持的 <code>subsystem</code> 以及当前的状态：</p>
+<pre><code class="sh">root@DESKTOP-6MVDBD1:/sys/fs/cgroup# cat /proc/cgroups
+#subsys_name    hierarchy      num_cgroups    enabled
+cpuset          4              1              1
+cpu             8              1              1
+cpuacct         8              1              1
+blkio           6              1              1
+memory          3              1              1
+devices         10             84             1
+freezer         7              1              1
+net_cls         9              1              1
+perf_event      5              1              1
+net_prio        9              1              1
+hugetlb         0              1              0
+pids            2              1              1
+rdma            13             1              1
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>subsys_name 代表 subsystem 的名字。</li>
+<li>hierachy 代表当前 subsystem 唯一关联的 hierarchy 的 ID。</li>
+<li>num_cgroups 代表在该 hierachy 中使用该子系统的 cgroup 的数量。</li>
+<li>enabled 为 1 代表该 subsystem 已开启。</li>
+</ul>
+<h2 id="1-3、hierarchy"><a href="#1-3、hierarchy" class="headerlink" title="1.3、hierarchy"></a>1.3、hierarchy</h2><blockquote>
+<p>The cgroups for a controller are arranged in a hierarchy.  This hierarchy is defined by creating, removing, and renaming subdirectories within the cgroup filesystem.  At each level of the hierarchy, attributes (e.g.  limits) can be defined.  The limits, control, and accounting provided by cgroups generally have effect throughout the subhierarchy underneath the cgroup where the attributes are defined.  Thus, for example, the  imits placed on a cgroup at a higher level in the hierarchy cannot be exceeded by descendant cgroups.</p>
+</blockquote>
+<p>控制器的 <code>cgroup</code> 按层次结构排列。此层次结构是通过在 <code>cgroup</code> 文件系统中创建、删除和重命名子目录来定义的。在 <code>hierarchy</code> 的每个级别，都可以定义属性（例如限制）。 <code>cgroup</code> 提供的限制、控制和记帐通常会在定义属性的 <code>cgroup</code> 下的整个子层级中产生影响。因此，放置在层次结构中更高级别的 <code>cgroup</code> 上的限制不能被后代 <code>cgroup</code> 超过。</p>
+<p><img src="/2022/06/17/%5BLinux%5Dcgroups/hierarchy.png"></p>
+<p>内核使用 <code>hierarchy</code> 来表示一个 <code>cgroup</code> 对某一个或者某几个 <code>subsystem</code> 的资源限制。<code>cgroup</code> 结构体可以组织成一颗树的形式，每一棵 <code>cgroup</code> 结构体组成的树称之为一个 <code>hierarchy</code>。cgroups层级结构可以 attach 一个或者几个 <code>subsystem</code>，当前层级结构可以对其 attach 的 <code>subsystem</code> 进行资源的限制。每一个 <code>subsystem</code> 只能被 attach 到一个 <code>hierarchy</code>。</p>
+<p>cgroup的文件系统通常在 <code>/sys/fs/cgroup/</code>，通过查看 <code>cgroup</code> 文件系统可以看到所有的 <code>hierarchy</code>。<br><img src="/2022/06/17/%5BLinux%5Dcgroups/cgroup_filesystem.png"></p>
+<pre><code class="sh">root@DESKTOP-6MVDBD1:/sys/fs/cgroup# ls -al /sys/fs/cgroup/
+total 0
+drwxr-xr-x 16 root root 320 Jun 19 15:36 .
+drwxr-xr-x 10 root root   0 Jun 19 15:36 ..
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 blkio
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 cpu
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 cpuacct
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 cpuset
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 devices
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 freezer
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 hugetlb
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 memory
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 net_cls
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 net_prio
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 perf_event
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 pids
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 rdma
+dr-xr-xr-x  2 root root   0 Jun 19 15:36 unified
+</code></pre>
+<h2 id="1-4、css-set-cgroups-subsystem-set"><a href="#1-4、css-set-cgroups-subsystem-set" class="headerlink" title="1.4、css_set(cgroups subsystem set)"></a>1.4、css_set(cgroups subsystem set)</h2><p><img src="/2022/06/17/%5BLinux%5Dcgroups/cgroups-connect.png"></p>
+<p>上面这个图从整体结构上描述了进程与 <code>cgroups</code> 之间的关系。最下面的 <code>P</code> 代表一个进程。每一个进程的描述符中有一个指针指向了一个辅助数据结构 <code>css_set</code>。 指向某一个 <code>css_set</code> 的进程会被加入到当前 <code>css_set</code> 的进程链表中。一个进程只能隶属于一个 <code>css_set</code>，一个 <code>css_set</code> 可以包含多个进程，隶属于同一 <code>css_set</code> 的进程受到同一个 <code>css_set</code> 所关联的资源限制。</p>
+<p>上图中的 <code>M×N Linkage</code> 说明的是 <code>css_set</code> 通过辅助数据结构可以与 <code>cgroups</code> 节点进行多对多的关联。但是 <code>cgroups</code> 的实现不允许 <code>css_set</code> 同时关联同一个 <code>hierarchy</code> 下多个节点。 这是因为 <code>cgroups</code> 对同一种资源不允许有多个限制配置。</p>
+<p>一个 <code>css_set</code> 关联多个 <code>hierarchy</code> 的节点时，表明需要对当前 <code>css_set</code> 下的进程进行多种资源的控制。而一个 <code>cgroups</code> 节点关联多个 <code>css_set</code> 时，表明多个 <code>css_set</code> 下的进程列表受到同一份资源的相同限制。</p>
+<h2 id="1-5、关于-v1-和-v2"><a href="#1-5、关于-v1-和-v2" class="headerlink" title="1.5、关于 v1 和 v2"></a>1.5、关于 v1 和 v2</h2><blockquote>
+<p>Although cgroups v2 is intended as a replacement for cgroups v1, the older system continues to exist (and for compatibility reasons is unlikely to be  emoved).  Currently, cgroups v2 implements only a subset of the controllers available in cgroups v1.  The two systems are implemented so that  oth v1 controllers and v2 controllers can be mounted on the same system.  Thus, for example, it is possible to use those controllers that are supported under version 2, while also using version 1 controllers where version 2 does not yet support those controllers.  The only restriction here  s that a controller can’t be simultaneously employed in both a cgroups v1 hierarchy and in the cgroups v2 hierarchy.</p>
+</blockquote>
+<p>虽然 cgroups v2打算作为 cgroups v1的替代品，但是旧系统仍然存在(并且由于兼容性原因不太可能被删除)。目前，cgroups v2只实现 cgroups v1中可用控制器的一个子集。这两个系统的实现使得 v1控制器和 v2控制器都可以安装在同一个系统上。因此，例如，可以使用版本2支持的那些控制器，同时也可以使用版本2尚不支持那些控制器的版本1控制器。这里唯一的限制是控制器不能同时在 cgroups v1层次结构和 cgroups v2中使用</p>
+<h1 id="2、实现机制"><a href="#2、实现机制" class="headerlink" title="2、实现机制"></a>2、实现机制</h1><h2 id="2-1、VFS-Virtual-File-System"><a href="#2-1、VFS-Virtual-File-System" class="headerlink" title="2.1、VFS(Virtual File System)"></a>2.1、VFS(Virtual File System)</h2><p>VFS 是一个内核抽象层，能够隐藏具体文件系统的实现细节，从而给用户态进程提供一套统一的 API 接口。VFS 使用了一种通用文件系统的设计，具体的文件系统只要实现了 VFS 的设计接口，就能够注册到 VFS 中，从而使内核可以读写这种文件系统。 这很像面向对象设计中的抽象类与子类之间的关系，抽象类负责对外接口的设计，子类负责具体的实现。其实，VFS本身就是用 c 语言实现的一套面向对象的接口。</p>
+<p>cgroups 通过实现 VFS 的通用文件系统模型，把维护 cgroups 层级结构的细节，隐藏在 cgroups 文件系统的这些实现函数中。</p>
+<h1 id="3、一些实践"><a href="#3、一些实践" class="headerlink" title="3、一些实践"></a>3、一些实践</h1><h2 id="3-1、Docker"><a href="#3-1、Docker" class="headerlink" title="3.1、Docker"></a>3.1、Docker</h2><p>相信大多数人都没有读过 Docker 的源代码，但是通过这篇文章，可以估计 Docker 在实现不同的 Container 之间资源隔离和控制的时候，是可以创建比较复杂的 cgroups 节点和配置文件来完成的。然后对于同一个 Container 中的进程，可以把这些进程 PID 添加到同一组 cgroups 子节点中已达到对这些进程进行同样的资源限制。</p>
+<h2 id="3-2、创建-hierarchy"><a href="#3-2、创建-hierarchy" class="headerlink" title="3.2、创建 hierarchy"></a>3.2、创建 hierarchy</h2><p>Linux中，用户可以使用mount命令挂载 cgroups 文件系统，格式为：<code>mount -t cgroup -o subsystems name /cgroup/name</code>，其中 subsystems 表示需要挂载的 cgroups 子系统， &#x2F;cgroup&#x2F;name 表示挂载点，如上文所提，这条命令同时在内核中创建了一个cgroups 层级结构。</p>
+<p>比如挂载 cpuset, cpu, cpuacct, memory 4个subsystem到&#x2F;cgroup&#x2F;cpu_and_mem 目录下，就可以使用：</p>
+<pre><code>mount -t cgroup -o remount,cpu,cpuset,memory cpu_and_mem /cgroup/cpu_and_mem
+</code></pre>
+<h2 id="GPU-资源限制"><a href="#GPU-资源限制" class="headerlink" title="GPU 资源限制"></a>GPU 资源限制</h2><p>TODO</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man7/cgroups.7.html">https://man7.org/linux/man-pages/man7/cgroups.7.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cgroups.html">https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cgroups.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2015/03/31/cgroups.html">https://tech.meituan.com/2015/03/31/cgroups.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://lwn.net/Articles/606925/">https://lwn.net/Articles/606925/</a></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +983,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

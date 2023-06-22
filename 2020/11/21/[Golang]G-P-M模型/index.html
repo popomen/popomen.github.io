@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>G-P-M模型 | popomen个人博客</title>
+  <meta name="keywords" content=" Golang ">
+  <meta name="description" content="G-P-M模型 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,58 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Golang]G-P-M模型" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">G-P-M模型</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Golang">Golang</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Golang</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2020-11-21 13:07</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C%E6%A6%82%E5%BF%B5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">并发与并行概念的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%B9%B6%E5%8F%91%E4%BD%86%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B9%B6%E8%A1%8C%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">支持并发但不支持并行的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%B9%B6%E8%A1%8C%E4%BD%86%E4%B8%8D%E6%94%AF%E6%8C%81%E5%B9%B6%E5%8F%91%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">支持并行但不支持并发的例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU%E7%89%A9%E7%90%86%E6%A0%B8%E4%B8%8E%E9%80%BB%E8%BE%91%E6%A0%B8%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">CPU物理核与逻辑核的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E6%95%B0"><span class="toc-text">CPU数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E6%A0%B8%E6%95%B0"><span class="toc-text">物理核数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E6%A0%B8%E6%95%B0"><span class="toc-text">逻辑核数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">线程和进程的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%EF%BC%88process%EF%BC%89"><span class="toc-text">进程（process）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%88thread%EF%BC%89"><span class="toc-text">线程（thread）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G-P-M%E6%A8%A1%E5%9E%8B"><span class="toc-text">G-P-M模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%88Machine%EF%BC%89"><span class="toc-text">线程（Machine）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%99%A8%EF%BC%88Processors%EF%BC%89"><span class="toc-text">逻辑处理器（Processors）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%EF%BC%88Goroutines%EF%BC%89"><span class="toc-text">协程（Goroutines）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sched%E7%AE%A1%E7%90%86-G-%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-text">Sched管理 G 的策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%AA%83%E5%8F%96%EF%BC%88work-stealing%EF%BC%89%E7%AD%96%E7%95%A5"><span class="toc-text">任务窃取（work-stealing）策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-%E6%89%A7%E8%A1%8C%E9%98%BB%E5%A1%9E%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E6%97%B6%EF%BC%88%E5%A6%82%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">G 执行阻塞的系统调用时（如打开文件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA-G-%E9%9C%80%E8%A6%81%E5%81%9A%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9CI-x2F-O%E8%B0%83%E7%94%A8%E6%97%B6"><span class="toc-text">如果一个 G 需要做一个网络I&#x2F;O调用时</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +856,145 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
-</ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
-</ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
-</ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="并发与并行概念的区别"><a href="#并发与并行概念的区别" class="headerlink" title="并发与并行概念的区别"></a>并发与并行概念的区别</h1><p>首先要搞清楚并行与并发的区别，后续要用到这两个概念。</p>
+<table>
 <thead>
 <tr>
-<th>PAI</th>
-<th>ModelArts</th>
+<th></th>
+<th>并发（concurrency）</th>
+<th>并行（parallelism）</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
+<td>概念</td>
+<td>支持多个动作同时<strong>出发</strong>，并且<strong>统一管理</strong></td>
+<td>支持多个动作同时<strong>执行</strong></td>
 </tr>
 <tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
+<td>多线程</td>
+<td>是</td>
+<td>是</td>
 </tr>
 <tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
+<td>多核</td>
+<td>单核交替 or 多核同时</td>
+<td>多核同时</td>
+</tr>
+<tr>
+<td>范畴</td>
+<td>需求侧</td>
+<td>实现测</td>
+</tr>
+<tr>
+<td>对立概念</td>
+<td>单发</td>
+<td>串行</td>
 </tr>
 </tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+<h2 id="支持并发但不支持并行的例子"><a href="#支持并发但不支持并行的例子" class="headerlink" title="支持并发但不支持并行的例子"></a>支持并发但不支持并行的例子</h2><p>一个网站支持并发请求，但是不支持并行处理请求。因此高并发场景下，多个任务还是需要”排队“，按顺序进行处理。</p>
+<p>（因为操作系统和硬件的资源很宝贵，所以这是一种效果非常好的处理方式。<strong>”使用较少资源做更多事情“的哲学也是指导Go语言设计的哲学。</strong>）</p>
+<h2 id="支持并行但不支持并发的例子"><a href="#支持并行但不支持并发的例子" class="headerlink" title="支持并行但不支持并发的例子"></a>支持并行但不支持并发的例子</h2><p>一个 CPU 核心里的指令解码模块，和加法器，就是并行地处理指令的，但是一个 CPU 核心并不天然支持并发访问，这种叫流水线并行。</p>
+<blockquote>
+<p>正因为并行和并发不是一个范畴的概念，因此原则上他们并<code>不互斥</code>。然而在通常情况下，人们所说的支持并发的意思是<code>支持并发但不支持并行</code>，这不太严谨，but理解万岁吧~</p>
+</blockquote>
+<h1 id="CPU物理核与逻辑核的概念"><a href="#CPU物理核与逻辑核的概念" class="headerlink" title="CPU物理核与逻辑核的概念"></a>CPU物理核与逻辑核的概念</h1><p>谈到高并发就一定会经常提及物理核、逻辑核等概念，这里也一并把他们搞清楚。</p>
+<h2 id="CPU数"><a href="#CPU数" class="headerlink" title="CPU数"></a>CPU数</h2><p>Linux下输入命令 <code>cat /proc/cpuinfo</code> 看到的 <code>physical id</code> 就是指 CPU 的 id。<br>个人电脑大多数只有一个 CPU，但是服务器上通常有很多个CPU槽位，可以支持安装多个物理CPU。</p>
+<h2 id="物理核数"><a href="#物理核数" class="headerlink" title="物理核数"></a>物理核数</h2><p>Linux下输入命令 <code>cat /proc/cpuinfo</code> 看到的 <code>cpu id</code> 就是指物理核的 id。<br>一个物理核上的逻辑核公用一套ALU、FPU、Cache等组件。</p>
+<h2 id="逻辑核数"><a href="#逻辑核数" class="headerlink" title="逻辑核数"></a>逻辑核数</h2><p>Linux下输入命令 <code>cat /proc/cpuinfo</code> 看到的 <code>processor</code> 就是指逻辑核的 id。<br><code>超线程技术</code>可以在一个逻辑核等待指令执行的间隔(等待从cache或内存中获取下一条指令)，把时间片分配到另一个逻辑核。高速在这两个逻辑核之间切换，让应用程序感知不到这个间隔，误认为自己是独占了一个核。</p>
+<blockquote>
+<p>《Go IN ACTION》书中描述非Go语言的传统应用程序时没有提及超线程技术，而只是说操作系统会在 <code>处理器</code> 上调度线程。实际上他说的 <code>处理器</code> 就是逻辑核的数量。</p>
+</blockquote>
+<img src="G-P-M模型/1.png" alt="Go程序查看运行时P的个数" style="zoom: 80%;" />
 
-        </article>
-        
-        
+<center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
+Go程序查看运行时P的个数
+</b></div><br></center>
+
+<p><img src="/G-P-M%E6%A8%A1%E5%9E%8B/2.png" alt="Linux命令查看逻辑核个数"></p>
+<center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
+Linux命令查看逻辑核个数
+</b></div><br></center>
+
+<h1 id="线程和进程的概念"><a href="#线程和进程的概念" class="headerlink" title="线程和进程的概念"></a>线程和进程的概念</h1><h2 id="进程（process）"><a href="#进程（process）" class="headerlink" title="进程（process）"></a>进程（process）</h2><p>当运行一个应用程序的时候，操作系统会为这个应用程序启动一个进程，可以把这个进程看作包含了应用程序在运行中需要<code>用到和维护的各种资源</code>的容器。这些资源包括但不限于：</p>
+<ul>
+<li>内存地址空间<ul>
+<li>存放代码</li>
+<li>存放数据</li>
+</ul>
+</li>
+<li>句柄<ul>
+<li>文件句柄</li>
+<li>设备句柄</li>
+<li>操作系统句柄</li>
+</ul>
+</li>
+<li>线程<ul>
+<li>主线程（主线程终止时，应用程序也会终止）</li>
+<li>子线程</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程（thread）"><a href="#线程（thread）" class="headerlink" title="线程（thread）"></a>线程（thread）</h2><p>一个线程是一个执行空间，这个空间会被操作系统调度来运行函数中所写的代码。</p>
+<h1 id="G-P-M模型"><a href="#G-P-M模型" class="headerlink" title="G-P-M模型"></a>G-P-M模型</h1><p>操作系统会在处理器上调度线程来运行，而Go语言的运行时会通过<code>调度器</code>（下文简称 <code>Sched</code>）来调度<code>逻辑处理器</code>（下文简称为  <code>P</code>）上调度 <code>goroutine</code> （下文称为 <code>G</code>）来运行。但是 <code>G</code> 并不直接绑定 OS 线程 （下文简称 <code>M</code>）运行，而是由 <code>P</code>（逻辑处理器）来作获取内核线程资源。</p>
+<p>在 Go 程序里我们通过下面的图示来展示 G-P-M 模型：</p>
+<img src="G-P-M模型/5.jpg" alt="Go程序查看运行时P的个数" style="zoom:50%;" />
+
+<h2 id="线程（Machine）"><a href="#线程（Machine）" class="headerlink" title="线程（Machine）"></a>线程（Machine）</h2><p><code>M </code>的个数不定，由Go Runtime调整，最大默认10000个（可通过 <code>runtime/debug</code> 包的 <code>SetMaxThread</code> 来修改）。</p>
+<h2 id="逻辑处理器（Processors）"><a href="#逻辑处理器（Processors）" class="headerlink" title="逻辑处理器（Processors）"></a>逻辑处理器（Processors）</h2><p>当有多个 <code>P</code> 的时候，<code>Sched</code>会将 <code>G</code> 平等的分到每个 <code>P</code> 上。但是，若想真正实现并行的效果，一定要在多核的机器上运行，否则多线程依然在一个核上运行，达不到并行效果。<code>P</code> 内最重要的三个东西：</p>
+<ul>
+<li>执行环境 Context</li>
+<li>内存分配状态</li>
+<li>任务队列 LRQ</li>
+</ul>
+<p>1.5 版本前，默认整个应用程序只分配一个 <code>P</code>（即使只有一个 <code>P</code>，Go也展现了神奇的效率核性能。）</p>
+<p>1.5 版本后，默认给每个可用的核分配一个 <code>P</code>，实际由 <code>GOMAXPROCS</code> 确定，个数固定。</p>
+<p>Go也是通过运行此语句来设置 <code>P</code> 的数量的：</p>
+<pre><code class="go">runtime.GOMAXPROCS(runtime.NumCPU())
+</code></pre>
+<h2 id="协程（Goroutines）"><a href="#协程（Goroutines）" class="headerlink" title="协程（Goroutines）"></a>协程（Goroutines）</h2><p>Go 协程 (goroutine) 是指在后台中运行的轻量级执行线程。</p>
+<h1 id="Sched管理-G-的策略"><a href="#Sched管理-G-的策略" class="headerlink" title="Sched管理 G 的策略"></a><code>Sched</code>管理 <code>G</code> 的策略</h1><h2 id="任务窃取（work-stealing）策略"><a href="#任务窃取（work-stealing）策略" class="headerlink" title="任务窃取（work-stealing）策略"></a>任务窃取（work-stealing）策略</h2><p>每个 <code>P</code> 都有一个 LRQ，用于管理分配给在 <code>P</code> 的上下文中执行的 <code>G</code>，这些 <code>G</code> 轮流被和 <code>P</code> 绑定的 <code>M</code> 进行上下文切换。GRQ 适用于尚未分配给 <code>P</code> 的 <code>G</code>。</p>
+<p>Go程序运行时，当每个 <code>P</code> 之间的 <code>G</code> 任务不均衡时，调度器允许从 GRQ，或者其他 <code>P</code> 的 LRQ 中获取 <code>G</code> 执行。</p>
+<h2 id="G-执行阻塞的系统调用时（如打开文件）"><a href="#G-执行阻塞的系统调用时（如打开文件）" class="headerlink" title="G 执行阻塞的系统调用时（如打开文件）"></a><code>G</code> 执行阻塞的系统调用时（如打开文件）</h2><p>1、<code>Sched</code>会将这个M与 <code>P</code> 分离，该 <code>M</code> 继续阻塞，等待系统调用返回。</p>
+<p>2、与此同时，这个 <code>P</code> 失去了用来运行的 <code>M</code>，所以<code>调度器</code>会再创建一个新的 <code>M</code>，并将其绑定到该 <code>P</code> 上。</p>
+<p>3、之后，<code>Sched</code>从 <code>P </code>的本地运行队列里选择另一个<code>G</code>来运行。</p>
+<p>4、一旦被阻塞的系统调用执行完成并返回，对应的 <code>G</code> 会放回到 <code>P</code> 的本地运行队列，而之前的 <code>M</code> 会保存好，以便继续使用。</p>
+<img src="G-P-M模型/3.png" alt="Go程序查看运行时P的个数" style="zoom: 80%;" />
+
+<center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
+G 遇到阻塞的系统调度
+</b></div><br></center>
+
+<h2 id="如果一个-G-需要做一个网络I-x2F-O调用时"><a href="#如果一个-G-需要做一个网络I-x2F-O调用时" class="headerlink" title="如果一个 G 需要做一个网络I&#x2F;O调用时"></a>如果一个 <code>G</code> 需要做一个网络I&#x2F;O调用时</h2><p>1、<code>Sched</code>会将这个M与 <code>P</code> 分离，并移到继承了网络轮询器的运行时。</p>
+<p>2、一旦轮询器提示某个网络读或写的操作已经就绪，对应的 <code>G</code> 就会重新分配到 <code>P</code> 上来完成操作。</p>
+<img src="G-P-M模型/4.png" alt="Go程序查看运行时P的个数" style="zoom:80%;" />
+
+<center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
+G 遇到网络 I/O 调度
+</b></div><br></center>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huigan/article/details/106134937">https://blog.csdn.net/huigan/article/details/106134937</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baixiaoshi/article/details/105208141">https://blog.csdn.net/baixiaoshi/article/details/105208141</a></p>
+<p>《Go IN ACTION》</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +1003,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>popomen个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="popomen个人博客">
+  <title>Golang依赖管理 | popomen个人博客</title>
+  <meta name="keywords" content=" Golang ">
+  <meta name="description" content="Golang依赖管理 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -792,12 +792,58 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-[Golang]依赖管理" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E8%AF%B4%E7%9A%84%E8%AF%9D"><span class="toc-text">想说的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%91%E6%9C%9F%E5%85%B3%E6%B3%A8"><span class="toc-text">近期关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0"><span class="toc-text">学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">我关注的个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAI-%E4%BD%93%E9%AA%8C"><span class="toc-text">PAI 体验</span></a></li></ol>
+        <h1 class="article-title">Golang依赖管理</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Golang">Golang</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Golang</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2021-11-10 18:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81Golang%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E7%BB%8F%E5%8E%86%E7%9A%84%E4%B8%89%E4%B8%AA%E6%97%B6%E6%9C%9F"><span class="toc-text">1、Golang依赖管理经历的三个时期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81GOPATH%E6%97%B6%E6%9C%9F"><span class="toc-text">1.1、GOPATH时期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E3%80%81vender%E6%97%B6%E6%9C%9F%EF%BC%88%E4%BE%9D%E8%B5%96%E5%8C%85%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%89"><span class="toc-text">1.2、vender时期（依赖包私有化）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E3%80%81Go-Module%E6%97%B6%E6%9C%9F%EF%BC%88%E6%9C%80%E7%BB%88%E5%BD%A2%E6%80%81%EF%BC%89"><span class="toc-text">1.3、Go Module时期（最终形态）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85Golang"><span class="toc-text">2、安装Golang</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81Go-Module%E4%BB%8B%E7%BB%8D"><span class="toc-text">3、Go Module介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81Golang%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">4、Golang相关环境变量介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GOROOT%EF%BC%88Go%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">GOROOT（Go安装目录）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GOPATH%EF%BC%88Go%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="toc-text">GOPATH（Go工作空间）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GO111MODULE"><span class="toc-text">GO111MODULE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GOSUMDB"><span class="toc-text">GOSUMDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GOPROXY"><span class="toc-text">GOPROXY</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81Golang%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="toc-text">5、Golang相关命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#go-get"><span class="toc-text">go get</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-install"><span class="toc-text">go install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-mod-tidy"><span class="toc-text">go mod tidy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-mod-init"><span class="toc-text">go mod init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-build"><span class="toc-text">go build</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-test"><span class="toc-text">go test</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -810,52 +856,119 @@
     }
 </style>
 </div>
-            <h2 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h2><p>暂时没有。</p>
-<h2 id="近期关注"><a href="#近期关注" class="headerlink" title="近期关注"></a>近期关注</h2><ul>
-<li>UFC 赛程：<a target="_blank" rel="noopener" href="http://ufc.cn/schedule.html">http://ufc.cn/schedule.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://golangexample.com/tag/clean-architecture/">https://golangexample.com/tag/clean-architecture/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pungyeon/clean-go-article">https://github.com/Pungyeon/clean-go-article</a></li>
-</ul>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ul>
-<li>【完结】动手学深度学习 PyTorch版：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497</a></li>
-<li>命令注入？：<a target="_blank" rel="noopener" href="https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/">https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/</a></li>
-</ul>
-<h2 id="我关注的个人博客"><a href="#我关注的个人博客" class="headerlink" title="我关注的个人博客"></a>我关注的个人博客</h2><ul>
-<li>徐靖峰：<a target="_blank" rel="noopener" href="https://www.cnkirito.moe/">https://www.cnkirito.moe/</a></li>
-<li>mohuishou：<a target="_blank" rel="noopener" href="https://lailin.xyz/">https://lailin.xyz/</a></li>
-<li>3-hexo主题原作者：<a target="_blank" rel="noopener" href="https://yelog.org/">https://yelog.org/</a></li>
-<li>plantegg：<a target="_blank" rel="noopener" href="https://plantegg.github.io/">https://plantegg.github.io/</a></li>
-</ul>
-<h2 id="PAI-体验"><a href="#PAI-体验" class="headerlink" title="PAI 体验"></a>PAI 体验</h2><table>
-<thead>
-<tr>
-<th>PAI</th>
-<th>ModelArts</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>可视化建模（Designer）</td>
-<td>Workflow</td>
-</tr>
-<tr>
-<td>交互式建模（DSW）</td>
-<td>开发环境</td>
-</tr>
-<tr>
-<td>容器训练（DLC）</td>
-<td>训练管理</td>
-</tr>
-</tbody></table>
-<p>1、阿里云的控制台中，从一个服务跳转到另一个服务没有华为云（华为云左侧有一个bar）方便。<br>2、PAI的工作空间是一个强概念，用户必须手动创建一个工作空间以后才能开始使用PAI的基本功能。<br>3、工作空间内的摆放很有逻辑感，资源管理（资源管理等）和资产管理（Gallery等）。<br>5、PAI的Designer的拖拉拽做的很细致，不过没有仔细了解易用性，仅仅随便用了一下啊。<br>4、PAI的DSW收费门槛摆是100元，因为其并不是容器化部署而是一台ECS。<br>5、PAI的DSW的交互模式有三种：JupyterLab、在线vscode、Terminal（root用户）。<br>6、PAI的DLC启动方式只有一种，那就是命令的方式。<br>7、PAI的DLC分布式模式分为：标准模式、进阶模式。<br>8、DLC的事件系统。时间戳+英文字符串，支持搜索功能。<br>9、DLC的环境准备时间太长！！！日志更新速度太慢，预计104s更新一次。<br>8、计费？？？<br>9、git的体验确实不错，比算法管理体验好了不知道多少倍。</p>
-<p>创建中 &#x2F; 等待中 &#x2F; 运行中 &#x2F; 运行成功<br>运行失败<br>已终止</p>
-<p>创建中 &#x2F; 已创建 &#x2F; 正在执行 &#x2F; 执行成功<br>已失败<br>已停止</p>
-<p>103<br>207<br>311</p>
-<p>优雅终止：无</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1、Golang依赖管理经历的三个时期"><a href="#1、Golang依赖管理经历的三个时期" class="headerlink" title="1、Golang依赖管理经历的三个时期"></a>1、Golang依赖管理经历的三个时期</h1><h2 id="1-1、GOPATH时期"><a href="#1-1、GOPATH时期" class="headerlink" title="1.1、GOPATH时期"></a>1.1、GOPATH时期</h2><pre><code>优点：简单。
+缺点：
+    1. 无法进行依赖版本管理。
+    2. 两个项目依赖相同包的不同版本则无法使用同一个GOPATH。
+</code></pre>
+<h2 id="1-2、vender时期（依赖包私有化）"><a href="#1-2、vender时期（依赖包私有化）" class="headerlink" title="1.2、vender时期（依赖包私有化）"></a>1.2、vender时期（依赖包私有化）</h2><pre><code>优点：
+    1. 项目发布时可以把依赖软件一并发布，编译不受GOPATH影响。
+缺点：
+    1. 依赖版本不易管理。项目依赖不清晰，版本升级审核困难，依赖包版本之间可能存在冲突等。
+</code></pre>
+<h2 id="1-3、Go-Module时期（最终形态）"><a href="#1-3、Go-Module时期（最终形态）" class="headerlink" title="1.3、Go Module时期（最终形态）"></a>1.3、Go Module时期（最终形态）</h2><pre><code>优点：
+    1. 能够准确地记录项目依赖的版本
+    2. 可重复的构建
+</code></pre>
+<h1 id="2、安装Golang"><a href="#2、安装Golang" class="headerlink" title="2、安装Golang"></a>2、安装Golang</h1><pre><code class="Bash">wget https://go.dev/dl/go1.16.10.linux-amd64.tar.gz
 
-        </article>
-        
-        
+# 如果已经安装过Golang建议备份旧版本，方便需要的时候随时切换版本
+# e.g： mv /usr/local/go /usr/local/go1.15-bak
+tar -C /usr/local -xzf go1.16.10.linux-amd64.tar.gz
+
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
+
+mkdir ~/go
+# Go1.8起默认把$HOME/go作为GOPATH目录
+export GOPATH=$HOME/go
+</code></pre>
+<h1 id="3、Go-Module介绍"><a href="#3、Go-Module介绍" class="headerlink" title="3、Go Module介绍"></a>3、Go Module介绍</h1><p>一个项目要使用Go Module，那么其本身要先成为一个module，即需要一个module名字。</p>
+<pre><code class="Bash">go mod init
+</code></pre>
+<p>一共有四个指令</p>
+<ul>
+<li>module：声明module的名称</li>
+<li>require：声明依赖及其版本号</li>
+<li>replace：替换require中声明的依赖，使用另外的依赖及其版本号</li>
+<li>exclude：禁用指定的依赖</li>
+</ul>
+<h1 id="4、Golang相关环境变量介绍"><a href="#4、Golang相关环境变量介绍" class="headerlink" title="4、Golang相关环境变量介绍"></a>4、Golang相关环境变量介绍</h1><h2 id="GOROOT（Go安装目录）"><a href="#GOROOT（Go安装目录）" class="headerlink" title="GOROOT（Go安装目录）"></a>GOROOT（Go安装目录）</h2><p>Go语言安装的位置，其中存放Go编译器和Go标准库。</p>
+<h2 id="GOPATH（Go工作空间）"><a href="#GOPATH（Go工作空间）" class="headerlink" title="GOPATH（Go工作空间）"></a>GOPATH（Go工作空间）</h2><p>GOPATH环境变量指向用户域，每个用户都拥有自己的工作空间而互不干扰。工作空间中存放第三方库和私有库。</p>
+<h2 id="GO111MODULE"><a href="#GO111MODULE" class="headerlink" title="GO111MODULE"></a>GO111MODULE</h2><p>从1.16版本开始，GO111MODULE默认为on</p>
+<h2 id="GOSUMDB"><a href="#GOSUMDB" class="headerlink" title="GOSUMDB"></a>GOSUMDB</h2><p>参考：<a target="_blank" rel="noopener" href="https://goproxy.io/zh/docs/GOSUMDB-env.html">https://goproxy.io/zh/docs/GOSUMDB-env.html</a></p>
+<p>如果你的代码仓库或者模块是私有的，那么它的校验值不应该出现在互联网的公有数据库里面，但是我们本地编译的时候默认所有的依赖下载都会去尝试做校验，这样不仅会校验失败，更会泄漏一些私有仓库的路径等信息，我们可以使用 GONOSUMDB 这个环境变量来设置不做校验的代码仓库，它可以设置多个匹配路径，用逗号相隔。举个例子：</p>
+<pre><code class="Bash">export GONOSUMDB=*.corp.example.com,rsc.io/private
+</code></pre>
+<p>这样的话，像 “git.corp.example.com&#x2F;xyzzy”, “rsc.io&#x2F;private”, 和 “rsc.io&#x2F;private&#x2F;quux”这些公司和自己的私有仓库就都不会做校验了。</p>
+<h2 id="GOPROXY"><a href="#GOPROXY" class="headerlink" title="GOPROXY"></a>GOPROXY</h2><pre><code class="Bash"># Golang官方源
+export GOPROXY=https://proxy.golang.org,direct
+
+# 当前由七牛云维护的Golang源
+export GOPROXY=https://goproxy.cn,direct
+
+# 国内最早Golang代理源
+export GOPROXY=https://goproxy.io,direct
+</code></pre>
+<p>（说明：GOPROXY尾部的 <code>,direct</code> 表示如果代理服务器无法响应（HTTP返回码为404、401除外），则不再继续尝试后续的代理服务器。）</p>
+<h1 id="5、Golang相关命令介绍"><a href="#5、Golang相关命令介绍" class="headerlink" title="5、Golang相关命令介绍"></a>5、Golang相关命令介绍</h1><p><a target="_blank" rel="noopener" href="https://go.dev/ref/mod#go-install">https://go.dev/ref/mod#go-install</a></p>
+<h2 id="go-get"><a href="#go-get" class="headerlink" title="go get"></a>go get</h2><p>获取最新版本或指定版本的依赖软件包并自动更新 <code>go.mod</code> 文件，使该软件包的版本升级为当前指定的版本。</p>
+<pre><code class="Bash"># Upgrade a specific module.
+$ go get -d golang.org/x/net
+
+# Upgrade modules that provide packages imported by packages in the main module.
+$ go get -d -u ./...
+
+# Upgrade or downgrade to a specific version of a module.
+$ go get -d golang.org/x/text@v0.3.2
+
+# Update to the commit on the module&#39;s master branch.
+$ go get -d golang.org/x/text@master
+
+# Remove a dependency on a module and downgrade modules that require it
+# to versions that don&#39;t require it.
+$ go get -d golang.org/x/text@none
+</code></pre>
+<p>（重要：参数 <code>-d</code> 表示只会下载此依赖包的源码而不会构建安装，此参数在未来 Go 版本中将会成为默认值。）</p>
+<h2 id="go-install"><a href="#go-install" class="headerlink" title="go install"></a>go install</h2><p>用于构建和安装软件包。指定具体版本时忽略当前目录下的 <code>go.mod</code> 文件，未指定版本时优先采用当前目录下 <code>go.mod</code> 文件中指定的版本。</p>
+<pre><code class="Bash"># Install the latest version of a program,
+# ignoring go.mod in the current directory (if any).
+$ go install golang.org/x/tools/gopls@latest
+
+# Install a specific version of a program.
+$ go install golang.org/x/tools/gopls@v0.6.4
+
+# Install a program at the version selected by the module in the current directory.
+$ go install golang.org/x/tools/gopls
+
+# Install all programs in a directory.
+$ go install ./cmd/...
+</code></pre>
+<h2 id="go-mod-tidy"><a href="#go-mod-tidy" class="headerlink" title="go mod tidy"></a>go mod tidy</h2><p><code>go mod tidy</code> 确保 <code>go.mod</code> 文件与模块中的源代码匹配。 它添加了构建当前模块的包和依赖项所需的任何缺失的模块要求，并删除了对不提供任何相关包的模块的要求。 它还会将任何缺失的条目添加到 <code>go.sum</code> 并删除不必要的条目。</p>
+<h2 id="go-mod-init"><a href="#go-mod-init" class="headerlink" title="go mod init"></a>go mod init</h2><p>在当前目录中初始化并写入一个新的 <code>go.mod</code> 文件，实际上创建了一个以当前目录为根的新 Module。</p>
+<pre><code class="Bash">go mod init
+go mod init example.com/m
+</code></pre>
+<h2 id="go-build"><a href="#go-build" class="headerlink" title="go build"></a>go build</h2><h2 id="go-test"><a href="#go-test" class="headerlink" title="go test"></a>go test</h2>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -864,11 +977,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
