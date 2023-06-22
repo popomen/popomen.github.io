@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-22 18:22:46'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-22 18:24:57'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -932,8 +932,8 @@
 <p>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM</p>
 </blockquote>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/G-pipe.png" alt="Gpipe 模式"></p>
-<p>问题：峰值内存占用高。可以看出，<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
-<h4 id="PipeDream"><a href="#PipeDream" class="headerlink" title="PipeDream"></a>PipeDream</h4><p>每个 Device 上最少只需要保存 1 份 micro-batch 的激活值，最多需要保存 p 份激活值。</p>
+<p>Gpipe 的问题是峰值内存占用高，<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
+<h4 id="PipeDream"><a href="#PipeDream" class="headerlink" title="PipeDream"></a>PipeDream</h4><p>每个 Device 上最少只需要保存 <code>1</code> 份 micro-batch 的激活值，最多需要保存 <code>p</code> 份激活值。</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/PipeDream.png" alt="PipeDream"></p>
 <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>网络模型结构支持 Architecture</p>
 <ul>
