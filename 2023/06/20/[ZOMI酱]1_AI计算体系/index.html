@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-22 18:34:15'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-22 18:37:09'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -932,8 +932,10 @@
 <p>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM</p>
 </blockquote>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
-<p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。<br>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
-<h4 id="PipeDream-模式"><a href="#PipeDream-模式" class="headerlink" title="PipeDream 模式"></a>PipeDream 模式</h4><p>每个 Device 上最少只需要保存 <code>1</code> 份 micro-batch 的激活值，最多也只需要保存 <code>p</code> 份激活值。</p>
+<p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致激活值份数的上限为 micro-batch 数量 <code>m</code>。</p>
+<p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
+<h4 id="PipeDream-模式"><a href="#PipeDream-模式" class="headerlink" title="PipeDream 模式"></a>PipeDream 模式</h4><p>通过合理安排前向和反向过程的顺序，在 step 中间的稳定阶段，形成 1前向1反向 的形式，称为 1F1B 模式。</p>
+<p>每个 Device 上最少只需要保存 <code>1</code> 份 micro-batch 的激活值，最多也只需要保存 <code>p</code> 份激活值。</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/PipeDream.png" alt="PipeDream"></p>
 <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>网络模型结构支持 Architecture</p>
 <ul>
