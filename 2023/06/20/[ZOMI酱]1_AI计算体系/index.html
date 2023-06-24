@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-24 18:10:57'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-24 18:16:50'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -975,7 +975,11 @@
 <li>Memory Access Cost，内存占用量，用来评价模型在运行时的内存占用情况。 1x1 卷积FLOPs为 2⋅H⋅W⋅C_in∙C_out , 其对应MAC为：<br><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/MAC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.png" alt="MAC计算公式"></li>
 </ul>
 <h3 id="Key-Metrics"><a href="#Key-Metrics" class="headerlink" title="Key Metrics"></a>Key Metrics</h3><p>精度 Accuracy<br>    计算精度 (FP32&#x2F;FP16 etc.)<br>    模型结果精度 (ImageNet 78%)<br>吞吐量 Throughput<br>    高维张量处理 (high dimension tensor)<br>    实时性能 (30 fps or 20 tokens)<br>时延 Latency<br>    交互应用程序 (TTA)<br>能耗 Energy<br>    IOT 设备有限的电池容量<br>    数据中心液冷等大能耗<br>系统价格 System Cost<br>    硬件自身的价格 $$$<br>    系统集成上下游全栈等成本<br>易用性 Flexibility<br>    衡量开发效率和开发难度</p>
-<p>AI 加速器设计关键点：增加 PE（Processing Elements）的核心<strong>数量</strong>，提高 PE 的<strong>利用率</strong>。</p>
+<p>AI 加速器关键设计点：</p>
+<ol>
+<li>针对 MACs，去掉没有意义的 MACs（增加对系数数据的硬件结构），降低每次 MAC 的计算时间（提升时钟频率，减少指令开销）。</li>
+<li>针对 PE（Processing Elements），增加 PE 的核心<strong>数量</strong>，提高 PE 的<strong>利用率</strong>。</li>
+</ol>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><p><a target="_blank" rel="noopener" href="https://github.com/chenzomi12/DeepLearningSystem">https://github.com/chenzomi12/DeepLearningSystem</a></p>
 <h2 id="第一篇章"><a href="#第一篇章" class="headerlink" title="第一篇章"></a>第一篇章</h2><p>合集·【AI框架】基础概念：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=760692">链接</a><br>合集·【AI框架】分布式并行策略：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=936465">链接</a><br>合集·【AI编译器】传统编译器：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=857162">链接</a><br>合集·【推理系统】整体概述：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=997962">链接</a></p>
 <h2 id="第二篇章"><a href="#第二篇章" class="headerlink" title="第二篇章"></a>第二篇章</h2><p>合集·【AI芯片】AI计算体系：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=1178207">链接</a><br>合集·【AI芯片】芯片基础：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=1243029">链接</a></p>
