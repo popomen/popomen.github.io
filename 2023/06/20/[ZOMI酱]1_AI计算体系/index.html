@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-24 19:52:00'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-24 19:58:56'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -979,10 +979,11 @@
 <li>针对 MACs，去掉没有意义的 MACs（增加对系数数据的硬件结构），降低每次 MAC 的计算时间（提升时钟频率，减少指令开销）。</li>
 <li>针对 PE（Processing Elements），增加 PE 的核心<strong>数量</strong>，提高 PE 的<strong>利用率</strong>。</li>
 </ol>
-<h3 id="计算性能仿真"><a href="#计算性能仿真" class="headerlink" title="计算性能仿真"></a>计算性能仿真</h3><blockquote>
-<p>论文原文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1807.07928.pdf">https://arxiv.org/pdf/1807.07928.pdf</a></p>
-</blockquote>
+<h3 id="计算性能仿真"><a href="#计算性能仿真" class="headerlink" title="计算性能仿真"></a>计算性能仿真</h3><p>下文贴图论文原文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1807.07928.pdf">Eyeriss v2: A Flexible Accelerator for Emerging Deep Neural Networks on Mobile Devices</a></p>
 <p>Roofline模型是一种面向吞吐量的性能评价模型，它指出在理想情况下，处理器性能的理论上界。</p>
+<blockquote>
+<p>介绍Roofline模型的一文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34204282">https://zhuanlan.zhihu.com/p/34204282</a></p>
+</blockquote>
 <p>通过提高PE核心数量可以线性提升算力 <code>ops/sec</code>，但是到达平衡点后，算例</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Therooflinemodel.png" alt="roofline 模型"></p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Impactofstepsontherooflinemodel.png" alt="Impact of steps on the roofline model"></p>
