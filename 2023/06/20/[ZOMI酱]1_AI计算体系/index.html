@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://popomen.top/categories/index.html">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://popomen.top/tags/index.html">
 <meta property="og:site_name" content="popomen个人博客">
 <meta property="og:description" content="记性不好">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-21T04:46:19.000Z">
-<meta property="article:modified_time" content="2022-08-24T12:52:49.501Z">
+<meta property="article:published_time" content="2020-11-21T04:51:06.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:52:57.632Z">
 <meta property="article:author" content="popomen">
 <meta name="twitter:card" content="summary">
 
@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-24 20:38:06'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-24 20:41:03'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -983,13 +983,12 @@
 <h4 id="Roofline-模型简介"><a href="#Roofline-模型简介" class="headerlink" title="Roofline 模型简介"></a>Roofline 模型简介</h4><p>Roofline 模型是一种面向吞吐量的性能评价模型，它指出在理想情况下，处理器性能的理论上界。<br>（下文贴图论文原文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1807.07928.pdf">Eyeriss v2: A Flexible Accelerator for Emerging Deep Neural Networks on Mobile Devices</a>）</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Therooflinemodel.png" alt="roofline 模型"></p>
 <ul>
-<li>横轴代表<strong>计算强度（单位：ops &#x2F; byte）</strong>，决定于网络模型的 <strong>计算量</strong> 和 <strong>访存量</strong>。</li>
-<li>纵轴代表<strong>计算性能（单位：ops &#x2F; sec）</strong>，决定于芯片内 PE 数量。</li>
-<li>斜率代表<strong>带宽（单位：byte &#x2F; sec）</strong>，决定于芯片内存读写速率。</li>
+<li>横轴代表 <strong>计算强度（单位：ops &#x2F; byte）</strong>，决定于网络模型的 <strong>计算量</strong> 和 <strong>访存量</strong>。</li>
+<li>纵轴代表 <strong>计算性能（单位：ops &#x2F; sec）</strong>，其最大值（即平台算力）决定于芯片内 <strong>PE 数量</strong>。</li>
+<li>斜率代表 <strong>带宽（单位：byte &#x2F; sec）</strong>，决定于芯片内 <strong>带宽</strong>。</li>
 </ul>
 <p>算法工程师视角：希望能够达到</p>
-<h4 id="处于右侧（屋顶）"><a href="#处于右侧（屋顶）" class="headerlink" title="处于右侧（屋顶）"></a>处于右侧（屋顶）</h4><h4 id="处于左侧（屋檐）"><a href="#处于左侧（屋檐）" class="headerlink" title="处于左侧（屋檐）"></a>处于左侧（屋檐）</h4><p>芯片用户视角：</p>
-<p>芯片厂商视角：</p>
+<h4 id="处于右侧（屋顶）"><a href="#处于右侧（屋顶）" class="headerlink" title="处于右侧（屋顶）"></a>处于右侧（屋顶）</h4><h4 id="处于左侧（屋檐）"><a href="#处于左侧（屋檐）" class="headerlink" title="处于左侧（屋檐）"></a>处于左侧（屋檐）</h4><p>不管模型的计算强度有多大，它的理论性能最大只能等于计算平台的算力。当模型的计算强度大于计算平台的计算强度上限时，模型在当前计算平台处于 Compute-Bound状态，即模型的理论性能受到计算平台算力的限制，无法与计算强度成正比。但这其实并不是一件坏事，因为从充分利用计算平台算力的角度上看，此时模型已经的利用了计算平台的全部算力。可见，计算平台的算力越高模型进入计算瓶颈区域后的理论性能也就越大。</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Impactofstepsontherooflinemodel.png" alt="Impact of steps on the roofline model"></p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><p><a target="_blank" rel="noopener" href="https://github.com/chenzomi12/DeepLearningSystem">https://github.com/chenzomi12/DeepLearningSystem</a></p>
 <h2 id="第一篇章"><a href="#第一篇章" class="headerlink" title="第一篇章"></a>第一篇章</h2><p>合集·【AI框架】基础概念：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=760692">链接</a><br>合集·【AI框架】分布式并行策略：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=936465">链接</a><br>合集·【AI编译器】传统编译器：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=857162">链接</a><br>合集·【推理系统】整体概述：<a target="_blank" rel="noopener" href="https://space.bilibili.com/517221395/channel/collectiondetail?sid=997962">链接</a></p>
