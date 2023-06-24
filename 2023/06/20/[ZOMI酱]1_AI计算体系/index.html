@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-24 21:10:21'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-24 21:11:39'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -999,7 +999,7 @@
 <h4 id="矩阵乘分块-Tiling"><a href="#矩阵乘分块-Tiling" class="headerlink" title="矩阵乘分块 Tiling"></a>矩阵乘分块 Tiling</h4><p>根据 Cache 大小来对矩阵进行分块 Tiling，最大程度重用数据和利用空间换时间</p>
 <h4 id="CPU-x2F-GPU-支持矩阵乘的库"><a href="#CPU-x2F-GPU-支持矩阵乘的库" class="headerlink" title="CPU&#x2F;GPU 支持矩阵乘的库"></a>CPU&#x2F;GPU 支持矩阵乘的库</h4><p>&#x2F;&#x2F; TODO</p>
 <p>实现逻辑：<br>Lib 感知相乘矩阵的 Shape<br>选择最优的 Kernel 实现来执行<br>实现方法：<br>Loop 循环优化 (Loop tiling)<br>多级缓存 (memory hierarchy)<br>现有库：Matrix Multiplication (GEMM)<br>CPU: OpenBLAS, Intel MKL, etc.<br>GPU: cuBLAS, cuDNN, etc.</p>
-<p><img src="/Pasted%20image%2020230624211020.png"></p>
+<p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/matric.png" alt="matric"></p>
 <h4 id="卷积代替算法"><a href="#卷积代替算法" class="headerlink" title="卷积代替算法"></a>卷积代替算法</h4><h4 id="减少指令开销"><a href="#减少指令开销" class="headerlink" title="减少指令开销"></a>减少指令开销</h4><h2 id="思考总结-1"><a href="#思考总结-1" class="headerlink" title="思考总结"></a>思考总结</h2><ul>
 <li>精度 Accuracy<ul>
 <li>能够处理各类型的无规则数据 &gt;&gt; 异构平台</li>
