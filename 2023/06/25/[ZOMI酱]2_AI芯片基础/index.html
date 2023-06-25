@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-25 23:03:04'>2023-06-25 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-25 23:14:35'>2023-06-25 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -853,7 +853,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86%E5%99%A8-CPU"><span class="toc-text">通用处理器 CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9E%B6%E6%9E%84"><span class="toc-text">冯诺依曼架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-text">并行处理架构</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86%E5%99%A8-CPU"><span class="toc-text">通用处理器 CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9E%B6%E6%9E%84"><span class="toc-text">冯诺依曼架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-text">并行处理架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SIMT%EF%BC%88%E5%8D%95%E6%8C%87%E4%BB%A4%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89"><span class="toc-text">SIMT（单指令多线程）</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -880,12 +880,30 @@
 <p>CPU主要擅长是逻辑控制，而非计算。</p>
 <p><img src="/Pasted%20image%2020230625225921.png"></p>
 <h2 id="并行处理架构"><a href="#并行处理架构" class="headerlink" title="并行处理架构"></a>并行处理架构</h2><ul>
-<li>单指令流单数流（SISD）系统。</li>
-<li>单指令流多数据流（SIMD）系统。</li>
-<li>多指令流单数据流（MISD）系统。 </li>
-<li>多指令流多数据流（MIMD）系统。</li>
+<li>单指令流单数流（SISD）系统。<ul>
+<li>每个指令部件每次仅译码一条指令，而且在执行时仅为操作部件提供一份数据</li>
+<li>串行计算，硬件不支持并行计算；在时钟周期内，CPU只能处理一个数据流。</li>
+</ul>
+</li>
+<li>单指令流多数据流（SIMD）系统。<ul>
+<li>一个控制器控制多个处理器，同时对一组数据中每一个分别执行相同操作</li>
+<li>SIMD主要执行向量、矩阵等数组运算，处理单元数目固定，适用于科学计算</li>
+<li>特点是处理单元数量很多， 但处理单元速度受计算机通讯带宽传递速率的限制</li>
+</ul>
+</li>
+<li>多指令流单数据流（MISD）系统。 <ul>
+<li>作为理论模型出现，没有投入到实际应用之中</li>
+</ul>
+</li>
+<li>多指令流多数据流（MIMD）系统。<ul>
+<li>在多个数据集上执行多个指令的多处理器机器</li>
+<li>共享内存 MIMD 和分布式内存 MIMD</li>
+</ul>
+</li>
 </ul>
 <p><img src="/Pasted%20image%2020230625230259.png"></p>
+<h3 id="SIMT（单指令多线程）"><a href="#SIMT（单指令多线程）" class="headerlink" title="SIMT（单指令多线程）"></a>SIMT（单指令多线程）</h3><p>单指令多线程，有效地管理和执行多个单线程，允许一条指令的多数据分开寻址<br>无需开发者把数据凑成合适的矢量长度，并且SIMT允许每个线程有不同的分支<br>条件跳转会根据输入数据不同在不同的线程中有不同表现</p>
+<p><img src="/Pasted%20image%2020230625231401.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
