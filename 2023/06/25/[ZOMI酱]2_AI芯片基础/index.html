@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-25 23:23:09'>2023-06-25 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-25 23:26:29'>2023-06-25 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -853,7 +853,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86%E5%99%A8-CPU"><span class="toc-text">通用处理器 CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9E%B6%E6%9E%84"><span class="toc-text">冯诺依曼架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-text">并行处理架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SIMT%EF%BC%88%E5%8D%95%E6%8C%87%E4%BB%A4%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89"><span class="toc-text">SIMT（单指令多线程）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86%E5%99%A8-CPU"><span class="toc-text">通用处理器 CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9E%B6%E6%9E%84"><span class="toc-text">冯诺依曼架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-text">并行处理架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SIMT%EF%BC%88%E5%8D%95%E6%8C%87%E4%BB%A4%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89"><span class="toc-text">SIMT（单指令多线程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CISC-%E6%9E%B6%E6%9E%84%E5%92%8C-RISC-%E6%9E%B6%E6%9E%84"><span class="toc-text">CISC 架构和 RISC 架构</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -908,8 +908,71 @@
 <li>条件跳转会根据输入数据不同在不同的线程中有不同表现</li>
 </ul>
 <p><img src="/Pasted%20image%2020230625231401.png"></p>
-<p>CISC 架构和 RISC 架构</p>
-<p>CISC架构：复杂指令集架构，如 X86。<br>RISC架构：简单指令集架构，如 ARM。</p>
+<h3 id="CISC-架构和-RISC-架构"><a href="#CISC-架构和-RISC-架构" class="headerlink" title="CISC 架构和 RISC 架构"></a>CISC 架构和 RISC 架构</h3><p>CISC架构：复杂指令集架构，指令数量 &gt; 200，如 X86。<br>RISC架构：简单指令集架构，指令数量 &lt; 100，如 ARM。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>CISC</td>
+<td>RISC</td>
+</tr>
+<tr>
+<td>指令系统</td>
+<td>复杂，庞大</td>
+<td>简单，精简</td>
+</tr>
+<tr>
+<td>指令数据</td>
+<td>&gt;200</td>
+<td>&lt;100</td>
+</tr>
+<tr>
+<td>指令长度</td>
+<td>不固定</td>
+<td>定长</td>
+</tr>
+<tr>
+<td>可访存指令</td>
+<td>不加限制</td>
+<td>只有Load&#x2F;Store指令</td>
+</tr>
+<tr>
+<td>指令执行时间</td>
+<td>相差较大</td>
+<td>大部分在一个周期内完成</td>
+</tr>
+<tr>
+<td>指令使用频率</td>
+<td>相差较大</td>
+<td>都比较常用</td>
+</tr>
+<tr>
+<td>通用寄存器数</td>
+<td>较少</td>
+<td>多</td>
+</tr>
+<tr>
+<td>目标代码</td>
+<td>难以用优化编译生成高效的目标代码程序</td>
+<td>采用优化的编译程序，生成代码较为高效</td>
+</tr>
+<tr>
+<td>控制方式</td>
+<td>微程序控制</td>
+<td>组合逻辑控制</td>
+</tr>
+<tr>
+<td>指令流水</td>
+<td>可以通过一定方式实现</td>
+<td>必须实现</td>
+</tr>
+</tbody></table>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
