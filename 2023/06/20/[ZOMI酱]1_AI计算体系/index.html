@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://popomen.top/tags/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://popomen.top/categories/index.html">
 <meta property="og:site_name" content="popomen个人博客">
 <meta property="og:description" content="记性不好">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-21T04:51:06.000Z">
-<meta property="article:modified_time" content="2022-08-24T12:52:57.632Z">
+<meta property="article:published_time" content="2020-11-21T04:46:19.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:52:49.501Z">
 <meta property="article:author" content="popomen">
 <meta name="twitter:card" content="summary">
 
@@ -823,7 +823,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-25 22:26:54'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-25 22:31:00'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -1001,6 +1001,7 @@
 <p>实现逻辑：<br>Lib 感知相乘矩阵的 Shape<br>选择最优的 Kernel 实现来执行<br>实现方法：<br>Loop 循环优化 (Loop tiling)<br>多级缓存 (memory hierarchy)<br>现有库：Matrix Multiplication (GEMM)<br>CPU: OpenBLAS, Intel MKL, etc.<br>GPU: cuBLAS, cuDNN, etc.</p>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/matric.png" alt="matric"></p>
 <h4 id="卷积代替算法"><a href="#卷积代替算法" class="headerlink" title="卷积代替算法"></a>卷积代替算法</h4><h4 id="减少指令开销"><a href="#减少指令开销" class="headerlink" title="减少指令开销"></a>减少指令开销</h4><h3 id="比特位宽（bits-width）"><a href="#比特位宽（bits-width）" class="headerlink" title="比特位宽（bits width）"></a>比特位宽（bits width）</h3><p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/bits_width.png" alt="常见比特位宽"></p>
+<p>降低精度的好处：<br>1、对于 MAC 的输入和输出，能够有效减少数据的搬运和存储开销<br>2、减少 MAC 计算的开销和代价<br>3、降低位宽对功耗和芯片面积的影响</p>
 <h2 id="思考总结-1"><a href="#思考总结-1" class="headerlink" title="思考总结"></a>思考总结</h2><ul>
 <li>精度 Accuracy<ul>
 <li>能够处理各类型的无规则数据 &gt;&gt; 异构平台</li>
