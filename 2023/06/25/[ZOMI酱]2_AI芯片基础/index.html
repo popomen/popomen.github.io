@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-06-25 22:59:22'>2023-06-25 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-25 23:02:39'>2023-06-25 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -853,7 +853,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86%E5%99%A8-CPU"><span class="toc-text">通用处理器 CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9E%B6%E6%9E%84"><span class="toc-text">冯诺依曼架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-text">并行处理架构</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -869,12 +869,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/Pasted%20image%2020230625225831.png"></p>
-<p>运算器：也叫算术逻辑单元（ALU），负责算术运算和逻辑运算。</p>
-<p>寄存器：分为指令寄存器和数据寄存器，负责暂存指令、ALU所需操作数、ALU算出结果等。</p>
-<p>控制器：负责调度工作，包括对要执行的指令进行译码、从内存中调取数据给寄存器、向运算器和寄存器发出具体操作指令等。</p>
+        <p>实质上ALU模块(逻辑运算单元)是用来完成数据计算，其他各个模块的存在都是为了保证指令能够一条接一条的有序执行。这种通用性结构对于传统的编程计算模式非常适合，同时可以通过提升CPU主频(提升单位时间内执行指令的条数)来提升计算速度。 </p>
+<h1 id="通用处理器-CPU"><a href="#通用处理器-CPU" class="headerlink" title="通用处理器 CPU"></a>通用处理器 CPU</h1><h2 id="冯诺依曼架构"><a href="#冯诺依曼架构" class="headerlink" title="冯诺依曼架构"></a>冯诺依曼架构</h2><p>由运算器、控制器、存储器、输入和输出设备 <code>5</code> 部分组成：</p>
+<ul>
+<li>运算器：也叫算术逻辑单元（ALU），负责算术运算和逻辑运算。</li>
+<li>寄存器：分为指令寄存器和数据寄存器，负责暂存指令、ALU所需操作数、ALU算出结果等。</li>
+<li>控制器：负责调度工作，包括对要执行的指令进行译码、从内存中调取数据给寄存器、向运算器和寄存器发出具体操作指令等。</li>
+</ul>
+<p><img src="/Pasted%20image%2020230625225831.png"></p>
+<p>CPU主要擅长是逻辑控制，而非计算。</p>
 <p><img src="/Pasted%20image%2020230625225921.png"></p>
-
+<h2 id="并行处理架构"><a href="#并行处理架构" class="headerlink" title="并行处理架构"></a>并行处理架构</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
     </div>
