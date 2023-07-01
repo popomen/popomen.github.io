@@ -449,11 +449,11 @@
         </a>
         
         <a  class="全部文章 "
-           href="/2023/06/20/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/"
+           href="/2023/06/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/"
            data-tag="AI,AI芯片"
            data-author="" >
             <span class="post-title" title="【zomi笔记】分布式并行策略">【zomi笔记】分布式并行策略</span>
-            <span class="post-date" title="2023-06-20 20:44:14">2023/06/20</span>
+            <span class="post-date" title="2023-06-02 20:44:14">2023/06/02</span>
         </a>
         
         <a  class="全部文章 "
@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:01:00'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:04:22'>2023-06-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -902,7 +902,7 @@ ddp_model = DDP(my_module)
 <li>通过分 bucket（包含几个 layer 的参数）的方式，把集合通讯的时间隐藏在了 backward 计算的时间里面。</li>
 <li>多进程的方式，支持多机多卡。</li>
 </ul>
-<p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/Distributed_Gradient_Reduction.png" alt="Distributed_Gradient_Reduction"></p>
+<p><img src="/2023/06/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/Distributed_Gradient_Reduction.png" alt="Distributed_Gradient_Reduction"></p>
 <h2 id="FSDP（完全分片）"><a href="#FSDP（完全分片）" class="headerlink" title="FSDP（完全分片）"></a>FSDP（完全分片）</h2><pre><code class="Python">from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
 sharded_module = FSDP(my_module)
 </code></pre>
@@ -912,7 +912,7 @@ sharded_module = FSDP(my_module)
 <li>通过跨数据并行工作程序分片模型的 parameters，gradients，optimizer states，打破模型分片的障碍。</li>
 </ul>
 <p><img src="https://pytorch.org/assets/images/fsdp_workflow.png" alt="FSDP 工作流"></p>
-<h3 id="ZeRO"><a href="#ZeRO" class="headerlink" title="ZeRO"></a>ZeRO</h3><p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/ZeRO123.png" alt="ZeRO1 ZeRO2 ZeRO3 "></p>
+<h3 id="ZeRO"><a href="#ZeRO" class="headerlink" title="ZeRO"></a>ZeRO</h3><p><img src="/2023/06/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/ZeRO123.png" alt="ZeRO1 ZeRO2 ZeRO3 "></p>
 <p>盘点一下 GPU 显存都去哪了：</p>
 <ul>
 <li><strong>model states</strong><ul>
@@ -928,7 +928,7 @@ sharded_module = FSDP(my_module)
 </ul>
 </li>
 </ul>
-<p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/where_did_all_the_memory_go.png" alt="where did all the memory go?"></p>
+<p><img src="/2023/06/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/where_did_all_the_memory_go.png" alt="where did all the memory go?"></p>
 <p>ZeRO-1 : Optimizer States Sharding（P os）<br>ZeRO-2 : Optimizer States &amp; Gradients Sharding（P os+g）<br>ZeRO-3 : Optimizer States &amp; Gradients &amp; Parameters Sharding（P os+g+p）</p>
 <p>ZeRO1 和 ZeRO2 没有带来额外的通讯，因为 all-reduce 就是这么实现的。<br>ZeRO3 确实带来了额外的通讯，因为权重计算时候需要从其他卡上取，通信量大约是先前的 1.5 倍，不过理想情况下可以通过异步的方式把这些时间隐藏起来。</p>
 <p>总体思想：用带宽换取宝贵的显存空间。</p>
