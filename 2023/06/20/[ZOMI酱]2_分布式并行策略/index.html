@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:37:20'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:38:13'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -952,6 +952,7 @@ sharded_module = FSDP(my_module)
 <p>virtual pipeline 带来的 空泡占比降低 和 step e2e 时间缩短的优势并不是凭空得来，Megatron-2 做出这样改进的本钱主要是在 DGX-box 中，NVLINK 带宽高，通信带来的 overhead 不是很明显。</p>
 <p>（要求：micro-batch 的数量是流水线阶段的整数倍。）</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>论文：</p>
+<p>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">https://arxiv.org/abs/2104.04473</a></p>
 <p>官方文档：<br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/">Massively Scale Your Deep Learning Training with NCCL 2.4</a><br><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html">Collective Operations</a></p>
 <p>知乎文章：</p>
 <ul>
@@ -966,7 +967,10 @@ sharded_module = FSDP(my_module)
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tY411g7ZT">Zero 论文精读【论文精读】</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nB4y1R7Yz">Megatron LM 论文精读【论文精读】</a></li>
 </ul>
-<p>其他文章：<br>[<a target="_blank" rel="noopener" href="https://colossalai.org/zh-Hans/docs/features/pipeline_parallel/]https://colossalai.org/zh-Hans/docs/features/pipeline_parallel">https://colossalai.org/zh-Hans/docs/features/pipeline_parallel/]https://colossalai.org/zh-Hans/docs/features/pipeline_parallel</a></p>
+<p>其他文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://colossalai.org/zh-Hans/docs/features/pipeline_parallel">Colossal-AI 介绍流水并行</a></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
