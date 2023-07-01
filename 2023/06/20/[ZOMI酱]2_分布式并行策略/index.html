@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://popomen.top/categories/index.html">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://popomen.top/tags/index.html">
 <meta property="og:site_name" content="popomen个人博客">
 <meta property="og:description" content="记性不好">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-21T04:46:19.000Z">
-<meta property="article:modified_time" content="2022-08-24T12:52:49.501Z">
+<meta property="article:published_time" content="2020-11-21T04:51:06.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:52:57.632Z">
 <meta property="article:author" content="popomen">
 <meta name="twitter:card" content="summary">
 
@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 22:46:20'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-01 22:49:21'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -923,7 +923,8 @@ sharded_module = FSDP(my_module)
 </ul>
 <p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/where_did_all_the_memory_go.png" alt="where did all the memory go?"></p>
 <p>ZeRO-1 : Optimizer States Sharding（os）<br>ZeRO-2 : Optimizer States &amp; Gradients Sharding（os+g）<br>ZeRO-3 : Optimizer States &amp; Gradients &amp; Parameters Sharding（os+g+p）</p>
-<p>PS：ZeRO1 和 ZeRO2 没有带来额外的通讯，因为 all-reduce 就是这么实现的，而 ZeRO3 确实带来了额外的通讯，因为qu’a。</p>
+<p>ZeRO1 和 ZeRO2 没有带来额外的通讯，因为 all-reduce 就是这么实现的。<br>ZeRO3 确实带来了额外的通讯，因为权重计算时候需要从其他卡上取，通信量大约是先前的 1.5 倍，不过理想情况下可以通过异步的方式把这些时间隐藏起来。</p>
+<p>用dai’kua</p>
 <h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><p><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/269420">https://bbs.huaweicloud.com/blogs/269420</a></p>
 <h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nB4y1R7Yz"># Megatron LM 论文精读【论文精读】</a></p>
 <p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
