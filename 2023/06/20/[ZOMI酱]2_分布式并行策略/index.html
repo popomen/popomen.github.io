@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:38:13'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:43:13'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -938,8 +938,7 @@ sharded_module = FSDP(my_module)
 <h4 id="Deep-Dive-into-ZeRO-DP"><a href="#Deep-Dive-into-ZeRO-DP" class="headerlink" title="Deep Dive into ZeRO-DP"></a>Deep Dive into ZeRO-DP</h4><p>ZeRO-1 : Optimizer States Sharding（P os）<br>ZeRO-2 : Optimizer States &amp; Gradients Sharding（P os+g）<br>ZeRO-3 : Optimizer States &amp; Gradients &amp; Parameters Sharding（P os+g+p）</p>
 <p>ZeRO1 和 ZeRO2 没有带来额外的通讯，因为 all-reduce 就是这么实现的。<br>ZeRO3 确实带来了额外的通讯，因为权重计算时候需要从其他卡上取，通信量大约是先前的 1.5 倍，不过理想情况下可以通过异步的方式把这些时间隐藏起来。</p>
 <p>总体思想：用高带宽换取宝贵的显存空间。</p>
-<h4 id="Deep-Dive-into-ZeRO-R"><a href="#Deep-Dive-into-ZeRO-R" class="headerlink" title="Deep Dive into ZeRO-R"></a>Deep Dive into ZeRO-R</h4><h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><p><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/269420">https://bbs.huaweicloud.com/blogs/269420</a></p>
-<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
+<h4 id="Deep-Dive-into-ZeRO-R"><a href="#Deep-Dive-into-ZeRO-R" class="headerlink" title="Deep Dive into ZeRO-R"></a>Deep Dive into ZeRO-R</h4><h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
 <p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
@@ -952,7 +951,7 @@ sharded_module = FSDP(my_module)
 <p>virtual pipeline 带来的 空泡占比降低 和 step e2e 时间缩短的优势并不是凭空得来，Megatron-2 做出这样改进的本钱主要是在 DGX-box 中，NVLINK 带宽高，通信带来的 overhead 不是很明显。</p>
 <p>（要求：micro-batch 的数量是流水线阶段的整数倍。）</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>论文：</p>
-<p>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">https://arxiv.org/abs/2104.04473</a></p>
+<p>23 Aug 2021<br>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">https://arxiv.org/abs/2104.04473</a></p>
 <p>官方文档：<br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/">Massively Scale Your Deep Learning Training with NCCL 2.4</a><br><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html">Collective Operations</a></p>
 <p>知乎文章：</p>
 <ul>
@@ -970,6 +969,7 @@ sharded_module = FSDP(my_module)
 <p>其他文章：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://colossalai.org/zh-Hans/docs/features/pipeline_parallel">Colossal-AI 介绍流水并行</a></li>
+<li><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/269420">分布式训练Allreduce算法</a></li>
 </ul>
 
       
