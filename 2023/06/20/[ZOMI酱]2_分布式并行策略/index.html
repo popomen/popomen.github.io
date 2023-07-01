@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:58:17'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:01:00'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -932,8 +932,8 @@ sharded_module = FSDP(my_module)
 <p>ZeRO-1 : Optimizer States Sharding（P os）<br>ZeRO-2 : Optimizer States &amp; Gradients Sharding（P os+g）<br>ZeRO-3 : Optimizer States &amp; Gradients &amp; Parameters Sharding（P os+g+p）</p>
 <p>ZeRO1 和 ZeRO2 没有带来额外的通讯，因为 all-reduce 就是这么实现的。<br>ZeRO3 确实带来了额外的通讯，因为权重计算时候需要从其他卡上取，通信量大约是先前的 1.5 倍，不过理想情况下可以通过异步的方式把这些时间隐藏起来。</p>
 <p>总体思想：用带宽换取宝贵的显存空间。</p>
-<h3 id="ZeRO-Offload"><a href="#ZeRO-Offload" class="headerlink" title="ZeRO-Offload"></a>ZeRO-Offload</h3><p>让人人都能训练得起大模型</p>
-<h3 id="ZeRO-Infinity"><a href="#ZeRO-Infinity" class="headerlink" title="ZeRO-Infinity"></a>ZeRO-Infinity</h3><p>利用NVMe打破GPU显存墙</p>
+<h3 id="ZeRO-Offload"><a href="#ZeRO-Offload" class="headerlink" title="ZeRO-Offload"></a>ZeRO-Offload</h3><p>一共就这么几张卡，显存不够用？考虑”借“用 Host 的内存。</p>
+<h3 id="ZeRO-Infinity"><a href="#ZeRO-Infinity" class="headerlink" title="ZeRO-Infinity"></a>ZeRO-Infinity</h3><p>面向大规模</p>
 <h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
