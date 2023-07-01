@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:46:13'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-01 23:47:45'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -944,12 +944,13 @@ sharded_module = FSDP(my_module)
 <p>按照这种方式，Device之间的点对点通信次数(量)直接翻了 virtual_pipeline_stage 倍，但空泡比率降低了。</p>
 <p>virtual pipeline 带来的 空泡占比降低 和 step e2e 时间缩短的优势并不是凭空得来，Megatron-2 做出这样改进的本钱主要是在 DGX-box 中，NVLINK 带宽高，通信带来的 overhead 不是很明显。</p>
 <p>（要求：micro-batch 的数量是流水线阶段的整数倍。）</p>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>论文：</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>相关论文：</p>
 <ul>
-<li>13 May 2020，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.02054">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</a></li>
-<li>18 Jan 2021，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.06840">ZeRO-Offload: Democratizing Billion-Scale Model Training</a></li>
-<li>16 Apr 2021，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.07857">ZeRO-Infinity: Breaking the GPU Memory Wallfor Extreme Scale Deep Learning</a></li>
-<li>23 Aug 2021，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM</a></li>
+<li>【28 Jun 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.15704">PyTorch Distributed: Experiences on Accelerating Data Parallel Training</a></li>
+<li>【13 May 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.02054">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</a></li>
+<li>【18 Jan 2021】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.06840">ZeRO-Offload: Democratizing Billion-Scale Model Training</a></li>
+<li>【16 Apr 2021】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.07857">ZeRO-Infinity: Breaking the GPU Memory Wallfor Extreme Scale Deep Learning</a></li>
+<li>【23 Aug 2021】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM</a></li>
 </ul>
 <p>官方文档：<br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/">Massively Scale Your Deep Learning Training with NCCL 2.4</a><br><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html">Collective Operations</a></p>
 <p>知乎文章：</p>
