@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:06:57'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:09:52'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -915,13 +915,13 @@ sharded_module = FSDP(my_module)
 <h3 id="ZeRO"><a href="#ZeRO" class="headerlink" title="ZeRO"></a>ZeRO</h3><p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/ZeRO123.png" alt="ZeRO1 ZeRO2 ZeRO3 "></p>
 <p>盘点一下 GPU 显存都去哪了：</p>
 <ul>
-<li><strong>model states</strong><ul>
+<li><strong>Model States</strong><ul>
 <li><strong>Optimizer States</strong>：优化器状态，例如 ADAM 优化器要求为每一个 weight 保存一份 momentum 和 variance。</li>
 <li><strong>Gradients</strong>：梯度</li>
 <li><strong>Model Parameters</strong>：模型的权重参数 weight。</li>
 </ul>
 </li>
-<li><strong>residual states</strong><ul>
+<li><strong>Residual States</strong><ul>
 <li><strong>Temporary Buffer</strong>：临时缓冲空间，为提升跨设备通信的吞吐量，需要临时申请的空间。例如梯度 all-reduce 时候需要把所有梯度拷贝到一个集中的缓冲区。</li>
 <li><strong>Memory Fragmentation</strong>：内存碎片。首先，GPU不存在虚拟内存的概念，申请的内存就是物理内存。其次，Pytorch 这种动态图 AI 框架，训练过程会进行频繁的申请和释放内存，因此会产生大量内存碎片。</li>
 <li><strong>Acivations</strong>：激活值，forward 计算得到的中间结果，到 backward 计算的时候需要使用。Acivations 与 batch size、sequence lenth 都存在线性关系。</li>
@@ -934,7 +934,8 @@ sharded_module = FSDP(my_module)
 <p>总体思想：用带宽换取宝贵的显存空间。</p>
 <h3 id="ZeRO-Offload"><a href="#ZeRO-Offload" class="headerlink" title="ZeRO-Offload"></a>ZeRO-Offload</h3><p>一共就这么几张卡，显存不够用？考虑”借“用 Host 的内存。</p>
 <h3 id="ZeRO-Infinity"><a href="#ZeRO-Infinity" class="headerlink" title="ZeRO-Infinity"></a>ZeRO-Infinity</h3><p>面向大规模</p>
-<h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
+<h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><p>All-Reduce &#x3D; Reduce-Scatter + All-Gather</p>
+<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
 <p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
