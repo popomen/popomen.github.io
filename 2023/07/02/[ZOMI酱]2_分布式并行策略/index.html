@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 20:02:00'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 20:03:41'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -942,7 +942,7 @@ sharded_module = FSDP(my_module)
 <li>最常见的是 MatMul 算子并行，扩展到 Embedding、MLP、Transformer 等算子并行。</li>
 <li>需要注意随机性问题，注意带有随机性算子的随机种子设置。</li>
 </ul>
-<h3 id="数学原理"><a href="#数学原理" class="headerlink" title="数学原理"></a>数学原理</h3><p>行切分：<br><img src="/Pasted%20image%2020230702200133.png"><br>列切分<br><img src="/Pasted%20image%2020230702200159.png"></p>
+<h3 id="数学原理"><a href="#数学原理" class="headerlink" title="数学原理"></a>数学原理</h3><p>行切分：<br><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/row_split.png" alt="row_split"><br>列切分<br><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/colume_split.png" alt="colume_split"></p>
 <h3 id="MatMul-算子并行"><a href="#MatMul-算子并行" class="headerlink" title="MatMul 算子并行"></a>MatMul 算子并行</h3><h3 id="Loss-损失并行"><a href="#Loss-损失并行" class="headerlink" title="Loss 损失并行"></a>Loss 损失并行</h3><h3 id="Transformer-算子并行"><a href="#Transformer-算子并行" class="headerlink" title="Transformer 算子并行"></a>Transformer 算子并行</h3><p>张量重拍<br>随机控制</p>
 <h3 id="xxx"><a href="#xxx" class="headerlink" title="xxx"></a>xxx</h3><p>Embedding、MLP</p>
 <h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
