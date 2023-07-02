@@ -6,27 +6,17 @@
   <meta name="keywords" content=" AI , AI芯片 ">
   <meta name="description" content="【zomi笔记】分布式并行策略 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="目录概览 Data Parallelism DP DDP FSDP   Model Parallelism TP PP    数据并行DPimport torch model &#x3D; torch.nn.DataParallel(my_model)   使用单进程多线程模式（一张卡对应一个线程），会被 python 的 GIL 约束。 对整网进行 forward 和 backward 后再进行梯度累计，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【zomi笔记】分布式并行策略">
-<meta property="og:url" content="http://popomen.top/2023/07/02/[ZOMI%E9%85%B1]2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/index.html">
+<meta name="description" content="记性不好">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://popomen.top/categories/index.html">
 <meta property="og:site_name" content="popomen个人博客">
-<meta property="og:description" content="目录概览 Data Parallelism DP DDP FSDP   Model Parallelism TP PP    数据并行DPimport torch model &#x3D; torch.nn.DataParallel(my_model)   使用单进程多线程模式（一张卡对应一个线程），会被 python 的 GIL 约束。 对整网进行 forward 和 backward 后再进行梯度累计，">
+<meta property="og:description" content="记性不好">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pytorch.org/assets/images/scaling-multimodal-image2-diagram-of-standard-data-parallel-training.png">
-<meta property="og:image" content="http://popomen.top/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/Distributed_Gradient_Reduction.png">
-<meta property="og:image" content="https://pytorch.org/assets/images/fsdp_workflow.png">
-<meta property="og:image" content="http://popomen.top/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/ZeRO123.png">
-<meta property="og:image" content="http://popomen.top/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/where_did_all_the_memory_go.png">
-<meta property="og:image" content="http://popomen.top/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png">
-<meta property="og:image" content="http://popomen.top/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/PipeDream.png">
-<meta property="article:published_time" content="2023-07-02T12:44:14.000Z">
-<meta property="article:modified_time" content="2023-07-01T16:09:52.091Z">
+<meta property="article:published_time" content="2020-11-21T04:46:19.000Z">
+<meta property="article:modified_time" content="2022-08-24T12:52:49.501Z">
 <meta property="article:author" content="popomen">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="AI芯片">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pytorch.org/assets/images/scaling-multimodal-image2-diagram-of-standard-data-parallel-training.png">
 
 
 <link rel="icon" href="/img/daxia.jpg">
@@ -841,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 00:09:52'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 19:41:18'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -863,7 +853,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%A6%82%E8%A7%88"><span class="toc-text">目录概览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C"><span class="toc-text">数据并行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DP"><span class="toc-text">DP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDP"><span class="toc-text">DDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FSDP%EF%BC%88%E5%AE%8C%E5%85%A8%E5%88%86%E7%89%87%EF%BC%89"><span class="toc-text">FSDP（完全分片）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO"><span class="toc-text">ZeRO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO-Offload"><span class="toc-text">ZeRO-Offload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO-Infinity"><span class="toc-text">ZeRO-Infinity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Allreduce%E7%AE%97%E6%B3%95"><span class="toc-text">Allreduce算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%A1%8C"><span class="toc-text">模型并行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TP"><span class="toc-text">TP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PP"><span class="toc-text">PP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gpipe-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Gpipe 模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PipeDream-1F1B-%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%9D%9E%E4%BA%A4%E9%94%99-Schedule%EF%BC%89"><span class="toc-text">PipeDream 1F1B 模式（非交错 Schedule）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Virtual-pipeline-%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%A4%E9%94%99-Schedule%EF%BC%89"><span class="toc-text">Virtual pipeline 模式（交错 Schedule）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87"><span class="toc-text">相关论文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E4%B9%8E%E6%96%87%E7%AB%A0"><span class="toc-text">知乎文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-%E7%AB%99%E8%A7%86%E9%A2%91"><span class="toc-text">B 站视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E7%AB%A0"><span class="toc-text">其他文章</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%A6%82%E8%A7%88"><span class="toc-text">目录概览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C"><span class="toc-text">数据并行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DP"><span class="toc-text">DP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDP"><span class="toc-text">DDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FSDP%EF%BC%88%E5%AE%8C%E5%85%A8%E5%88%86%E7%89%87%EF%BC%89"><span class="toc-text">FSDP（完全分片）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO"><span class="toc-text">ZeRO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO-Offload"><span class="toc-text">ZeRO-Offload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZeRO-Infinity"><span class="toc-text">ZeRO-Infinity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Allreduce%E7%AE%97%E6%B3%95"><span class="toc-text">Allreduce算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%A1%8C"><span class="toc-text">模型并行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TP"><span class="toc-text">TP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%88%87%E5%88%86"><span class="toc-text">行切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%88%87%E5%88%86"><span class="toc-text">列切分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PP"><span class="toc-text">PP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gpipe-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Gpipe 模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PipeDream-1F1B-%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%9D%9E%E4%BA%A4%E9%94%99-Schedule%EF%BC%89"><span class="toc-text">PipeDream 1F1B 模式（非交错 Schedule）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Virtual-pipeline-%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%A4%E9%94%99-Schedule%EF%BC%89"><span class="toc-text">Virtual pipeline 模式（交错 Schedule）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87"><span class="toc-text">相关论文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E4%B9%8E%E6%96%87%E7%AB%A0"><span class="toc-text">知乎文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-%E7%AB%99%E8%A7%86%E9%A2%91"><span class="toc-text">B 站视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E7%AB%A0"><span class="toc-text">其他文章</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -945,7 +935,8 @@ sharded_module = FSDP(my_module)
 <h3 id="ZeRO-Offload"><a href="#ZeRO-Offload" class="headerlink" title="ZeRO-Offload"></a>ZeRO-Offload</h3><p>一共就这么几张卡，显存不够用？考虑”借“用 Host 的内存。</p>
 <h3 id="ZeRO-Infinity"><a href="#ZeRO-Infinity" class="headerlink" title="ZeRO-Infinity"></a>ZeRO-Infinity</h3><p>面向大规模</p>
 <h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><p>All-Reduce &#x3D; Reduce-Scatter + All-Gather</p>
-<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
+<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><p>TP 主要执行层内并行，PP 主要执行层间并行。<br>一般机内使用 TP，机间使用数据并行。</p>
+<h3 id="行切分"><a href="#行切分" class="headerlink" title="行切分"></a>行切分</h3><h3 id="列切分"><a href="#列切分" class="headerlink" title="列切分"></a>列切分</h3><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
 <p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
