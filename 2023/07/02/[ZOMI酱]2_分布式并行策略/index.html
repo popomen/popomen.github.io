@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 20:30:54'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 20:34:12'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -935,13 +935,13 @@ sharded_module = FSDP(my_module)
 <h3 id="ZeRO-Offload"><a href="#ZeRO-Offload" class="headerlink" title="ZeRO-Offload"></a>ZeRO-Offload</h3><p>一共就这么几张卡，显存不够用？考虑”借“用 Host 的内存。</p>
 <h3 id="ZeRO-Infinity"><a href="#ZeRO-Infinity" class="headerlink" title="ZeRO-Infinity"></a>ZeRO-Infinity</h3><p>面向大规模</p>
 <h3 id="Allreduce算法"><a href="#Allreduce算法" class="headerlink" title="Allreduce算法"></a>Allreduce算法</h3><p>All-Reduce &#x3D; Reduce-Scatter + All-Gather</p>
-<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><p>卫星图片处理</p>
-<ul>
-<li>TP 为层内并行。</li>
+<h1 id="模型并行"><a href="#模型并行" class="headerlink" title="模型并行"></a>模型并行</h1><h2 id="TP"><a href="#TP" class="headerlink" title="TP"></a>TP</h2><ul>
+<li>TP 为层内并行，如卫星图片处理需要靠 TP 解决。</li>
 <li>一般机内使用 TP，机间使用数据并行。</li>
 <li>最常见的是 MatMul 算子并行，扩展到 Embedding、MLP、Transformer 等算子并行。</li>
 <li>需要注意随机性问题，注意带有随机性算子的随机种子设置。</li>
 </ul>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/distributed.tensor.parallel.html">https://pytorch.org/docs/stable/distributed.tensor.parallel.html</a></p>
 <h3 id="数学原理"><a href="#数学原理" class="headerlink" title="数学原理"></a>数学原理</h3><h4 id="MatMul-算子并行"><a href="#MatMul-算子并行" class="headerlink" title="MatMul 算子并行"></a>MatMul 算子并行</h4><p>行切分：<br><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/row_split.png" alt="列切分原理"><br>列切分：<br><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/colume_split.png" alt="行切分原理"></p>
 <h4 id="减小通信开销"><a href="#减小通信开销" class="headerlink" title="减小通信开销"></a>减小通信开销</h4><p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/%E8%A1%8C%E5%88%87%E5%88%86%E4%B8%8E%E5%88%97%E5%88%87%E5%88%86%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8.webp"></p>
 <p>我们发现把两次切分组合在一起，那么上面一行最后的 <code>all_gather</code> 和下面一行最开始的 <code>spllit</code> 就可以省去，减少了冗余的集合通信开销。</p>
