@@ -831,7 +831,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 21:05:51'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-02 21:06:23'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -947,7 +947,7 @@ sharded_module = FSDP(my_module)
 <p>我们发现把两次切分组合在一起，那么上面一行最后的 <code>all_gather</code> 和下面一行最开始的 <code>spllit</code> 就可以省去，减少了冗余的集合通信开销。而 Transformer 的结构天然支持这种组合。</p>
 <h3 id="Transformer-算子并行"><a href="#Transformer-算子并行" class="headerlink" title="Transformer 算子并行"></a>Transformer 算子并行</h3><p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/mlp_self_attention.png" alt="mlp_self_attention"></p>
 <p>上图中深绿色的 f 和 g 代表集合通信的环节。</p>
-<p>与上一小节类似的，我们把 attention heads（Q、K、V）分别进行<strong>列切分</strong>，经过 ？？？ 后计算出的 Y 依然是满足 Y &#x3D; Y1 + Y2 的，然后再对 B 进<strong>行切分</strong>，完成后半部分的 Dropout 计算后在进行一次集合通信即完成一次 self-attention 的计算。</p>
+<p>与上一小节类似的，我们把 attention heads（Q、K、V）分别进行<strong>列切分</strong>，经过矩阵乘和 Softmax、Dropout 后得出的 Y 依然是满足 Y &#x3D; Y1 + Y2 的，然后再对 B 进<strong>行切分</strong>，完成后半部分的 Dropout 计算后在进行一次集合通信即完成一次 self-attention 的计算。</p>
 <h3 id="Loss-损失并行"><a href="#Loss-损失并行" class="headerlink" title="Loss 损失并行"></a>Loss 损失并行</h3><p>张量重拍<br>随机控制</p>
 <h3 id="xxx"><a href="#xxx" class="headerlink" title="xxx"></a>xxx</h3><p>Embedding、MLP</p>
 <h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
