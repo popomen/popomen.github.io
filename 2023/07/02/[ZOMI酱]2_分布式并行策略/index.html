@@ -805,7 +805,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-04 23:30:51'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-04 23:49:24'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -922,7 +922,12 @@ sharded_module = FSDP(my_module)
 <h3 id="Transformer-算子并行"><a href="#Transformer-算子并行" class="headerlink" title="Transformer 算子并行"></a>Transformer 算子并行</h3><p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/mlp_self_attention.png" alt="mlp_self_attention"></p>
 <p>上图中深绿色的 f 和 g 代表集合通信的环节。</p>
 <p>与上一小节类似的，我们把 attention heads（Q、K、V）分别进行<strong>列切分</strong>，经过矩阵乘和 Softmax、Dropout 后得出的 Y 依然是满足 Y &#x3D; Y1 + Y2 的，然后再对 B 进<strong>行切分</strong>，完成后半部分的 Dropout 计算后在进行一次集合通信即完成一次 self-attention 的计算。</p>
-<h3 id="Loss-损失并行"><a href="#Loss-损失并行" class="headerlink" title="Loss 损失并行"></a>Loss 损失并行</h3><h3 id="张量重排"><a href="#张量重排" class="headerlink" title="张量重排"></a>张量重排</h3><h3 id="随机控制"><a href="#随机控制" class="headerlink" title="随机控制"></a>随机控制</h3><h3 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h3><h3 id="张量自动并行"><a href="#张量自动并行" class="headerlink" title="张量自动并行"></a>张量自动并行</h3><h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
+<h3 id="Loss-损失并行"><a href="#Loss-损失并行" class="headerlink" title="Loss 损失并行"></a>Loss 损失并行</h3><h3 id="张量重排"><a href="#张量重排" class="headerlink" title="张量重排"></a>张量重排</h3><h3 id="随机控制"><a href="#随机控制" class="headerlink" title="随机控制"></a>随机控制</h3><h3 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h3><h3 id="张量自动并行"><a href="#张量自动并行" class="headerlink" title="张量自动并行"></a>张量自动并行</h3><p><a target="_blank" rel="noopener" href="https://www.mindspore.cn/docs/zh-CN/r2.0/design/distributed_training_design.html">https://www.mindspore.cn/docs/zh-CN/r2.0/design/distributed_training_design.html</a>?</p>
+<ol>
+<li>由模型定义脚本转换成带有切分策略的计算图。</li>
+<li>为每个未配置切分策略的算子枚举可行的策略。<br>枚举每条边的重排布策略和相应的代价。<br>由一配置策略的算法出发，传播到整张计算图。</li>
+</ol>
+<h2 id="PP"><a href="#PP" class="headerlink" title="PP"></a>PP</h2><p>以 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.04473">Megatron-LM</a> 为例介绍流水线并行。</p>
 <h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
 <p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
