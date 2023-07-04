@@ -753,18 +753,18 @@
         </a>
         
         <a  class="全部文章 AI "
-           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_4%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
-           data-tag="Pytorch"
-           data-author="" >
-            <span class="post-title" title="DIDL_4_循环神经网络">DIDL_4_循环神经网络</span>
-            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
-        </a>
-        
-        <a  class="全部文章 AI "
            href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_3%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"
            data-tag="Pytorch"
            data-author="" >
             <span class="post-title" title="DIDL_3_计算机视觉">DIDL_3_计算机视觉</span>
+            <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/1900/01/01/%5BAI%5D%E6%9D%8E%E6%B2%90_%E5%8A%A8%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_4%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+           data-tag="Pytorch"
+           data-author="" >
+            <span class="post-title" title="DIDL_4_循环神经网络">DIDL_4_循环神经网络</span>
             <span class="post-date" title="1900-01-01 00:00:43">1900/01/01</span>
         </a>
         
@@ -815,7 +815,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-02 21:09:51'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-04 23:19:59'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -853,7 +853,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目录概览"><a href="#目录概览" class="headerlink" title="目录概览"></a>目录概览</h1><ul>
+        <pre><code># hexo-hide-posts
+hide_posts:
+  # 可以改成其他你喜欢的名字
+  filter: hidden
+  # 指定你想要传递隐藏文章的位置，比如让所有隐藏文章在存档页面可见
+  # 常见的位置有：index, tag, category, archive, sitemap, feed, etc.
+  # 留空则默认全部隐藏
+  public_generators: []
+  # 为隐藏的文章添加 noindex meta 标签，阻止搜索引擎收录
+  noindex: true
+</code></pre>
+<h1 id="目录概览"><a href="#目录概览" class="headerlink" title="目录概览"></a>目录概览</h1><ul>
 <li>Data Parallelism：每个设备都有完整计算图<ul>
 <li>DP</li>
 <li>DDP</li>
