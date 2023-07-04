@@ -815,7 +815,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-01 21:00:31'>2023-06-20 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-04 23:16:58'>2023-06-20 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -915,13 +915,13 @@
 <blockquote>
 <p>Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM</p>
 </blockquote>
-<h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
+<h4 id="Gpipe-模式"><a href="#Gpipe-模式" class="headerlink" title="Gpipe 模式"></a>Gpipe 模式</h4><p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/Gpipe.png" alt="Gpipe 模式"></p>
 <p>缺点一：空泡率高。假设 <code>m</code> 代表 micro-batch 数量，<code>p</code> 代表 pipeline stages，则要求 <code>m</code> 远大于 <code>p</code>，才能有效降低空泡率。又由于缺点二导致 <code>m</code> 的上限非常有限。</p>
 <p>缺点二：内存峰值高。<code>m</code> 个 micro-batch 反向算梯度的过程，都需要之前前向保存的激活值，所以在 <code>m</code> 个 mini-batch 前向结束时，达到内存占用的峰值。Device 内存一定的情况下，<code>m</code> 的上限明显受到限制。</p>
 <h4 id="PipeDream-1F1B-模式（非交错-Schedule）"><a href="#PipeDream-1F1B-模式（非交错-Schedule）" class="headerlink" title="PipeDream 1F1B 模式（非交错 Schedule）"></a>PipeDream 1F1B 模式（非交错 Schedule）</h4><p>通过合理安排前向和反向过程的顺序，在 step 中间的稳定阶段，形成 1 前向 1 反向 的形式，称为 1F1B 模式。</p>
 <p>每个 Device 上最少只需要保存 <code>1</code> 份 micro-batch 的激活值，最多也只需要保存 <code>p</code> 份激活值。</p>
 <p>这种模式比 GPipe 更节省内存。然而，它需要和 GPipe 一样的时间来完成一轮计算。</p>
-<p><img src="/_%E6%88%91%E7%9A%84hexo%E4%BB%A3%E7%A0%81%E4%BB%93/popomen/source/_posts/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/PipeDream.png" alt="PipeDream"></p>
+<p><img src="/2023/06/20/%5BZOMI%E9%85%B1%5D1_AI%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB/PipeDream.png" alt="PipeDream"></p>
 <h4 id="Virtual-pipeline-模式（交错-Schedule）"><a href="#Virtual-pipeline-模式（交错-Schedule）" class="headerlink" title="Virtual pipeline 模式（交错 Schedule）"></a>Virtual pipeline 模式（交错 Schedule）</h4><p>之前设备1拥有层1-4，设备2拥有层5-8，以此类推；但现在设备1有层1,2,9,10，设备2有层3,4,11,12，以此类推。</p>
 <p>按照这种方式，Device之间的点对点通信次数(量)直接翻了 virtual_pipeline_stage 倍，但空泡比率降低了。</p>
 <p>virtual pipeline 带来的 空泡占比降低 和 step e2e 时间缩短的优势并不是凭空得来，Megatron-2 做出这样改进的本钱主要是在 DGX-box 中，NVLINK 带宽高，通信带来的 overhead 不是很明显。</p>
