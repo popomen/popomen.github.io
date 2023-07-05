@@ -805,7 +805,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-04 23:52:20'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-05 20:55:17'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -938,7 +938,7 @@ sharded_module = FSDP(my_module)
 <h4 id="PipeDream-1F1B-模式（非交错-Schedule）"><a href="#PipeDream-1F1B-模式（非交错-Schedule）" class="headerlink" title="PipeDream 1F1B 模式（非交错 Schedule）"></a>PipeDream 1F1B 模式（非交错 Schedule）</h4><p>通过合理安排前向和反向过程的顺序，在 step 中间的稳定阶段，形成 1 前向 1 反向 的形式，称为 1F1B 模式。</p>
 <p>每个 Device 上最少只需要保存 <code>1</code> 份 micro-batch 的激活值，最多也只需要保存 <code>p</code> 份激活值。</p>
 <p>这种模式比 GPipe 更节省内存。然而，它需要和 GPipe 一样的时间来完成一轮计算。</p>
-<p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/PipeDream.png" alt="PipeDream"></p>
+<p><img src="/2023/07/02/%5BZOMI%E9%85%B1%5D2_%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5/PipeDream.png" alt="PipeDream 模式、"></p>
 <h4 id="Virtual-pipeline-模式（交错-Schedule）"><a href="#Virtual-pipeline-模式（交错-Schedule）" class="headerlink" title="Virtual pipeline 模式（交错 Schedule）"></a>Virtual pipeline 模式（交错 Schedule）</h4><p>原方案：设备1拥有层1-4，设备2拥有层5-8，以此类推。<br>新方案：在设备1有层1,2,9,10，设备2有层3,4,11,12，以此类推。</p>
 <p>按照这种方式，Device之间的点对点通信次数(量)直接翻了 virtual_pipeline_stage 倍，但空泡比率降低了。</p>
 <p>virtual pipeline 带来的 空泡占比降低 和 step e2e 时间缩短的优势并不是凭空得来，Megatron-2 做出这样改进的本钱主要是在 DGX-box 中，NVLINK 带宽高，通信带来的 overhead 不是很明显。</p>
