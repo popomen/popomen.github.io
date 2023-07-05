@@ -805,7 +805,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-05 21:35:04'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-05 21:40:18'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -948,6 +948,7 @@ sharded_module = FSDP(my_module)
 <li>table-wise 切分模式：不同目录的特征切分到不同的卡上</li>
 <li>colume-wise 切分模式：不同目录特征合成一个大表，然后按照列进行切分</li>
 </ul>
+<p>为什么只对 Embedding 层进行张量并行？Embedding 层在推荐模型中非常重要，也非常大。</p>
 <h2 id="LLM"><a href="#LLM" class="headerlink" title="LLM"></a>LLM</h2><h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h2><ul>
 <li>【25 Jul 2019】【google】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1811.06965">GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism</a></li>
 <li>【28 Jun 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.15704">PyTorch Distributed: Experiences on Accelerating Data Parallel Training</a></li>
