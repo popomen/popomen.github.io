@@ -805,7 +805,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-07-05 21:49:43'>2023-07-02 20:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-07-05 22:01:39'>2023-07-02 20:44</time>
         
     </div>
     <div class="article-meta">
@@ -952,6 +952,7 @@ sharded_module = FSDP(my_module)
 <p>为什么只对 Embedding 层进行张量并行？<br>答：Embedding 层（将输入数据 or 离散特征映射到高维的向量中）在推荐模型中非常重要，参数量也非常大，可以到 TB 级别。</p>
 <h2 id="Megaton-LLM（张量并行-流水线并行）"><a href="#Megaton-LLM（张量并行-流水线并行）" class="headerlink" title="Megaton-LLM（张量并行 + 流水线并行）"></a>Megaton-LLM（张量并行 + 流水线并行）</h2><h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h2><ul>
 <li>【25 Jul 2019】【google】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1811.06965">GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism</a></li>
+<li>【8 Jun 2018】【microsoft】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1806.03377">PipeDream: Fast and Efficient Pipeline Parallel DNN Training</a></li>
 <li>【28 Jun 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.15704">PyTorch Distributed: Experiences on Accelerating Data Parallel Training</a></li>
 <li>【13 Mar 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.08053">Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism</a></li>
 <li>【13 May 2020】<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.02054">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</a></li>
