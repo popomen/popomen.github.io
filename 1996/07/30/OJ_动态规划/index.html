@@ -806,7 +806,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-14 23:35:44'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-15 22:30:55'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -903,6 +903,105 @@
         b = res
     &#125;
     return res
+&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-maximum-path-sum/">124. 二叉树中的最大路径和</a></p>
+<pre><code class="Go">/**
+ * Definition for a binary tree node.
+ * type TreeNode struct &#123;
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * &#125;
+ */
+
+
+type TreeNodeNew struct &#123;
+    Val int
+    Score int
+    Left *TreeNodeNew
+    Right *TreeNodeNew
+&#125;
+
+func (t *TreeNodeNew) GetVal() int &#123;
+    if t == nil &#123;
+        return 0
+    &#125;
+    return t.Val
+&#125;
+
+func (t *TreeNodeNew) GetScore() int &#123;
+    if t == nil &#123;
+        return 0
+    &#125;
+    return t.Score
+&#125;
+
+var res int
+
+func maxPathSum(root *TreeNode) int &#123;
+    res = -65535
+
+    rootNew := New(root)
+
+    sum(rootNew)
+
+    fmt.Printf(&quot;%v&quot;, rootNew)
+
+    return res
+&#125;
+
+
+func sum(root *TreeNodeNew) &#123;
+    if root == nil &#123;
+        return
+    &#125;
+
+    res = max(res, root.GetVal() + root.Left.GetScore() + root.Right.GetScore())
+
+    sum(root.Left)
+    sum(root.Right)
+&#125;
+
+func New(root *TreeNode) *TreeNodeNew &#123;
+    if root == nil &#123;
+        return nil
+    &#125;
+
+    left := New(root.Left)
+    right := New(root.Right)
+    
+    var score int
+    if left.GetScore() &lt; 0 &amp;&amp; right.GetScore() &lt; 0 &#123;
+        score = max(root.Val, 0)
+    &#125; else if left.GetScore() &lt; 0 &#123;
+        score = max(root.Val + right.GetScore(), 0)
+    &#125; else if right.GetScore() &lt; 0 &#123;
+        score = max(root.Val + left.GetScore(), 0)
+    &#125; else &#123;
+        score = max(root.Val + max(left.GetScore(), right.GetScore()), 0)
+    &#125;
+    
+    return &amp;TreeNodeNew&#123;
+        Val: root.Val,
+        Score: score,
+        Left: left,
+        Right: right,
+    &#125;
+&#125;
+
+func max(a, b int) int &#123;
+    if a &gt;= b &#123;
+        return a
+    &#125;
+    return b
+&#125;
+
+func val(root *TreeNode) int &#123;
+    if root == nil &#123;
+        return 0
+    &#125;
+    return root.Val
 &#125;
 </code></pre>
 <h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><p>搞不定</p>
