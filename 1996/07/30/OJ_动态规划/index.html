@@ -806,7 +806,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-15 22:36:48'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-15 22:37:08'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -907,7 +907,8 @@
 </code></pre>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-maximum-path-sum/">124. 二叉树中的最大路径和</a></p>
 <ul>
-<li>需要先找到每个节点的 <code>最大贡献值 Score</code>。但是不必递归两次，仅需在一次递归中完成最大贡献值的查找以及最终答案的更新，性情见标准答案。</li>
+<li>需要先找到每个节点对应的 <code>最大贡献值 Score</code>，然后再找最终答案。</li>
+<li>但是不必递归两次，仅需在一次递归中完成最大贡献值的查找以及最终答案的更新，性情见标准答案。</li>
 <li>可以使用 <code>math.MinInt32</code>。</li>
 </ul>
 <pre><code class="Go">/**
