@@ -806,7 +806,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-15 22:33:28'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-15 22:36:48'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -907,7 +907,7 @@
 </code></pre>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-maximum-path-sum/">124. 二叉树中的最大路径和</a></p>
 <ul>
-<li>先找到每个节点的 <code>最大贡献值 Score</code>。</li>
+<li>需要先找到每个节点的 <code>最大贡献值 Score</code>。但是不必递归两次，仅需在一次递归中完成最大贡献值的查找以及最终答案的更新，性情见标准答案。</li>
 <li>可以使用 <code>math.MinInt32</code>。</li>
 </ul>
 <pre><code class="Go">/**
@@ -1007,6 +1007,45 @@ func val(root *TreeNode) int &#123;
     &#125;
     return root.Val
 &#125;
+</code></pre>
+<p>标准答案：</p>
+<pre><code class="Go">func maxPathSum(root *TreeNode) int &#123;
+    maxSum := math.MinInt32
+    var maxGain func(*TreeNode) int
+    maxGain = func(node *TreeNode) int &#123;
+        if node == nil &#123;
+            return 0
+        &#125;
+
+        // 递归计算左右子节点的最大贡献值
+        // 只有在最大贡献值大于 0 时，才会选取对应子节点
+        leftGain := max(maxGain(node.Left), 0)
+        rightGain := max(maxGain(node.Right), 0)
+
+        // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+        priceNewPath := node.Val + leftGain + rightGain
+
+        // 更新答案
+        maxSum = max(maxSum, priceNewPath)
+
+        // 返回节点的最大贡献值
+        return node.Val + max(leftGain, rightGain)
+    &#125;
+    maxGain(root)
+    return maxSum
+&#125;
+
+func max(x, y int) int &#123;
+    if x &gt; y &#123;
+        return x
+    &#125;
+    return y
+&#125;
+
+作者：力扣官方题解
+链接：https://leetcode.cn/problems/binary-tree-maximum-path-sum/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 </code></pre>
 <h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><p>搞不定</p>
 <h4 id="步骤一：定义子问题"><a href="#步骤一：定义子问题" class="headerlink" title="步骤一：定义子问题"></a>步骤一：定义子问题</h4><h4 id="步骤二：写出子问题的递推关系"><a href="#步骤二：写出子问题的递推关系" class="headerlink" title="步骤二：写出子问题的递推关系"></a>步骤二：写出子问题的递推关系</h4><h4 id="步骤三：确定-DP-数组的计算顺序"><a href="#步骤三：确定-DP-数组的计算顺序" class="headerlink" title="步骤三：确定 DP 数组的计算顺序"></a>步骤三：确定 DP 数组的计算顺序</h4><h4 id="步骤四：空间优化"><a href="#步骤四：空间优化" class="headerlink" title="步骤四：空间优化"></a>步骤四：空间优化</h4>
