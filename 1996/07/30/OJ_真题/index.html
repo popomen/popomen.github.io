@@ -814,7 +814,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-19 12:28:21'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-19 12:30:59'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -853,7 +853,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a target="_blank" rel="noopener" href="https://leetcode.cn/company/bytedance/problemset/">https://leetcode.cn/company/bytedance/problemset/</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a><br><img src="/Pasted%20image%2020231119103427.png"></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a></p>
 <pre><code>func lengthOfLongestSubstring(s string) int &#123;
   if len(s) == 0 &#123;
     return 0
@@ -895,15 +895,36 @@
   return res
 &#125;
 </code></pre>
-<p><img src="/Pasted%20image%2020231119112425.png"></p>
 <ul>
 <li>居然忘记了map删除元素是<code>delete(m, s[i-1])</code>语句。。。</li>
-<li>左指针带动右指针！更简单！</li>
+<li>左指针带动右指针！相比我这一次的右指针带动左指针，更加简单！</li>
 <li>数组长度为128可以覆盖ASCII字符范围</li>
 <li>rune类型可以表示任意Unicode字符，并能存储一个32位的Unicode字符编码；byte和rune可以直接转换</li>
 </ul>
-<p><img src="/Pasted%20image%2020231119120147.png"></p>
-<p>&#96;&#96;</p>
+<p>此作为后续滑动窗口类的模板</p>
+<pre><code>func lengthOfLongestSubstring(s string) int &#123;
+  right, res := -1, 0
+  a := [128]int&#123;&#125;
+  n := len(s)
+
+  for left := 0; left &lt; n; left++ &#123;
+    if left != 0 &#123;
+      a[s[left-1]] = 0
+    &#125;
+
+    for right + 1 &lt; n &amp;&amp; a[s[right+1]] == 0 &#123;
+      a[s[right+1]] = 1
+      right ++
+    &#125;
+
+    if right - left + 1 &gt; res &#123;
+      res = right - left + 1
+    &#125;
+  &#125;
+
+  return res
+&#125;
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
