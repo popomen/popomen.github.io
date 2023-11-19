@@ -814,7 +814,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-19 12:57:55'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-19 14:20:35'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -955,6 +955,78 @@ func clearLand(grid [][]byte, i, j int) &#123;
   clearLand(grid, i, j-1)
   clearLand(grid, i, j+1)
   clearLand(grid, i+1, j)
+&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/add-two-numbers/">2. 两数相加</a></p>
+<pre><code>/**
+ * Definition for singly-linked list.
+ * type ListNode struct &#123;
+ *     Val int
+ *     Next *ListNode
+ * &#125;
+ */
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode &#123;
+  return addList(l1, l2, false)
+&#125;
+
+
+func addList(l1 *ListNode, l2 *ListNode, needUp bool) *ListNode &#123;
+  val := 0
+
+  if l1 != nil &#123;
+    val += l1.Val
+  &#125;
+
+  if l2 != nil &#123;
+    val += l2.Val
+  &#125;
+
+  if needUp &#123;
+    val += 1
+  &#125;
+
+  var upFlag bool
+  if val &gt;= 10 &#123;
+    val = val - 10
+    upFlag = true
+  &#125;
+
+  var next *ListNode
+  if l1 == nil &amp;&amp; l2 == nil &#123;
+    fmt.Println(&quot;here&quot;, upFlag)
+    if val == 0 &#123;
+      return nil
+    &#125;
+    return &amp;ListNode&#123;
+      Val: 1,
+      Next: nil,
+    &#125;
+  &#125; else if l1 != nil &amp;&amp; l2 == nil &#123;
+    next = addList(l1.Next, nil, upFlag)
+  &#125; else if l1 == nil &amp;&amp; l2 != nil &#123;
+    next = addList(nil, l2.Next, upFlag)
+  &#125; else &#123;
+    next = addList(l1.Next, l2.Next, upFlag)
+  &#125;
+
+  return &amp;ListNode&#123;
+    Val: val,
+    Next: next,
+  &#125;
+&#125;
+
+func reverseList(l *ListNode) *ListNode &#123;
+  var res *ListNode
+
+  for l.Next != nil &#123;
+    tmpNode := &amp;ListNode&#123;
+      Val: l.Val,
+      Next: res,
+    &#125;
+    res = tmpNode
+  &#125;
+
+  return res
 &#125;
 </code></pre>
 
