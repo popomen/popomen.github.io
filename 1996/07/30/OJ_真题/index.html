@@ -814,7 +814,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-19 14:36:06'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-19 18:25:17'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -1105,6 +1105,211 @@ func reverseList(l *ListNode) *ListNode &#123;
 <li>审题不仔细，多写了一个reverse。</li>
 <li>归并只需要补零就好了，不需要使用递归。</li>
 </ul>
+<pre><code>type LRUCache struct &#123;
+  capacity int
+  m map[int]ValStruc
+  head *ListNode_
+  tail *ListNode_
+  length int
+&#125;
+
+type ValStruc struct &#123;
+  val int
+  loc *ListNode_
+&#125;
+
+type ListNode_ struct &#123;
+  key int
+  pre *ListNode_
+  next *ListNode_
+&#125;
+
+func (l *ListNode_) Show() &#123;
+  fmt.Print(&quot;head[&quot;)
+  for l != nil &#123;
+    fmt.Print(l.key, &quot; &quot;)
+    l = l.next
+  &#125;
+  fmt.Print(&quot;]\n&quot;)
+&#125;
+
+
+func (l *ListNode_) ShowReverse() &#123;
+  fmt.Print(&quot;tail[&quot;)
+  for l != nil &#123;
+    fmt.Print(l.key, &quot; &quot;)
+    l = l.pre
+  &#125;
+  fmt.Print(&quot;]\n&quot;)
+&#125;
+
+
+func (this *LRUCache) Show() &#123;
+  return
+    this.head.Show()
+    this.tail.ShowReverse()
+    if this.tail != nil &#123;
+      fmt.Print(&quot;tail: &quot;, this.tail.key, &quot;\n&quot;)
+    &#125;
+    if this.head != nil &#123;
+      fmt.Print(&quot;head: &quot;, this.head.key, &quot;\n&quot;)
+    &#125;
+&#125;
+
+func Constructor(capacity int) LRUCache &#123;
+  return LRUCache&#123;
+    capacity: capacity,
+    length: 0,
+    m: map[int]ValStruc&#123;&#125;,
+    head: nil,
+    tail: nil,
+  &#125;
+&#125;
+
+func (this *LRUCache) Get(key int) int &#123;
+  fmt.Println(&quot;user get&quot;, key)
+  valStruc, ok := this.m[key]
+  if !ok &#123;
+    
+    this.Show()
+    return -1
+  &#125;
+
+  this.moveToTail(key)
+
+    this.Show()
+  return valStruc.val
+&#125;
+
+
+func (this *LRUCache) Put(key int, value int)  &#123;
+  fmt.Println(&quot;user put&quot;, key, value)
+  v, ok := this.m[key]
+  if ok &amp;&amp; v.val != -1 &#123;
+    // this.moveToTail(key)
+    temp := v.loc
+    this.m[key] = ValStruc&#123;
+      val: value,
+      loc: temp,
+    &#125;
+
+    this.moveToTail(key)
+
+    this.Show()
+    return
+  &#125;
+
+  // fmt.Println(&quot;length&quot;, this.length)
+  if this.length &gt;= this.capacity &#123;
+    this.removeOldestOne()
+  &#125; else &#123;
+    this.length ++
+    // fmt.Println(&quot;length&quot;, this.length)
+  &#125;
+
+  if this.tail == nil &#123;
+    this.tail = &amp;ListNode_&#123;
+      key: key,
+      next: nil,
+      pre: nil,
+    &#125;
+    this.head = this.tail
+  &#125; else &#123;
+    this.tail.next = &amp;ListNode_&#123;
+      key: key,
+      next: nil,
+      pre: this.tail,
+    &#125;
+    this.tail = this.tail.next
+  &#125;
+
+  this.m[key] = ValStruc&#123;
+    val: value,
+    loc: this.tail,
+  &#125;
+  // fmt.Println(this.m)
+    this.Show()
+&#125;
+
+func (this *LRUCache) moveToTail(key int) &#123;
+  // fmt.Println(&quot;try move&quot;, key, &quot;to tail&quot;)
+  if this.tail.key == key &#123;
+    return
+  &#125;
+  // fmt.Println(&quot;move&quot;, key, &quot;to tail&quot;)
+
+  // if this.m[key].loc == nil &#123;
+  //   fmt.Println(&quot;[panic]&quot;, &quot;key: &quot;, key, &quot;value&quot;, this.m[key].val)
+  // &#125;
+  
+  // fmt.Println(&quot;move to tail&quot;, key, this.m[key].loc)
+
+  // fmt.Println(&quot;now head&quot;, this.head.key, this.head)
+
+  if this.head.key == key &#123;
+    // fmt.Println(&quot;ok&quot;)
+    this.head = this.head.next
+  &#125;
+
+
+
+  if this.m[key].loc.pre != nil &#123;
+    this.m[key].loc.pre.next = this.m[key].loc.next
+  &#125;
+  if this.m[key].loc.next != nil &#123;
+    this.m[key].loc.next.pre = this.m[key].loc.pre
+  &#125;
+
+
+  oldTail := this.tail
+
+  this.tail.next = this.m[key].loc
+  this.tail = this.m[key].loc
+  this.tail.next = nil
+  this.tail.pre = oldTail
+
+  // fmt.Println(&quot;now head&quot;, this.head.key)
+&#125;
+
+func (this *LRUCache) removeOldestOne() &#123;
+  if this.length == 0 &#123;
+    return
+  &#125;
+
+  // fmt.Println(&quot;remove&quot;, this.head.key)
+
+  // fmt.Println(&quot;this.head.key&quot;, this.head.key)
+  // this.m[this.head.key] = ValStruc&#123;
+  //   val: -1,
+  //   loc: nil,
+  // &#125;
+
+  delete(this.m, this.head.key)
+
+  if this.tail == this.head &#123;
+    this.tail = nil
+    this.head = nil
+  &#125; else &#123;
+    this.head = this.head.next
+  &#125;
+
+  if this.head != nil &#123;
+    this.head.pre = nil
+  &#125;
+
+
+  // fmt.Println(&quot;remove, now head is&quot;, this.head.key)
+  // fmt.Println(this.m)
+
+&#125;
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * obj := Constructor(capacity);
+ * param_1 := obj.Get(key);
+ * obj.Put(key,value);
+ */
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
