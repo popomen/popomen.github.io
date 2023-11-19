@@ -814,7 +814,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-19 20:17:14'>1996-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-11-19 21:12:42'>1996-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -1371,6 +1371,73 @@ func getPalindromeB(s string, i int) string &#123;
     &#125;
   &#125;
 
+  return res
+&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/">15. 三数之和</a></p>
+<pre><code>// var mp map[int]int
+
+var mp1 map[int]map[int]int
+
+func threeSum(nums []int) [][]int &#123;
+  // mp = map[int]int&#123;&#125;
+
+  mp1 = map[int]map[int]int&#123;&#125;
+
+  sort.Ints(nums)
+  res := [][]int&#123;&#125;
+  // mp := map[int]bool&#123;&#125;
+
+  for i, _ := range(nums) &#123;
+    // if _, ok := mp[v]; ok &#123;
+    //   continue
+    // &#125;
+
+    res = append(res, find(nums, i)...)
+    // mp[v] = true
+    // fmt.Println(mp)
+  &#125;
+  return res
+&#125;
+
+func find(nums []int, i int) [][]int &#123;
+  l, r, n := i-1, i+1, len(nums)
+  res := [][]int&#123;&#125;
+
+  for l &gt;= 0 &amp;&amp; r &lt; n &#123;
+    sum := nums[l] + nums[i] + nums[r]
+    if sum == 0 &#123;
+      // v, ok := mp[nums[i]]
+      // if !ok || v != nums[r] &#123;
+      //   res = append(res, []int&#123;nums[l], nums[i], nums[r]&#125;)
+      //   mp[nums[i]]= nums[r]
+      //   fmt.Println(mp)
+      // &#125;
+      if _, ok := mp1[nums[l]]; ok &#123;
+        // fmt.Println(mp1)
+        if _, okk := mp1[nums[l]][nums[i]]; okk &#123;
+          // fmt.Println(nums[l], nums[i], nums[r])
+
+          l--
+          r++
+          continue
+        &#125;
+      &#125;
+
+      res = append(res, []int&#123;nums[l], nums[i], nums[r]&#125;)
+      if _, ok := mp1[nums[l]]; !ok &#123;
+        mp1[nums[l]] = map[int]int&#123;&#125;
+      &#125;
+      mp1[nums[l]][nums[i]] = nums[r]
+
+      l--
+      r++
+    &#125; else if sum &gt; 0 &#123;
+      l--
+    &#125; else &#123;
+      r++
+    &#125;
+  &#125;
   return res
 &#125;
 </code></pre>
