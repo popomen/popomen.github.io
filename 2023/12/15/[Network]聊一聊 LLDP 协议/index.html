@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:17:49'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:22:01'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -864,7 +864,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="hccn-tool-检查交换机状态"><a href="#hccn-tool-检查交换机状态" class="headerlink" title="hccn_tool 检查交换机状态"></a>hccn_tool 检查交换机状态</h1><p>昇腾官方的模型迁移指导中提到一个在端侧检查交换机状态的命令工具，只要返回不空则代表交换机状态正常：</p>
-<p><img src="/Pasted%20image%2020231217014307.png" alt="hccn_tool 确认交换机状态"></p>
+<p><img src="/2023/12/15/%5BNetwork%5D%E8%81%8A%E4%B8%80%E8%81%8A%20LLDP%20%E5%8D%8F%E8%AE%AE/2020231217014307.png" alt="hccn_tool 确认交换机状态"></p>
 <p>实际执行后发现，昇腾服务器上通过执行 <code>hccn_tool -i &#123;device_id&#125; -lldp -g</code> 可以查询到 lldp 配置信息，如下：</p>
 <p>命令：</p>
 <pre><code class="Bash">hccn_tool -i 0 -lldp -g
@@ -913,7 +913,7 @@ End of LLDPDU TLV
 </code></pre>
 <p>那么，这里的 LLDP 配置到底是什么意思呢？</p>
 <h1 id="LLDP（Link-Layer-Discovery-Protocol-链路层发现协议）"><a href="#LLDP（Link-Layer-Discovery-Protocol-链路层发现协议）" class="headerlink" title="LLDP（Link Layer Discovery Protocol 链路层发现协议）"></a>LLDP（Link Layer Discovery Protocol 链路层发现协议）</h1><p>LLDP协议属于链路层协议，以太类型为 <code>0x88cc</code>。网络设备可以通过发送 LLDPDU 数据帧来告知其他设备自身的状态。注意，它不是一个控制协议，无法通过该协议对设备进行配置，它只提供了查询的能力。</p>
-<p><img src="/Pasted%20image%2020231217015725.png" alt="标准LLDP协议帧格式"></p>
+<p><img src="/2023/12/15/%5BNetwork%5D%E8%81%8A%E4%B8%80%E8%81%8A%20LLDP%20%E5%8D%8F%E8%AE%AE/20231217015725.png" alt="标准LLDP协议帧格式"></p>
 <p>TLV 是组成 LLDPDU 的单元，每个 TLV 都代表一个信息。LLDP 可以封装的 LTV 包括基本 LTV、802.1 组织定义 TLV、802.3 组织定义 TLV 和 LLDP-MED（Media Endpoint Discovery，媒体终端发现） TLV</p>
 <p>现在我们知道了本文开头展示的 <code>hccn_tool -i &#123;devcie_id&#125; -lldp -g</code> 命令背后到底做了什么，实际上就是主机侧请求交换机返回也给 LLDPDU（LLDP Data Unit）展示其状态。</p>
 <p>因此沃恩看到了交换机的型号（Huarong DX511）,这里只要能返回则说明主机与交换机之间的 RoCE 网络是联通的状态。</p>
