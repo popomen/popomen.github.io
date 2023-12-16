@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:07:07'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:10:07'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -935,9 +935,11 @@ End of LLDPDU TLV
 </code></pre>
 <p>说明DX511是一个支持三层网络转发的交换机，并且已经打开了三层路由转发（Router）的能力</p>
 <blockquote>
-<p>RDMA 是无法容忍丢包的，需要 loseless 网络，IB 天生支持 loseless，而 RoCE 网络则需要通过 PFC 实现不丢包，而 PFC 的策略中的 </p>
+<p>RDMA 是无法容忍丢包的，需要 loseless 网络，IB 天生支持 loseless，而 RoCE 网络则需要通过 PFC 实现不丢包，而 PFC 的策略中的 DSCP 策略需要交换机具备三层网络转发的能力（与 DCQCN 算法相关），因此 RoCE 网络下这个开关必须开启的。</p>
+<p>DCQCN 算法详解，可参考：<a target="_blank" rel="noopener" href="https://hurray0.com/menu/138/#DCQCN">https://hurray0.com/menu/138/#DCQCN</a></p>
 </blockquote>
-<h2 id="Mnagement-Address-TLV"><a href="#Mnagement-Address-TLV" class="headerlink" title="Mnagement Address TLV"></a>Mnagement Address TLV</h2><pre><code>Mnagement Address TLV
+<h2 id="Mnagement-Address-TLV"><a href="#Mnagement-Address-TLV" class="headerlink" title="Mnagement Address TLV"></a>Mnagement Address TLV</h2><p>管理地址携带在LLDP报文中的Management Address TLV中，共网管系统标识设备，进行网络管理。管理地址可以明确地标识一台设备，有利于网络拓扑的绘制，便于网络管理。当需要向邻居发布指定的管理地址时，使用该命令进行配置。</p>
+<pre><code>Mnagement Address TLV
     IPv4: 11.172.213.6
     Ifindex: 4
 </code></pre>
