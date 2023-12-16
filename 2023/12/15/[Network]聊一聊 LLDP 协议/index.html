@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:01:06'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:04:06'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -847,7 +847,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88Link-Layer-Discovery-Protocol-%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">LLDP（Link Layer Discovery Protocol 链路层发现协议）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88Link-Layer-Discovery-Protocol-%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">LLDP（Link Layer Discovery Protocol 链路层发现协议）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E5%88%86-TLV-%E5%86%85%E5%AE%B9%E8%A7%A3%E9%87%8A"><span class="toc-text">部分 TLV 内容解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -918,11 +918,31 @@ End of LLDPDU TLV
 <p>现在我们知道了本文开头展示的 <code>hccn_tool -i &#123;devcie_id&#125; -lldp -g</code> 命令背后到底做了什么，实际上就是主机侧请求交换机返回也给 LLDPDU（LLDP Data Unit）展示其状态。</p>
 <p>因此沃恩看到了交换机的型号（Huarong DX511）,这里只要能返回则说明主机与交换机之间的 RoCE 网络是联通的状态。</p>
 <blockquote>
-<p>LLDP 是一个基于以太网的协议，因此 InfiniBand wu’l</p>
+<p>LLDP 是一个基于以太网的协议，因此 InfiniBand 物理网络下不支持。</p>
+<p>ref：<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/lldp-not-available/207865">https://forums.developer.nvidia.com/t/lldp-not-available/207865</a></p>
 </blockquote>
+<h1 id="部分-TLV-内容解释"><a href="#部分-TLV-内容解释" class="headerlink" title="部分 TLV 内容解释"></a>部分 TLV 内容解释</h1><pre><code>Chassis ID TLV
+    MAC: d0:77:ce:6d:62:51
+</code></pre>
+<pre><code>
+</code></pre>
+<p>Port ID TLV<br>    Ifname: 400GE1&#x2F;1&#x2F;26:1</p>
+<pre><code>
+</code></pre>
+<p>System Capabilities TLV<br>    System capabilities:  Bridge, Router<br>    Enabled capabilities: Bridge, Router</p>
+<pre><code>
+</code></pre>
+<p>Mnagement Address TLV<br>    IPv4: 11.172.213.6<br>    Ifindex: 4</p>
+<pre><code>
+</code></pre>
+<p>Port VLAN ID TLV<br>    PVID: 21</p>
+<pre><code>End of LLDPDU TLV
+</code></pre>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>准备多机多卡训：<a target="_blank" rel="noopener" href="https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html">https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html</a></li>
 <li>维基百科LLDP：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE">https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.h3c.com/cn/d_200805/605853_30003_0.htm">https://www.h3c.com/cn/d_200805/605853_30003_0.htm</a></li>
+<li><a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/lldp-not-available/207865">https://forums.developer.nvidia.com/t/lldp-not-available/207865</a></li>
 </ul>
 
       
