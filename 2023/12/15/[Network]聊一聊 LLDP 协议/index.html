@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 01:55:08'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 01:58:07'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -847,7 +847,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88%EF%BC%89"><span class="toc-text">LLDP（）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88Link-Layer-Discovery-Protocol-%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">LLDP（Link Layer Discovery Protocol 链路层发现协议）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -912,8 +912,12 @@ Maximum Frame Size TLV
 End of LLDPDU TLV
 </code></pre>
 <p>那么，这里的 LLDP 配置到底是什么意思呢？</p>
-<h1 id="LLDP（）"><a href="#LLDP（）" class="headerlink" title="LLDP（）"></a>LLDP（）</h1><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<h1 id="LLDP（Link-Layer-Discovery-Protocol-链路层发现协议）"><a href="#LLDP（Link-Layer-Discovery-Protocol-链路层发现协议）" class="headerlink" title="LLDP（Link Layer Discovery Protocol 链路层发现协议）"></a>LLDP（Link Layer Discovery Protocol 链路层发现协议）</h1><p>LLDP协议属于链路层协议，以太类型为 <code>0x88cc</code>。网络设备可以通过发送 LLDPDU 数据帧来告知其他设备自身的状态。注意，它不是一个控制协议，无法通过该协议对设备进行配置，它只提供了查询的能力。</p>
+<p><img src="/Pasted%20image%2020231217015725.png"></p>
+<p>TLV 是组成 LLDPDU 的单元，每个 TLV 都代表一个信息。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>准备多机多卡训：<a target="_blank" rel="noopener" href="https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html">https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html</a></li>
+<li>维基百科LLDP：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE">https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE</a></li>
 </ul>
 
       
