@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:04:06'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:07:07'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -847,7 +847,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88Link-Layer-Discovery-Protocol-%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">LLDP（Link Layer Discovery Protocol 链路层发现协议）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E5%88%86-TLV-%E5%86%85%E5%AE%B9%E8%A7%A3%E9%87%8A"><span class="toc-text">部分 TLV 内容解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hccn-tool-%E6%A3%80%E6%9F%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81"><span class="toc-text">hccn_tool 检查交换机状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLDP%EF%BC%88Link-Layer-Discovery-Protocol-%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">LLDP（Link Layer Discovery Protocol 链路层发现协议）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E5%88%86-TLV-%E5%86%85%E5%AE%B9%E8%A7%A3%E9%87%8A"><span class="toc-text">部分 TLV 内容解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chassis-ID-TLV"><span class="toc-text">Chassis ID TLV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Port-ID-TLV"><span class="toc-text">Port ID TLV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Capabilities-TLV"><span class="toc-text">System Capabilities TLV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mnagement-Address-TLV"><span class="toc-text">Mnagement Address TLV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Port-VLAN-ID-TLV"><span class="toc-text">Port VLAN ID TLV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End-of-LLDPDU-TLV"><span class="toc-text">End of LLDPDU TLV</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -921,22 +921,30 @@ End of LLDPDU TLV
 <p>LLDP 是一个基于以太网的协议，因此 InfiniBand 物理网络下不支持。</p>
 <p>ref：<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/lldp-not-available/207865">https://forums.developer.nvidia.com/t/lldp-not-available/207865</a></p>
 </blockquote>
-<h1 id="部分-TLV-内容解释"><a href="#部分-TLV-内容解释" class="headerlink" title="部分 TLV 内容解释"></a>部分 TLV 内容解释</h1><pre><code>Chassis ID TLV
+<h1 id="部分-TLV-内容解释"><a href="#部分-TLV-内容解释" class="headerlink" title="部分 TLV 内容解释"></a>部分 TLV 内容解释</h1><h2 id="Chassis-ID-TLV"><a href="#Chassis-ID-TLV" class="headerlink" title="Chassis ID TLV"></a>Chassis ID TLV</h2><p>发送设备的桥MAC地址：</p>
+<pre><code>Chassis ID TLV
     MAC: d0:77:ce:6d:62:51
 </code></pre>
-<pre><code>
+<h2 id="Port-ID-TLV"><a href="#Port-ID-TLV" class="headerlink" title="Port ID TLV"></a>Port ID TLV</h2><p>标识LLDPDU发送端的端口</p>
+<pre><code>Port ID TLV
+    Ifname: 400GE1/1/26:1
 </code></pre>
-<p>Port ID TLV<br>    Ifname: 400GE1&#x2F;1&#x2F;26:1</p>
-<pre><code>
+<h2 id="System-Capabilities-TLV"><a href="#System-Capabilities-TLV" class="headerlink" title="System Capabilities TLV"></a>System Capabilities TLV</h2><pre><code>System Capabilities TLV
+    System capabilities:  Bridge, Router
+    Enabled capabilities: Bridge, Router
 </code></pre>
-<p>System Capabilities TLV<br>    System capabilities:  Bridge, Router<br>    Enabled capabilities: Bridge, Router</p>
-<pre><code>
+<p>说明DX511是一个支持三层网络转发的交换机，并且已经打开了三层路由转发（Router）的能力</p>
+<blockquote>
+<p>RDMA 是无法容忍丢包的，需要 loseless 网络，IB 天生支持 loseless，而 RoCE 网络则需要通过 PFC 实现不丢包，而 PFC 的策略中的 </p>
+</blockquote>
+<h2 id="Mnagement-Address-TLV"><a href="#Mnagement-Address-TLV" class="headerlink" title="Mnagement Address TLV"></a>Mnagement Address TLV</h2><pre><code>Mnagement Address TLV
+    IPv4: 11.172.213.6
+    Ifindex: 4
 </code></pre>
-<p>Mnagement Address TLV<br>    IPv4: 11.172.213.6<br>    Ifindex: 4</p>
-<pre><code>
+<h2 id="Port-VLAN-ID-TLV"><a href="#Port-VLAN-ID-TLV" class="headerlink" title="Port VLAN ID TLV"></a>Port VLAN ID TLV</h2><pre><code>Port VLAN ID TLV
+    PVID: 21
 </code></pre>
-<p>Port VLAN ID TLV<br>    PVID: 21</p>
-<pre><code>End of LLDPDU TLV
+<h2 id="End-of-LLDPDU-TLV"><a href="#End-of-LLDPDU-TLV" class="headerlink" title="End of LLDPDU TLV"></a>End of LLDPDU TLV</h2><pre><code>End of LLDPDU TLV
 </code></pre>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>准备多机多卡训：<a target="_blank" rel="noopener" href="https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html">https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html</a></li>
