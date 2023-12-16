@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:13:07'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:16:01'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -948,14 +948,18 @@ End of LLDPDU TLV
     PVID: 21
 </code></pre>
 <p>之类我们注意到 8 张网卡同处于一个 VLAN，因为华为云的 BMS 服务将 VLAN 用于隔离多租户之间的网络，因此同一个租户下的 RoCE 网路平面内一定都是同一个 VLAN。</p>
-<p>交换机 PFC 策略除了 DSCP 外还有 PCP（Priority Code Point），该策略正式基于 VLAN 实现。正如上面介绍的华为云jiang’qi</p>
+<p>交换机 PFC 策略除了 DSCP 外还有 PCP（Priority Code Point），该策略正式基于 VLAN 实现。正如上面介绍的华为云将其用于隔离多租了，因此无法使用该策略。</p>
 <h2 id="End-of-LLDPDU-TLV"><a href="#End-of-LLDPDU-TLV" class="headerlink" title="End of LLDPDU TLV"></a>End of LLDPDU TLV</h2><pre><code>End of LLDPDU TLV
 </code></pre>
+<p>标识LLDPDU结束</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>准备多机多卡训：<a target="_blank" rel="noopener" href="https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html">https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html</a></li>
 <li>维基百科LLDP：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE">https://zh.wikipedia.org/wiki/%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.h3c.com/cn/d_200805/605853_30003_0.htm">https://www.h3c.com/cn/d_200805/605853_30003_0.htm</a></li>
-<li><a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/lldp-not-available/207865">https://forums.developer.nvidia.com/t/lldp-not-available/207865</a></li>
+<li>数据链路层学习之LLDP：<a target="_blank" rel="noopener" href="https://blog.csdn.net/goodluckwhh/article/details/10948065">https://blog.csdn.net/goodluckwhh/article/details/10948065</a></li>
+<li><a target="_blank" rel="noopener" href="https://hurray0.com/menu/138/#DCQCN">https://hurray0.com/menu/138/#DCQCN</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.huawei.com/enterprise/zh/doc/EDOC1000178145/8def618c">https://support.huawei.com/enterprise/zh/doc/EDOC1000178145/8def618c</a></li>
+<li>LLDP技术介绍：<a target="_blank" rel="noopener" href="https://www.h3c.com/cn/d_200805/605853_30003_0.htm">https://www.h3c.com/cn/d_200805/605853_30003_0.htm</a></li>
+<li>lldp not available：<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/lldp-not-available/207865">https://forums.developer.nvidia.com/t/lldp-not-available/207865</a></li>
 </ul>
 
       
