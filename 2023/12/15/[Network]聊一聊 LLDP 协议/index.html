@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 01:42:59'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 01:46:08'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -864,6 +864,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="hccn-tool-检查交换机状态"><a href="#hccn-tool-检查交换机状态" class="headerlink" title="hccn_tool 检查交换机状态"></a>hccn_tool 检查交换机状态</h1><p>昇腾官方的模型迁移指导中提到一个在端侧检查交换机状态的命令工具，只要返回不空则代表交换机状态正常：</p>
+<p><img src="/Pasted%20image%2020231217014307.png"></p>
+<p>实际执行后发现，昇腾服务器上通过执行 <code>hccn_tool -i &#123;device_id&#125; -lldp -g</code> 可以查询到 lldp 配置信息，如下：</p>
+<p>命令：</p>
+<pre><code class="Bash">hccn_tool -i 0 -lldp -g
+</code></pre>
+<p>回显：</p>
+<pre><code>Chassis ID TLV
+    MAC: d0:77:ce:6d:62:
+</code></pre>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>准备多机多卡训：<a target="_blank" rel="noopener" href="https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html">https://www.hiascend.com/document/detail/zh/canncommercial/63RC2/modeldevpt/ptmigr/ptmigr_0026.html</a></li>
 </ul>
