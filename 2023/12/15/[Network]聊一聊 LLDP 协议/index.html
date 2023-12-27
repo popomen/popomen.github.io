@@ -825,7 +825,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:30:52'>2023-12-15 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-17 02:31:46'>2023-12-15 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -863,8 +863,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/Pasted%20image%2020231217023050.png"></p>
-<h1 id="hccn-tool-检查交换机状态"><a href="#hccn-tool-检查交换机状态" class="headerlink" title="hccn_tool 检查交换机状态"></a>hccn_tool 检查交换机状态</h1><p>昇腾官方的模型迁移指导中提到一个在端侧检查交换机状态的命令工具，只要返回不空则代表交换机状态正常：</p>
+        <h1 id="hccn-tool-检查交换机状态"><a href="#hccn-tool-检查交换机状态" class="headerlink" title="hccn_tool 检查交换机状态"></a>hccn_tool 检查交换机状态</h1><p>昇腾官方的模型迁移指导中提到一个在端侧检查交换机状态的命令工具，只要返回不空则代表交换机状态正常：</p>
 <p><img src="/2023/12/15/%5BNetwork%5D%E8%81%8A%E4%B8%80%E8%81%8A%20LLDP%20%E5%8D%8F%E8%AE%AE/2020231217014307.png" alt="hccn_tool 确认交换机状态"></p>
 <p>实际执行后发现，昇腾服务器上通过执行 <code>hccn_tool -i &#123;device_id&#125; -lldp -g</code> 可以查询到 lldp 配置信息，如下：</p>
 <p>命令：</p>
