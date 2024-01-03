@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>保障集群内节点和网络安全——《K8s in action》读书笔记13 | popomen个人博客</title>
-  <meta name="keywords" content=" Kubernetes , 《Kubernetes in action》 ">
-  <meta name="description" content="保障集群内节点和网络安全——《K8s in action》读书笔记13 | popomen个人博客">
+  <title>[Ascend]910B有哪些提升 | popomen个人博客</title>
+  <meta name="keywords" content=" Network ">
+  <meta name="description" content="[Ascend]910B有哪些提升 | popomen个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="记性不好">
 <meta property="og:type" content="website">
@@ -822,9 +822,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-[K8s]Kubernetes-in-action_13" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-[Ascend]910B有哪些提升" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">保障集群内节点和网络安全——《K8s in action》读书笔记13</h1>
+        <h1 class="article-title">[Ascend]910B有哪些提升</h1>
     
     <div class="article-meta">
         
@@ -834,7 +834,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Kubernetes">Kubernetes</a>
+            <a  data-rel="Network">Network</a>
             
         </span>
         
@@ -842,16 +842,14 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">Kubernetes</a>
-            
-            <a class="color3">《Kubernetes in action》</a>
+            <a class="color3">Network</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2021-10-13 00:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 21:26:42'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -873,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#13%E3%80%81%E4%BF%9D%E9%9A%9C%E9%9B%86%E7%BE%A4%E5%86%85%E8%8A%82%E7%82%B9%E5%92%8C%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8"><span class="toc-text">13、保障集群内节点和网络安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%88securityContext%EF%BC%89"><span class="toc-text">安全上下文（securityContext）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AE%B9%E5%99%A8%EF%BC%9A"><span class="toc-text">面向容器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91pod%EF%BC%9A"><span class="toc-text">面向pod：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6pod%E4%BD%BF%E7%94%A8%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%88PodSecurityPolicy%EF%BC%89"><span class="toc-text">限制pod使用安全相关的特性（PodSecurityPolicy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%94%E7%A6%BBpod%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%88NetworkPolicy%EF%BC%89"><span class="toc-text">隔离pod的网络（NetworkPolicy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E5%BC%B9%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">散弹知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-text">命令</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DaVinci%E6%9E%B6%E6%9E%84"><span class="toc-text">DaVinci架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -889,74 +887,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="13、保障集群内节点和网络安全"><a href="#13、保障集群内节点和网络安全" class="headerlink" title="13、保障集群内节点和网络安全"></a>13、保障集群内节点和网络安全</h1><ul>
-<li><p>在pod中使用宿主节点的Linux命名空间</p>
-</li>
-<li><p>配置节点的安全上下文</p>
-</li>
-<li><p>限制pod使用安全相关的特性</p>
-</li>
-<li><p>隔离pod的网络</p>
-</li>
-</ul>
-<h2 id="安全上下文（securityContext）"><a href="#安全上下文（securityContext）" class="headerlink" title="安全上下文（securityContext）"></a>安全上下文（securityContext）</h2><p>securityContext既可以配置给<strong>pod</strong>也可以配置给<strong>pod下的任意容器</strong>，配置给pod则相当于声明了默认的安全上下文，它可以被容器的安全上下文覆盖。</p>
-<h3 id="面向容器："><a href="#面向容器：" class="headerlink" title="面向容器："></a>面向容器：</h3><table>
-<thead>
-<tr>
-<th>配置项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>securityContext.<strong>runAsUser</strong></td>
-<td><strong>指定启动容器的用户ID，此用户ID可以覆盖Dockerfile中USER指定的用户。</strong></td>
-</tr>
-<tr>
-<td>securityContext.<strong>runAsNonRoot</strong></td>
-<td><strong>不想用 <code>runAsUser</code> 指定用户ID，仅仅想阻止容器以root用户运行。</strong><br />（虽然容器与宿主机是隔离的，但是使用root运行容器仍然是一种不好的实践。例如宿主机某目录挂载到容器中时，如果容器是以root身份运行的，那么容器就有了此目录的完整权限，非root则没有完整权限。）</td>
-</tr>
-<tr>
-<td>securityContext.<strong>privileged</strong></td>
-<td><strong>使用特权模式运行，可以看到并使用所有的设备</strong><br />（例子：kube-proxy使用了特权模式并可以修改宿主机的iptables）</td>
-</tr>
-<tr>
-<td>securityContext.<strong>capabilities</strong></td>
-<td><strong>为容器单独添加（add）内核功能或去除（drop）内核功能</strong><br />（单独添加内核功能远比 <code>privileged </code> 要更好，诚然这需要使用者了解各种内核功能。）</td>
-</tr>
-<tr>
-<td>securityContext.<strong>readOnlyRootFilesystem</strong></td>
-<td><strong>阻止对容器根文件系统的写入</strong></td>
-</tr>
-</tbody></table>
-<h3 id="面向pod："><a href="#面向pod：" class="headerlink" title="面向pod："></a>面向pod：</h3><table>
-<thead>
-<tr>
-<th>配置项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>securityContext.<strong>fsGroup</strong></td>
-<td>当进程在存储卷中创建文件时起作用，所创建的文件的所属用户组为fsGroup声明的值</td>
-</tr>
-<tr>
-<td>securityContext.<strong>supplementalGroups</strong></td>
-<td>定义了某个用户所关联的额外的用户组</td>
-</tr>
-</tbody></table>
-<h2 id="限制pod使用安全相关的特性（PodSecurityPolicy）"><a href="#限制pod使用安全相关的特性（PodSecurityPolicy）" class="headerlink" title="限制pod使用安全相关的特性（PodSecurityPolicy）"></a>限制pod使用安全相关的特性（PodSecurityPolicy）</h2><p>略过（不太感兴趣）</p>
-<h2 id="隔离pod的网络（NetworkPolicy）"><a href="#隔离pod的网络（NetworkPolicy）" class="headerlink" title="隔离pod的网络（NetworkPolicy）"></a>隔离pod的网络（NetworkPolicy）</h2><p>通过配置 <code>spec.ingress</code> 和 <code>spec.egress</code> 要求部分pod网络的入网流浪和出网流量。</p>
-<h2 id="散弹知识点"><a href="#散弹知识点" class="headerlink" title="散弹知识点"></a>散弹知识点</h2><ul>
-<li>设置 <code>spec.hostNetWork</code> 可以使pod直接使用宿主机<strong>网络命名空间</strong>。</li>
-<li>设置 <code>spec.containers.ports.hostPort</code> 可以让pod拥有自己的网络命名空间的同时将端口绑定到宿主节点的端口上。（当然，此时pod实例在同一节点只能有一个副本）</li>
-<li>设置 <code>spec.hostPID</code> 可以使pod直接使用宿主机<strong>PID命名空间</strong>。</li>
-<li>设置 <code>spec.hostIPC</code> 可以使pod直接使用宿主机<strong>IPC命名空间</strong>。</li>
-<li>Linux 内核功能的名称通常以 <code>CAP_</code> 开头。但在 pod spec 中指定内核功能时，必须省略 <code>CAP_</code> 前缀</li>
-</ul>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><pre><code class="sh"># 查看pod中所有的设备，若开启特权模式则能够看到宿主机所有的设备
-kubectl exec -it pod-xxx ls /dev
-</code></pre>
-
+        <h1 id="DaVinci架构"><a href="#DaVinci架构" class="headerlink" title="DaVinci架构"></a>DaVinci架构</h1><p>其中<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/xia-jing-jing-57">夏晶的知乎主页</a>在这里，一个不停在在暴躁架构师和谦虚架构师之间反复横跳的大佬。</p>
+<p>7月份的一篇<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/639228770">nvlink那些事……</a>转播量h</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
     </div>
