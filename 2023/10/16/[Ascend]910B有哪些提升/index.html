@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:20:41'>2023-10-16 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:23:27'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#910-vs-910B"><span class="toc-text">910 vs 910B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FP32%E7%9A%84%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD"><span class="toc-text">FP32的计算性能</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#910-vs-910B"><span class="toc-text">910 vs 910B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FP32%E7%9A%84%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD"><span class="toc-text">FP32的计算性能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -887,7 +887,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>初代芯片910Ascend: a Scalable and Unified Architecture for Ubiquitous Deep Neural Network Computing : Industry Track Paper：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9407221">https://ieeexplore.ieee.org/document/9407221</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>初代芯片910甚至发了Paper，而910B的公开信息少之又少，因此简单总结梳理一下我了解的区别。</p>
 <h1 id="910-vs-910B"><a href="#910-vs-910B" class="headerlink" title="910 vs 910B"></a>910 vs 910B</h1><h2 id="机内带宽"><a href="#机内带宽" class="headerlink" title="机内带宽"></a>机内带宽</h2><p>910：一个子系统内部（0<del>3卡或4</del>7卡）可以随意走HCCS，跨子系统需要走PCIe总线。</p>
 <p>类似Nvidia V100的形态？</p>
 <p>910B：8张卡都通过HCCS接口互联，HCCS接口带宽392GB&#x2F;s &#x3D; 7 * 56G</p>
@@ -938,6 +938,10 @@
 <p>据了解，自动驾驶场景下FP32精度的使用规模非常大，因此上面提到的问题也更容易遇到。</p>
 </blockquote>
 <p>好在910B的Cude计算单元支持了fp32类型的计算，因此上面这个问题也得到了解决。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>Ascend: a Scalable and Unified Architecture for Ubiquitous Deep Neural Network Computing : Industry Track Paper：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9407221">https://ieeexplore.ieee.org/document/9407221</a></li>
+<li><a target="_blank" rel="noopener" href="https://arthurchiao.art/blog/gpu-advanced-notes-2-zh/">https://arthurchiao.art/blog/gpu-advanced-notes-2-zh/</a></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
