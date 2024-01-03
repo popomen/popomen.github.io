@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:11:41'>2023-10-16 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:14:43'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FP32%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-text">FP32性能提升</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -923,17 +923,15 @@
 <p>这里相较A100芯片的80GB显存，的确是略逊一筹了。事实上这个影响也许比想象中还要大：</p>
 <ol>
 <li>在大模型时代模型的参数量正在指数级增长，一张卡的显存有的时候比计算量还要金贵，他直接决定了多少张卡能放得下一整个模型。</li>
-<li>另外，在并行策略方面，如果八张卡能放下的参数量有限，那么意味着整个</li>
+<li>另外，在并行策略方面，如果八张卡能放下的参数量有限，那么意味着整个模型的并行策略会更加复杂一些。</li>
 </ol>
-<blockquote>
-<p>说到</p>
-</blockquote>
-<p>说到HBM的工艺，这可是影响显存读写速率的关键因素。</p>
+<p>再说到HBM的工艺，这可是影响显存读写速率的关键因素。</p>
 <p>V100和Ascend910均采用HBM2，A100和Ascend910B均采用HBM2e，这里也是符合910B对标A100的结论的。</p>
 <p>但是，我们再看看Nvidia的后面几代芯片：</p>
 <p>H100：HBM3<br>H200（23年底发布）：HBM3e</p>
 <p>可以说采用的HBM工艺上，NV已经遥遥领先了，虽说背后的HBM技术是三星和海力士提供的，但是能够拿到供货也算是一种实力的体现吧。</p>
 <p>至此HBM工艺应该暂告一段落，到了HBM4，似乎整个架构会发生较大的颠覆，拭目以待。</p>
+<h1 id="FP32性能提升"><a href="#FP32性能提升" class="headerlink" title="FP32性能提升"></a>FP32性能提升</h1><p>使用过910的人都知道910有一个大问题，就是对FP32的计算能力非常弱，因此在进行模型迁移的时候往往需要做一些无奈的妥协（使用混合精度），然而混合精度又非常容易引发算子溢出，zhe</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
