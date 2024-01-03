@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-03 21:56:41'>2023-10-16 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 21:59:42'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -893,7 +893,7 @@
 <p>类似Nvidia A100的形态？总带宽弱于A100的600GB&#x2F;s，但是基本与A800的400GB&#x2F;s持平。</p>
 <p>从机内互联这个角度来看，说910B是对标A100的好像没毛病！</p>
 <blockquote>
-<p>可不要小瞧这个 fullmesh 的优化，据说这直接让切分维度为 8 的 tp 并行的速度提升了整整 10 倍。想想也不奇怪，因为</p>
+<p>可不要小瞧这个 fullmesh 的优化，据说这直接让切分维度为 8 的 tp 并行的速度提升了整整 10 倍。想想也不奇怪，因为tp的通信量是非常恐怖的，拿低带宽的 PCIe 来 tp 通信本就是非常不合理的。</p>
 </blockquote>
 <h1 id="机间带宽"><a href="#机间带宽" class="headerlink" title="机间带宽"></a>机间带宽</h1><p>Ascend芯片的一大亮点就是卡内自带了一张RoCE网卡，如果你曾经在GPU集群配置RoCE网络时遇到过“源地址路由”的坑，那么你大可放心，在昇腾服务器上不会给你犯错的机会。因为RoCE平面的路由都交给Ascend的Device OS给你做了，相当于简化了运维人员的工作。</p>
 <blockquote>
@@ -902,13 +902,24 @@
 </blockquote>
 <p>910：每张卡自带一个 100GE 的RoCE网卡。</p>
 <p>910B：每张卡自带一个 200GE 的RoCE网卡。</p>
-<p>使用 hccn_tool 工具可以直接查看网卡的网速：</p>
+<p>使用 <code>hccn_tool</code> 工具可以直接查看网卡的网速：</p>
 <pre><code>hccn_tool -i 3 -status -g
     ...
     Speed: 200000Mb/s   # 200GE 网卡
     ...
 </code></pre>
 <p>此处RoCE网卡的带宽提升据说也是使用了”叠片技术”，具体细节旧不清楚了。</p>
+<h1 id="显存"><a href="#显存" class="headerlink" title="显存"></a>显存</h1><ul>
+<li>910：32GB的HBM2</li>
+<li>910B：64GB的HBM2e</li>
+</ul>
+<p>使用 <code>npu-smi</code> 工具可以查看一张卡的显存大小</p>
+<pre><code>$ npu-smi info -i 0 -t memory
+    ...
+    HBM Capacity(MB)            : 65536
+    ...
+</code></pre>
+<p>s</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
