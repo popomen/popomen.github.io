@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-03 21:41:42'>2023-10-16 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 21:44:40'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -889,7 +889,10 @@
       
         <h1 id="机内带宽"><a href="#机内带宽" class="headerlink" title="机内带宽"></a>机内带宽</h1><p>910：一个子系统内部（0<del>3卡或4</del>7卡）可以随意走HCCS，跨子系统需要走PCIe总线。</p>
 <p>类似Nvidia V100的形态？</p>
-<p>910B：8张卡都通过HCCS接口口</p>
+<p>910B：8张卡都通过HCCS接口互联，HCCS接口带宽392GB&#x2F;s &#x3D; 7 * 56G</p>
+<p>类似Nvidia A100的形态？总带宽弱于A100的600GB&#x2F;s，但是基本与A800的400GB&#x2F;s持平。</p>
+<p>从机内互联这个角度来看，说910B是对标A100的好像没毛病！</p>
+<h1 id="机间带宽"><a href="#机间带宽" class="headerlink" title="机间带宽"></a>机间带宽</h1><p>Ascend芯片的一大亮点就是卡内自带了一张RoCE网卡，</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
