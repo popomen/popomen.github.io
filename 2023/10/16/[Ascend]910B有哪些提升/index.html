@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:17:42'>2023-10-16 23:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-03 22:20:41'>2023-10-16 23:15</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FP32%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-text">FP32性能提升</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#910-vs-910B"><span class="toc-text">910 vs 910B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%86%85%E5%B8%A6%E5%AE%BD"><span class="toc-text">机内带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E9%97%B4%E5%B8%A6%E5%AE%BD"><span class="toc-text">机间带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%AD%98"><span class="toc-text">显存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FP32%E7%9A%84%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD"><span class="toc-text">FP32的计算性能</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -887,7 +887,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机内带宽"><a href="#机内带宽" class="headerlink" title="机内带宽"></a>机内带宽</h1><p>910：一个子系统内部（0<del>3卡或4</del>7卡）可以随意走HCCS，跨子系统需要走PCIe总线。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>初代芯片910Ascend: a Scalable and Unified Architecture for Ubiquitous Deep Neural Network Computing : Industry Track Paper：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9407221">https://ieeexplore.ieee.org/document/9407221</a></p>
+<h1 id="910-vs-910B"><a href="#910-vs-910B" class="headerlink" title="910 vs 910B"></a>910 vs 910B</h1><h2 id="机内带宽"><a href="#机内带宽" class="headerlink" title="机内带宽"></a>机内带宽</h2><p>910：一个子系统内部（0<del>3卡或4</del>7卡）可以随意走HCCS，跨子系统需要走PCIe总线。</p>
 <p>类似Nvidia V100的形态？</p>
 <p>910B：8张卡都通过HCCS接口互联，HCCS接口带宽392GB&#x2F;s &#x3D; 7 * 56G</p>
 <p>类似Nvidia A100的形态？总带宽弱于A100的600GB&#x2F;s，但是基本与A800的400GB&#x2F;s持平。</p>
@@ -895,7 +896,7 @@
 <blockquote>
 <p>可不要小瞧这个 fullmesh 的优化，据说这直接让切分维度为 8 的 tp 并行的速度提升了整整 10 倍。想想也不奇怪，因为tp的通信量是非常恐怖的，拿低带宽的 PCIe 来 tp 通信本就是非常不合理的。</p>
 </blockquote>
-<h1 id="机间带宽"><a href="#机间带宽" class="headerlink" title="机间带宽"></a>机间带宽</h1><p>Ascend芯片的一大亮点就是卡内自带了一张RoCE网卡，如果你曾经在GPU集群配置RoCE网络时遇到过“源地址路由”的坑，那么你大可放心，在昇腾服务器上不会给你犯错的机会。因为RoCE平面的路由都交给Ascend的Device OS给你做了，相当于简化了运维人员的工作。</p>
+<h2 id="机间带宽"><a href="#机间带宽" class="headerlink" title="机间带宽"></a>机间带宽</h2><p>Ascend芯片的一大亮点就是卡内自带了一张RoCE网卡，如果你曾经在GPU集群配置RoCE网络时遇到过“源地址路由”的坑，那么你大可放心，在昇腾服务器上不会给你犯错的机会。因为RoCE平面的路由都交给Ascend的Device OS给你做了，相当于简化了运维人员的工作。</p>
 <blockquote>
 <p>所谓”源地址路由的坑“，如果八张网卡的IP地址都在同一个网段中，则必须为他们分别配置路由规则，否则就会发生从A网卡入的流量从B卡返回，从而导致网络不通。</p>
 <p>使用云服务的时候，这个错误容易发生。因为一些云服务的基础服务帮助用户把RoCE网卡IP配置的事情给做了，而且有可能把八张RoCE网卡都放在了同一个网段。</p>
@@ -909,7 +910,7 @@
     ...
 </code></pre>
 <p>此处RoCE网卡的带宽提升据说也是使用了”叠片技术”，具体细节旧不清楚了。</p>
-<h1 id="显存"><a href="#显存" class="headerlink" title="显存"></a>显存</h1><ul>
+<h2 id="显存"><a href="#显存" class="headerlink" title="显存"></a>显存</h2><ul>
 <li>910：32GB的HBM2</li>
 <li>910B：64GB的HBM2e</li>
 </ul>
@@ -931,9 +932,12 @@
 <p>H100：HBM3<br>H200（23年底发布）：HBM3e</p>
 <p>可以说采用的HBM工艺上，NV已经遥遥领先了，虽说背后的HBM技术是三星和海力士提供的，但是能够拿到供货也算是一种实力的体现吧。</p>
 <p>至此HBM工艺应该暂告一段落，到了HBM4，似乎整个架构会发生较大的颠覆，拭目以待。</p>
-<h1 id="FP32性能提升"><a href="#FP32性能提升" class="headerlink" title="FP32性能提升"></a>FP32性能提升</h1><p>使用过910的人都知道910有一个大问题，就是对FP32的计算能力非常弱，仅部分vector计算单元支持fp32的计算。要知道DaVinci Core计算单元中真正的算力担当可是Cu</p>
+<h2 id="FP32的计算性能"><a href="#FP32的计算性能" class="headerlink" title="FP32的计算性能"></a>FP32的计算性能</h2><p>使用过910的人都知道910有一个大问题，就是对FP32的计算能力非常弱，仅部分vector计算单元支持fp32的计算。要知道DaVinci Core计算单元中真正的算力担当可是Cube计算单元！</p>
 <p>因此在进行模型迁移的时候往往需要做一些无奈的妥协（使用混合精度），然而混合精度又非常容易引发算子溢出（定位难度极大，往往需要做全量的算子dump，然后一步一步的找溢出的位置）。</p>
-<p>好在910B的cude计算单元支持了fp32类型的计算。</p>
+<blockquote>
+<p>据了解，自动驾驶场景下FP32精度的使用规模非常大，因此上面提到的问题也更容易遇到。</p>
+</blockquote>
+<p>好在910B的Cude计算单元支持了fp32类型的计算，因此上面这个问题也得到了解决。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
