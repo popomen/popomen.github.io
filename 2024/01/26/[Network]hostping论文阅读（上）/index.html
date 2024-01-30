@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:22:43'>2024-01-26 17:48</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:24:33'>2024-01-26 17:48</time>
         
     </div>
     <div class="article-meta">
@@ -887,12 +887,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="hostping解决什么问题"><a href="#hostping解决什么问题" class="headerlink" title="hostping解决什么问题"></a>hostping解决什么问题</h1><p><code>RDMA</code> 通信链路示意：</p>
-<pre><code>GPU ↔️ RNIC ↔️ Switch ↔️ RNIC ↔️ GPU
+        <h1 id="hostping解决什么问题"><a href="#hostping解决什么问题" class="headerlink" title="hostping解决什么问题"></a>hostping解决什么问题</h1><p><code>RDMA</code> 通信链路简要示意：</p>
+<pre><code>// todo：换成图
+
+GPU ↔️ RNIC ↔️ Switch ↔️ RNIC ↔️ GPU
 </code></pre>
 <p>（下文中所谓的 <code>intra-host</code> 网络则代表 <code>GPU ↔️ RNIC</code> 这一段。）</p>
 <p><code>RDMA</code> 在数据中心提供高吞吐、低延迟的网络。整个链路中，<code>RNIC</code> 带宽的发展速度很快，而 <code>intra-host</code> 网络的带宽发展速度与之不匹配，无法再提供足够的冗余带宽，因此后者常常成为端到端性能的瓶颈。另外，<code>intra-host</code> 网络的系统复杂度越来越高（<code>pcie</code>，内存连接，socket间总线），时常会发生突然的链路故障、其他流量占用甚至配置错误的情况（如acs等）。总之，<code>intra-host</code> 网络不再像我们之前认为的那样稳健，同时又缺乏监控能力和诊断能力。</p>
 <p><code>intra-host</code> 网络对分布式训练的影响非常大，单个节点的故障会降低整个系统的可用性甚至中断整个系统，因为少量的丢包就可能会导致pfc风暴。更麻烦的是这个节点会很难找，往往需要数个小时甚至数天。</p>
+<p>（此处待补充一张图）</p>
 <p>当大规模AI训练进行过程中每一次梯度更新都需要进行大范围的 <code>allreduce</code> 通信，它通常以一个 <code>ring</code> 环的形式进行，这意味着任意两张GPU之间的通信速度减慢都会拖慢整个 <code>allreduce</code> 通信域内的梯度更新速度，从而拖慢总体的训练速度。</p>
 <p>  •  关于何为pfc风暴，可参考此文学习了解：<a target="_blank" rel="noopener" href="https://hurray0.com/menu/138/">https://hurray0.com/menu/138/</a></p>
 <p>我们可以简单地把根因分解为两类：<strong>网络侧</strong>、<strong>主机侧</strong></p>
@@ -912,6 +915,7 @@
 <h1 id="hostping-agent-组成模块"><a href="#hostping-agent-组成模块" class="headerlink" title="hostping agent 组成模块"></a>hostping agent 组成模块</h1><p><img src="/The%20framework%20of%20hostping.png" alt="hostping agent 组成模块"></p>
 <p>  •  Hardware Monitor：监控网卡和主机的异常，决定何时进行hostping<br>  •  Hostping Engine：RNIC与所有端点（gpu、mem）进行环回测试，记录时延和带宽。<br>  •  Data Analyzer：根据测试结果分析性能瓶颈点。</p>
 <p><img src="/2024/01/26/%5BNetwork%5Dhostping%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%8A%EF%BC%89/hostping%E7%8E%AF%E5%9B%9E%E6%B5%8B%E8%AF%95.png" alt="hostping环回测试"></p>
+<p><code>hostping</code> 的核心思想就是在主机内部的rnic和所有端点（gpu、mem）进行环回测试，测量时延和带宽（即吞吐）。</p>
 <h2 id="跨平台兼容性"><a href="#跨平台兼容性" class="headerlink" title="跨平台兼容性"></a>跨平台兼容性</h2><p><code>hostping</code> 集成并封装了各种硬件厂商的工具（pcm、AMDuperf、nvidia-smi、neohost等），帮助运维人员在任意服务器上都能快速使用。</p>
 
       
