@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:01:34'>2024-01-26 17:48</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:04:41'>2024-01-26 17:48</time>
         
     </div>
     <div class="article-meta">
@@ -889,6 +889,9 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>rdma能够在数据中心提供高吞吐、低延迟的网络。整个链路中，rnic带宽的发展速度很快，而主机内网络的带宽发展速度与之不匹配，无法再提供足够的冗余带宽，因此后者常常成为端到端性能的瓶颈。另外，主机内网络的系统复杂度越来越高（pcie，内存连接，socket间总线），时常会发生突然的链路故障、其他流量占用甚至配置错误的情况（如acs等）。总之，内部主机网络不再像我们之前认为的那样稳健，同时又缺乏监控能力和诊断能力。</p>
 <p>内部主机网络对分布式训练的影响非常大，单个节点的故障会降低整个系统的可用性甚至中断整个系统，因为少量的丢包就可能会导致pfc风暴。更麻烦的是这个节点会很难找，往往需要数个小时甚至数天。</p>
+<p>当大规模AI训练进行过程中每一次梯度更新都需要进行大范围的allreduce通信，它通常以一个ring环的形式进行，这意味着任意两张GPU之间的通信速度减慢都会拖慢整个</p>
+<pre><code>GPU ↔️ RNIC ↔️ Switch ↔️ RNIC ↔️ GPU
+</code></pre>
 <p>  •  关于何为pfc风暴，可参考此文学习了解：<a target="_blank" rel="noopener" href="https://hurray0.com/menu/138/">https://hurray0.com/menu/138/</a><br>  •  反向传播梯度同步ring（图待补充）</p>
 <p>hostping集成并封装了各种硬件厂商的工具（pcm、AMDuperf、nvidia-smi、neohost等），帮助运维人员在任意服务器上都能快速界定问题发生在主机侧还是网络侧。其核心思想就是在主机内部的rnic和所有端点（gpu、mem）进行环回测试，测量时延和带宽（即吞吐）。</p>
 <h2 id="hostping-三大挑战"><a href="#hostping-三大挑战" class="headerlink" title="hostping 三大挑战"></a>hostping 三大挑战</h2><ol>
