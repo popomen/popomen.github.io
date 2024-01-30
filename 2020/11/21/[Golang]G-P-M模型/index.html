@@ -841,7 +841,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-08-24 20:28:41'>2020-11-21 13:07</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-30 21:19:11'>2020-11-21 13:07</time>
         
     </div>
     <div class="article-meta">
@@ -927,8 +927,8 @@
 <blockquote>
 <p>《Go IN ACTION》书中描述非Go语言的传统应用程序时没有提及超线程技术，而只是说操作系统会在 <code>处理器</code> 上调度线程。实际上他说的 <code>处理器</code> 就是逻辑核的数量。</p>
 </blockquote>
-<img src="G-P-M模型/1.png" alt="Go程序查看运行时P的个数" style="zoom: 80%;" />
-
+<p>123<br>123</p>
+<p><img src="/G-P-M%E6%A8%A1%E5%9E%8B/1.png"></p>
 <center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
 Go程序查看运行时P的个数
 </b></div><br></center>
@@ -960,8 +960,7 @@ Linux命令查看逻辑核个数
 <h2 id="线程（thread）"><a href="#线程（thread）" class="headerlink" title="线程（thread）"></a>线程（thread）</h2><p>一个线程是一个执行空间，这个空间会被操作系统调度来运行函数中所写的代码。</p>
 <h1 id="G-P-M模型"><a href="#G-P-M模型" class="headerlink" title="G-P-M模型"></a>G-P-M模型</h1><p>操作系统会在处理器上调度线程来运行，而Go语言的运行时会通过<code>调度器</code>（下文简称 <code>Sched</code>）来调度<code>逻辑处理器</code>（下文简称为  <code>P</code>）上调度 <code>goroutine</code> （下文称为 <code>G</code>）来运行。但是 <code>G</code> 并不直接绑定 OS 线程 （下文简称 <code>M</code>）运行，而是由 <code>P</code>（逻辑处理器）来作获取内核线程资源。</p>
 <p>在 Go 程序里我们通过下面的图示来展示 G-P-M 模型：</p>
-<img src="G-P-M模型/5.jpg" alt="Go程序查看运行时P的个数" style="zoom:50%;" />
-
+<p><img src="/G-P-M%E6%A8%A1%E5%9E%8B/5.jpg"></p>
 <h2 id="线程（Machine）"><a href="#线程（Machine）" class="headerlink" title="线程（Machine）"></a>线程（Machine）</h2><p><code>M </code>的个数不定，由Go Runtime调整，最大默认10000个（可通过 <code>runtime/debug</code> 包的 <code>SetMaxThread</code> 来修改）。</p>
 <h2 id="逻辑处理器（Processors）"><a href="#逻辑处理器（Processors）" class="headerlink" title="逻辑处理器（Processors）"></a>逻辑处理器（Processors）</h2><p>当有多个 <code>P</code> 的时候，<code>Sched</code>会将 <code>G</code> 平等的分到每个 <code>P</code> 上。但是，若想真正实现并行的效果，一定要在多核的机器上运行，否则多线程依然在一个核上运行，达不到并行效果。<code>P</code> 内最重要的三个东西：</p>
 <ul>
@@ -981,16 +980,14 @@ Linux命令查看逻辑核个数
 <p>2、与此同时，这个 <code>P</code> 失去了用来运行的 <code>M</code>，所以<code>调度器</code>会再创建一个新的 <code>M</code>，并将其绑定到该 <code>P</code> 上。</p>
 <p>3、之后，<code>Sched</code>从 <code>P </code>的本地运行队列里选择另一个<code>G</code>来运行。</p>
 <p>4、一旦被阻塞的系统调用执行完成并返回，对应的 <code>G</code> 会放回到 <code>P</code> 的本地运行队列，而之前的 <code>M</code> 会保存好，以便继续使用。</p>
-<img src="G-P-M模型/3.png" alt="Go程序查看运行时P的个数" style="zoom: 80%;" />
-
+<p><img src="/G-P-M%E6%A8%A1%E5%9E%8B/3.png"></p>
 <center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
 G 遇到阻塞的系统调度
 </b></div><br></center>
 
 <h2 id="如果一个-G-需要做一个网络I-x2F-O调用时"><a href="#如果一个-G-需要做一个网络I-x2F-O调用时" class="headerlink" title="如果一个 G 需要做一个网络I&#x2F;O调用时"></a>如果一个 <code>G</code> 需要做一个网络I&#x2F;O调用时</h2><p>1、<code>Sched</code>会将这个M与 <code>P</code> 分离，并移到继承了网络轮询器的运行时。</p>
 <p>2、一旦轮询器提示某个网络读或写的操作已经就绪，对应的 <code>G</code> 就会重新分配到 <code>P</code> 上来完成操作。</p>
-<img src="G-P-M模型/4.png" alt="Go程序查看运行时P的个数" style="zoom:80%;" />
-
+<p><img src="/G-P-M%E6%A8%A1%E5%9E%8B/4.png"></p>
 <center><div style="color:orange;display:inline-block;color:#999;padding:2px;"><b>
 G 遇到网络 I/O 调度
 </b></div><br></center>
