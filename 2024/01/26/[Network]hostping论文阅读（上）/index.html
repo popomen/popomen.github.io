@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-30 21:55:41'>2024-01-26 17:48</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-30 21:58:00'>2024-01-26 17:48</time>
         
     </div>
     <div class="article-meta">
@@ -871,7 +871,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hostping%E7%9A%84%E4%B8%89%E5%A4%A7%E6%8C%91%E6%88%98"><span class="toc-text">hostping的三大挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hostping-agent%E7%94%B1%E4%B8%89%E5%A4%A7%E6%A8%A1%E5%9D%97%E7%BB%84%E6%88%90"><span class="toc-text">hostping agent由三大模块组成</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hostping-%E4%B8%89%E5%A4%A7%E6%8C%91%E6%88%98"><span class="toc-text">hostping 三大挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hostping-agent-%E7%BB%84%E6%88%90%E6%A8%A1%E5%9D%97"><span class="toc-text">hostping agent 组成模块</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -887,13 +887,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>hostping 是一个帮助快速定位 RDMA 组网下网络性能劣化的工具，</p>
-<p>GPU ↔️ RNIC ↔️ Switch ↔️ RNIC ↔️ GPU</p>
-<p>rdma能够在数据中心提供高吞吐、低延迟的网络。整个链路中，rnic带宽的发展速度很快，而主机内网络的带宽发展速度与之不匹配，无法再提供足够的冗余带宽，因此后者常常成为端到端性能的瓶颈。另外，主机内网络的系统复杂度越来越高（pcie，内存连接，socket间总线），时常会发生突然的链路故障、其他流量占用甚至配置错误的情况（如acs等）。总之，内部主机网络不再像我们之前认为的那样稳健，同时又缺乏监控能力和诊断能力。</p>
+        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>hostping 是一个帮助快速定位 RDMA 组网下网络性能劣化的工具，</p>
+<pre><code>GPU ↔️ RNIC ↔️ Switch ↔️ RNIC ↔️ GPU
+</code></pre>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>rdma能够在数据中心提供高吞吐、低延迟的网络。整个链路中，rnic带宽的发展速度很快，而主机内网络的带宽发展速度与之不匹配，无法再提供足够的冗余带宽，因此后者常常成为端到端性能的瓶颈。另外，主机内网络的系统复杂度越来越高（pcie，内存连接，socket间总线），时常会发生突然的链路故障、其他流量占用甚至配置错误的情况（如acs等）。总之，内部主机网络不再像我们之前认为的那样稳健，同时又缺乏监控能力和诊断能力。</p>
 <p>内部主机网络对分布式训练的影响非常大，单个节点的故障会降低整个系统的可用性甚至中断整个系统，因为少量的丢包就可能会导致pfc风暴。更麻烦的是这个节点会很难找，往往需要数个小时甚至数天。</p>
 <p>  •  关于何为pfc风暴，可参考此文学习了解：<a target="_blank" rel="noopener" href="https://hurray0.com/menu/138/">https://hurray0.com/menu/138/</a><br>  •  反向传播梯度同步ring（图待补充）</p>
 <p>hostping集成并封装了各种硬件厂商的工具（pcm、AMDuperf、nvidia-smi、neohost等），帮助运维人员在任意服务器上都能快速界定问题发生在主机侧还是网络侧。其核心思想就是在主机内部的rnic和所有端点（gpu、mem）进行环回测试，测量时延和带宽（即吞吐）。</p>
-<h2 id="hostping的三大挑战"><a href="#hostping的三大挑战" class="headerlink" title="hostping的三大挑战"></a>hostping的三大挑战</h2><ol>
+<h2 id="hostping-三大挑战"><a href="#hostping-三大挑战" class="headerlink" title="hostping 三大挑战"></a>hostping 三大挑战</h2><ol>
 <li>找到尽可能统一的指标，并能高精度测量。</li>
 <li>尽可能降低探测诊断过程对运行中应用的影响。</li>
 <li>继续测量数据有效诊断内部主机性能瓶颈。</li>
@@ -901,7 +902,7 @@
 <h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>主机内各种链路故障都会直接导致节点的rnic缓冲区快速累计，最终导致pfc风暴。这件事对于一台机器来说是小概率事件，但是对于一个大规模集群则是一个常见事件。另外，内核处理tcp流量会导致内存带宽（cpu-mem）被大量占用，因此会影响rdma访问主机内存的带宽。</p>
 <p>主机内部的延迟也会反过来影响主机内部带宽，原理是rnic对TLPs（Transaction Layer Packets，属于pcie的一个数据包概念）的最大未完成数量有限制，导致大量冗余的TLPs请求。论文作者使用neohost进行了一些时延影响带宽的实验，结果表明pix和pxb之间几乎没差别，但是经过了rc则严重影响时延和带宽，再加上upi这个影响会再加剧一点点，最终导致时延加了1.4微秒，带宽整整下降了40%。</p>
 <p>  •  这里有一点点疑惑，既然经过主桥的影响远小于经过rc的影响，为什么nccl保留了phb而去除了node呢？</p>
-<h2 id="hostping-agent由三大模块组成"><a href="#hostping-agent由三大模块组成" class="headerlink" title="hostping agent由三大模块组成"></a>hostping agent由三大模块组成</h2><p>  •  Hardware Monitor：监控网卡和主机的异常，决定何时进行hostping<br>  •  Hostping Engine：RNIC与所有端点（gpu、mem）进行环回测试，记录时延和带宽。<br>  •  Data Analyzer：根据测试结果分析性能瓶颈点。</p>
+<h2 id="hostping-agent-组成模块"><a href="#hostping-agent-组成模块" class="headerlink" title="hostping agent 组成模块"></a>hostping agent 组成模块</h2><p>  •  Hardware Monitor：监控网卡和主机的异常，决定何时进行hostping<br>  •  Hostping Engine：RNIC与所有端点（gpu、mem）进行环回测试，记录时延和带宽。<br>  •  Data Analyzer：根据测试结果分析性能瓶颈点。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nz_nuaa@163.com </span>
