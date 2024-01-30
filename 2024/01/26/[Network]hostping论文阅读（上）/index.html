@@ -849,7 +849,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:19:42'>2024-01-26 17:48</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-30 22:22:43'>2024-01-26 17:48</time>
         
     </div>
     <div class="article-meta">
@@ -902,14 +902,16 @@
 </blockquote>
 <h2 id="带宽（吞吐）"><a href="#带宽（吞吐）" class="headerlink" title="带宽（吞吐）"></a>带宽（吞吐）</h2><p>主机内各种链路故障都会直接导致节点的rnic缓冲区快速累计，最终导致pfc风暴。这件事对于一台机器来说是小概率事件，但是对于一个大规模集群则是一个常见事件。另外，内核处理tcp流量会导致内存带宽（cpu-mem）被大量占用，因此会影响rdma访问主机内存的带宽。</p>
 <h2 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h2><p>主机内部的延迟也会反过来影响主机内部带宽，原理是rnic对TLPs（Transaction Layer Packets，属于pcie的一个数据包概念）的最大未完成数量有限制，导致大量冗余的TLPs请求。论文作者使用neohost进行了一些时延影响带宽的实验，结果表明pix和pxb之间几乎没差别，但是经过了rc则严重影响时延和带宽，再加上upi这个影响会再加剧一点点，最终导致时延加了1.4微秒，带宽整整下降了40%。</p>
+<p><img src="/2024/01/26/%5BNetwork%5Dhostping%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%8A%EF%BC%89/%E5%BB%B6%E8%BF%9F%E5%AF%B9%E5%B8%A6%E5%AE%BD%E7%9A%84%E5%BD%B1%E5%93%8D.png" alt="延迟对带宽的影响"></p>
 <p>  •  这里有一点点疑惑，既然经过主桥的影响远小于经过rc的影响，为什么nccl保留了phb而去除了node呢？</p>
 <h1 id="hostping-三大挑战"><a href="#hostping-三大挑战" class="headerlink" title="hostping 三大挑战"></a>hostping 三大挑战</h1><ol>
 <li>找到尽可能统一的指标，并能高精度测量。</li>
 <li>尽可能降低探测诊断过程对运行中应用的影响。</li>
 <li>继续测量数据有效诊断内部主机性能瓶颈。</li>
 </ol>
-<h1 id="hostping-agent-组成模块"><a href="#hostping-agent-组成模块" class="headerlink" title="hostping agent 组成模块"></a>hostping agent 组成模块</h1><p><img src="/The%20framework%20of%20hostping.png"></p>
+<h1 id="hostping-agent-组成模块"><a href="#hostping-agent-组成模块" class="headerlink" title="hostping agent 组成模块"></a>hostping agent 组成模块</h1><p><img src="/The%20framework%20of%20hostping.png" alt="hostping agent 组成模块"></p>
 <p>  •  Hardware Monitor：监控网卡和主机的异常，决定何时进行hostping<br>  •  Hostping Engine：RNIC与所有端点（gpu、mem）进行环回测试，记录时延和带宽。<br>  •  Data Analyzer：根据测试结果分析性能瓶颈点。</p>
+<p><img src="/2024/01/26/%5BNetwork%5Dhostping%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%8A%EF%BC%89/hostping%E7%8E%AF%E5%9B%9E%E6%B5%8B%E8%AF%95.png" alt="hostping环回测试"></p>
 <h2 id="跨平台兼容性"><a href="#跨平台兼容性" class="headerlink" title="跨平台兼容性"></a>跨平台兼容性</h2><p><code>hostping</code> 集成并封装了各种硬件厂商的工具（pcm、AMDuperf、nvidia-smi、neohost等），帮助运维人员在任意服务器上都能快速使用。</p>
 
       
